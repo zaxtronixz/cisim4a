@@ -1,6 +1,7 @@
 
-
+			// an object to store all the map clicked functions
 			var mapClick = {};
+
 			function initMap(){
 				// user's input is inserte into the autocomplete object
 				
@@ -8,6 +9,7 @@
 				var auto = new google.maps.places.Autocomplete(userInput)
 
 				var map;
+
 				// map is loaded into a <div> based on the user's input 
 				auto.addListener('place_changed', 
 					function(){
@@ -53,9 +55,12 @@
 			    mapClick.createAsset = function (){
 		      		this.infowindow.close();
 		      		
+		      		// get the item values entered in the form
+		      		// using the index number and option selected
 		      		this.x = document.getElementById("assetName").selectedIndex;
 					this.y = document.getElementById("assetName").options;
 
+					// the text of the indexed, option 
 					var selectedAss = this.y[this.x].text;
 		      	 	var marker = new google.maps.Marker({
 	          		position: this.coord,
@@ -63,12 +68,17 @@
 	          		title: selectedAss,
 	          		icon:customMarker(selectedAss)
 	       		 });
+
+
 		      	}
 
 
        		};
 
-       		function assetCreator(){
-				return mapClick.createAsset()
-         			// map.setCenter(marker.getPosition());
-			}
+    // function triggered by form click
+	function assetCreator(){
+		mapClick.createAsset()
+		// close control panel
+		closeNav();
+		// map.setCenter(marker.getPosition());
+	}

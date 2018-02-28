@@ -3,7 +3,7 @@
   // document.addEventListener("DOMContentLoaded", 
   // 	function(event) {
   
-
+// Function to open the control-panel on the workspace
 	function openMenuBtn() {
 				mapClick.infowindow.close();
 		    	document.getElementById("mySidenav")
@@ -11,10 +11,10 @@
 				}
 
 
-
+// function that closes the control panel by clicking 'closeNav' icon
 	function closeNav() {
 	    document.getElementById("mySidenav").style.width = "0";
-	}
+	};
 
 
 
