@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head><title>Autocomplete input loaded as map</title>
+	<!-- =============== Page Head content starts here ================= -->
+						<% include partials/template/head.ejs %>
+	<!-- =============== PageHeadcontent ends ===========================-->
+	</head>
+<body>
+	<!-- =============== Navigition bar starts here ==================== -->
+						<% include partials/template/navbar.ejs %>
+	<!-- =============== Navbar ends ====================================-->
+
+
+	<div class="container-fluid" style="margin-top:50px">
+		<div id="mySidenav" class="sidenav" style="margin-top:50px">
+	<!--=============== Side navigation Content starts here ============ -->
+						<% include partials/content/sidenav.ejs %>
+	<!--=============== Sidenav Ends =================================== -->
+		</div>
+
+		<hr>
+		<h3>The Map Section</h3>
+		<div id="map"></div>
+	</div>
+
+		<br>
+	<!--=============== Footer starts here ============================ -->
+						<% include partials/template/footer.ejs %>
+	<!--=============== Footer Ends =================================== -->
+	<!--=============== Scriptpath starts here ======================== -->
+	<% include partials/template/scriptpath.ejs %>
+	<!--=============== Scriptpath Ends =================================== -->
+	</body>
+</html>

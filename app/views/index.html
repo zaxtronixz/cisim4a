@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Autocomplete input loaded as map</title>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="css/side-nav.css">
+
+		<style type="text/css">
+
+
+			
+			#map{
+				width:100%;
+				height: 400px;
+			}
+			.square-border{
+				border-radius: 0 !important;
+			}
+
+			    /* Set black background color, white text and some padding */
+		    footer {
+		      background-color: #555;
+		      color: white;
+		      padding: 15px;
+		    }
+		</style>
+
+	</head>
+	
+<body>
+
+
+	<!-- ===============	Navigition bar starts here ================= -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">cisim</a>
+    </div>
+
+    <form class="navbar-form navbar-left" action="/action_page.php">
+      <div class="form-group">
+        <input id = "userInput" type="text" name="userInput" class="form-control square-border" placeholder="Type Location">
+      </div>
+     
+    </form>
+  </div>
+</nav>
+
+	<!-- XXXXXXXXXXXXXX	navigation bar ends here XXXXXXXXXXXXXXXX -->
+
+<div class="container-fluid" style="margin-top:50px">
+
+	<!--=============== Side navigation starts here =============== -->
+<div id="mySidenav" class="sidenav" style="margin-top:50px">
+	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			 
+	<div class="panel-group square-border" id="accordion">
+	   	<div class="panel panel-default square-border">
+	    	<div class="panel-heading square-border" >
+	        	<h4 class="panel-title">
+	          		<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Asset</a>
+	        	</h4>
+	      	</div>
+
+	  		<div id="collapse1" class="panel-collapse collapse in">
+	    		<div class="panel-body">
+	  <!-- Asset creation form begins here -->
+				 	<form >
+					 	<div class="form-group">
+					  		<label for="sector">Asset Name:</label>
+					  		<select class="form-control square-border" id="assetName">
+					    		<option>Transformer</option>
+					    		<option>EHV lines &amp; Tower</option>
+					     		<option>Distribution underground lines</option>
+					    		<option>Electric grid Operation</option>
+					         	<option>Antennae</option>
+					    		<option>Base Station Building</option>
+					       		<option>Step Up/down SubStation</option>
+					       		<option>Cable landing Station</option>
+					       		<option>Fossil Fuel Plant</option>
+					       		<option>Wired Copper Cable</option>
+					   		</select>
+						</div>        
+					      	        
+					 	<div class="form-group square-border">
+					  		<label for="sector">Select Sector:</label>
+					  		<select class="form-control square-border" id="sector">
+					    		<option>Energy</option>
+					    		<option>ICT</option>
+					  		</select>
+						</div>
+
+					 	<div class="form-group square-border">
+					  		<label for="sector">Select Sub Sector:</label>
+					  		<select class="form-control square-border" id="subSector">
+					    		<option>Electricity</option>
+					    		<option>Telecomm</option>
+					  		</select>
+						</div>
+
+						<div>
+							<button type="button"  onclick="assetCreator()" class="btn square-border">Create Asset</button>
+						</div>
+					</form>
+				</div>
+	    	</div>
+	<!-- Asset Creation form ends here
+	 -->
+	      
+	    	<div class="panel panel-default square-border">
+	      		<div class="panel-heading square-border">
+	        		<h4 class="panel-title square-border">
+	          			<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Scenario</a>
+	        		</h4>
+	      		</div>
+	      		<div id="collapse2" class="panel-collapse collapse square-border">
+	        		<div class="panel-body square-border">
+	        
+	       			</div>
+	      		</div>
+	    	</div>
+	    	<div class="panel panel-default square-border">
+	      		<div class="panel-heading square-border">
+	        		<h4 class="panel-title">
+	          			<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Visualization</a>
+	       			</h4>
+	      		</div>
+	      		<div id="collapse3" class="panel-collapse collapse square-border">
+	        		<div class="panel-body square-border">.
+	            	</div>
+	      		</div>
+	    	</div>
+	  	</div> 
+	</div>
+</div>
+
+			
+	<hr>
+	<h3>The Map Section</h3>
+	<div id="map"></div>
+
+</div>
+		<br>
+		<footer class="container-fluid text-center">
+		  <p>Copyright &copy; <script type="text/javascript">
+document.write(new Date().getFullYear());
+</script> Critical Infrastructure Simulation and Modeling Engine: V1
+
+		  </p>
+		</footer>
+
+		<script type="text/javascript">
+
+
+			var mapClick = {};
+			function initMap(){
+				// user's input is inserte into the autocomplete object
+				
+				var userInput = document.getElementById('userInput');
+				var auto = new google.maps.places.Autocomplete(userInput)
+
+				var map;
+				// map is loaded into a <div> based on the user's input 
+				auto.addListener('place_changed', 
+					function(){
+					var place = auto.getPlace();
+    				// retrieve the value of the latitude and longitude
+					var lngi = place.geometry.viewport.f.b;
+					var lati = place.geometry.viewport.f.f;
+					
+					// creating a new map object using the latLng values obtained above
+					var mapDiv =  document.getElementById('map');
+			 		map =  new google.maps.Map(mapDiv, {
+						center:{lat:lati, lng:lngi},
+						zoom:10
+					})
+					map.setCenter(place.geometry.location);
+      				map.setZoom(7);
+
+      				var contentString = "<div>Click to create an asset at this location <br><br> ";
+      					contentString += "<button onclick='openMenuBtn()'>"
+      					contentString += " Create an Object";
+      					contentString += "</button> </div>";
+      				// controlling the map zoom value using 
+      				// getting position of click event
+					  google.maps.event.addListener(map, 'click', function(event) {
+					  	
+					   	mapClick.coord = {
+					  			lat: event.latLng.lat(),
+					  			lng: event.latLng.lng()
+					  	}
+					     
+					 // information window is displayed at click position
+					   	mapClick.infowindow = new google.maps.InfoWindow({
+					    	content: contentString,
+					    	position:mapClick.coord
+					  	});
+					 	
+					  	mapClick.infowindow.open(map);
+
+				      });
+
+				});
+
+			    mapClick.createAsset = function (){
+		      		this.infowindow.close();
+		      		
+		      		this.x = document.getElementById("assetName").selectedIndex;
+					this.y = document.getElementById("assetName").options;
+
+					var selectedAss = this.y[this.x].text;
+		      	 	var marker = new google.maps.Marker({
+	          		position: this.coord,
+	          		map: map,
+	          		title: selectedAss,
+	          		icon:customMarker(selectedAss)
+	       		 });
+		      	}
+
+
+       		};
+
+       		function assetCreator(){
+				return mapClick.createAsset()
+         			// map.setCenter(marker.getPosition());
+			}
+		
+			
+
+		</script>
+
+		<script src ="js/custom-marker.js" ></script>
+		<script src="js/side-nav.js"></script>
+
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeUJvIDikvb8VbCj4NZmIrtoIktpyA-pc&libraries=places&callback=initMap"
+    async defer></script>
+	
+
+
+	</body>
+</html>

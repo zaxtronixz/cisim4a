@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head><% include partials/template/head.ejs %></head>
+
+<body>
+	<!-- ===============	Navigition bar starts here ================= -->
+				<% include partials/template/navbar.ejs %>
+	<!-- ===============	Navbar ends =================-->
+
+	<div class="container-fluid" style="margin-top:50px">
+	<!--=============== Side navigation starts here =============== -->
+		<% include partials/content/sidenav.ejs %>
+	<!--=============== Sidenav Ends =============== -->
+			<hr>
+			<h3>The Map Section</h3>
+			<div id="map"></div>
+	</div>
+		<br>
+	<!--=============== Footer starts here =============== -->	
+		<% include partials/template/navbar.ejs %>
+	<!--=============== Sidenav Ends =============== -->
+
+		<script src="/js/loadmap.js">
+
+
+			
+
+		</script>
+
+		<script src ="/js/custom-marker.js" ></script>
+		<script src="/js/side-nav.js"></script>
+
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeUJvIDikvb8VbCj4NZmIrtoIktpyA-pc&libraries=places&callback=initMap"
+    async defer></script>
+	
+
+
+	</body>
+</html>
