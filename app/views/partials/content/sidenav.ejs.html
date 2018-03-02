@@ -1,0 +1,80 @@
+	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			 
+	<div class="panel-group square-border" id="accordion">
+	   	<div class="panel panel-default square-border">
+	    	<div class="panel-heading square-border" >
+	        	<h4 class="panel-title">
+	          		<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Asset</a>
+	        	</h4>
+	      	</div>
+
+	  		<div id="collapse1" class="panel-collapse collapse in">
+	    		<div class="panel-body">
+	  <!-- Asset creation form begins here -->
+				 	<form method='post' action='/postpage' id="createAsset-form">
+					 	<div class="form-group">
+					  		<label for="sector">Asset Name:</label>
+					  		<select name="name" class="form-control square-border" id="assetName">
+					    		<option>Transformer</option>
+					    		<option>EHV lines &amp; Tower</option>
+					     		<option>Distribution underground lines</option>
+					    		<option>Electric grid Operation</option>
+					         	<option>Antennae</option>
+					    		<option>Base Station Building</option>
+					       		<option>Step Up/down SubStation</option>
+					       		<option>Cable landing Station</option>
+					       		<option>Fossil Fuel Plant</option>
+					       		<option>Wired Copper Cable</option>
+					   		</select>
+						</div>        
+					      	        
+					 	<div class="form-group square-border">
+					  		<label for="sector">Select Sector:</label>
+					  		<select name="sector" class="form-control square-border" id="sector">
+					    		<option>Energy</option>
+					    		<option>ICT</option>
+					  		</select>
+						</div>
+
+					 	<div class="form-group square-border">
+					  		<label for="subSector">Select Sub Sector:</label>
+					  		<select name="subSector" class="form-control square-border" id="subSector">
+					    		<option>Electricity</option>
+					    		<option>Telecomm</option>
+					  		</select>
+						</div>
+
+						<div>
+							<button type="submit"  onclick="assetCreator()" class="btn square-border">Create Asset</button>
+						</div>
+					</form>
+				</div>
+	    	</div>
+	<!-- Asset Creation form ends here
+	 -->
+	      
+	    	<div class="panel panel-default square-border">
+	      		<div class="panel-heading square-border">
+	        		<h4 class="panel-title square-border">
+	          			<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Scenario</a>
+	        		</h4>
+	      		</div>
+	      		<div id="collapse2" class="panel-collapse collapse square-border">
+	        		<div class="panel-body square-border">
+	        
+	       			</div>
+	      		</div>
+	    	</div>
+	    	<div class="panel panel-default square-border">
+	      		<div class="panel-heading square-border">
+	        		<h4 class="panel-title">
+	          			<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Visualization</a>
+	       			</h4>
+	      		</div>
+	      		<div id="collapse3" class="panel-collapse collapse square-border">
+	        		<div class="panel-body square-border">.
+	            	</div>
+	      		</div>
+	    	</div>
+	  	</div> 
+	</div>

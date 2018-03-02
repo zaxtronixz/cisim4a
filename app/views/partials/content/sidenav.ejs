@@ -11,10 +11,10 @@
 	  		<div id="collapse1" class="panel-collapse collapse in">
 	    		<div class="panel-body">
 	  <!-- Asset creation form begins here -->
-				 	<form >
+				 	<form method='post' id="createAsset-form" action="/postpage">
 					 	<div class="form-group">
 					  		<label for="sector">Asset Name:</label>
-					  		<select class="form-control square-border" id="assetName">
+					  		<select name="assetname" class="form-control square-border" id="assetName">
 					    		<option>Transformer</option>
 					    		<option>EHV lines &amp; Tower</option>
 					     		<option>Distribution underground lines</option>
@@ -30,7 +30,7 @@
 					      	        
 					 	<div class="form-group square-border">
 					  		<label for="sector">Select Sector:</label>
-					  		<select class="form-control square-border" id="sector">
+					  		<select name="sector" class="form-control square-border" id="sector">
 					    		<option>Energy</option>
 					    		<option>ICT</option>
 					  		</select>
@@ -38,14 +38,14 @@
 
 					 	<div class="form-group square-border">
 					  		<label for="sector">Select Sub Sector:</label>
-					  		<select class="form-control square-border" id="subSector">
+					  		<select name="subSector" class="form-control square-border" id="subSector">
 					    		<option>Electricity</option>
 					    		<option>Telecomm</option>
 					  		</select>
 						</div>
 
 						<div>
-							<button type="button"  onclick="assetCreator()" class="btn square-border">Create Asset</button>
+							<button type="submit" id="createAsset-btn" onclick="assetCreator()" class="btn square-border">Create Asset</button>
 						</div>
 					</form>
 				</div>
