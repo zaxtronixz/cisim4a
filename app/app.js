@@ -3,6 +3,12 @@ var reload = require('reload');
 var bodyParser = require('body-parser');
 var app = express();
 
+
+// neo4j configuration begins here
+var neo4j = require('neo4j-driver').v1;
+
+
+
 app.set('port', process.env.PORT || 3050 );
 
 app.set('view engine', 'ejs');
@@ -13,17 +19,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static('app/public'));
 app.use(require('./routes/index'));
 app.use(require('./routes/postpage'));
-
-app.use(function(req, res, next){
-	console.log(`${req.method} request for '${req.url} - ${JSON.stringify(req.body)}'`);
-	next();
-})
-
-// app.post('postpage', function(req, res, next){
-// 	console.log(`${req.method} request for '${req.url} - ${JSON.stringify(req.body)}'`);
-// 	next();
-	
-// })
+// app.use(require('./routes/neo4j'));
 
 
 var server = app.listen(app.get('port'), function() {

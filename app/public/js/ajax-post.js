@@ -6,8 +6,8 @@ $(document).ready(function(){
 		var url = form.attr('action');
 		var method = form.attr('method');
 
-		 // var assetObject = $('form#createAsset-form').serializeArray();
-		  var assetObject = $('form#createAsset-form').serializer();
+		 var assetObject = $('form#createAsset-form').serializeArray();
+		  // var assetObject = $('form#createAsset-form').serializer();
 	
 
 		 console.log(assetObject);
