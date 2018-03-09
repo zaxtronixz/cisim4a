@@ -5,7 +5,7 @@ var router = express.Router();
 
 router.get('/', function(req, res) {
 
-	res.render('index',{pageID: "main"});
+	res.render('index',{controlPanelID: ""});
 
 });
 

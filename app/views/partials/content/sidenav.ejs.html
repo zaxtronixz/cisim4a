@@ -11,10 +11,14 @@
 	  		<div id="collapse1" class="panel-collapse collapse in">
 	    		<div class="panel-body">
 	  <!-- Asset creation form begins here -->
-				 	<form method='post' action='/postpage' id="createAsset-form">
+				 	<form method='post' id="createAsset-form" action="/postpage">
+				 		<div class="form-group square-border">
+					  		<label for="name">Asset Name:</label>
+					  		<input name="name" class="form-control square-border" id="name" required placeholder="Type Asset Name">
+					    </div>
 					 	<div class="form-group">
-					  		<label for="sector">Asset Name:</label>
-					  		<select name="name" class="form-control square-border" id="assetName">
+					  		<label for="sector">Asset Type:</label>
+					  		<select name="type" class="form-control square-border" id="type">
 					    		<option>Transformer</option>
 					    		<option>EHV lines &amp; Tower</option>
 					     		<option>Distribution underground lines</option>
@@ -37,7 +41,7 @@
 						</div>
 
 					 	<div class="form-group square-border">
-					  		<label for="subSector">Select Sub Sector:</label>
+					  		<label for="sector">Select Sub Sector:</label>
 					  		<select name="subSector" class="form-control square-border" id="subSector">
 					    		<option>Electricity</option>
 					    		<option>Telecomm</option>
@@ -45,7 +49,7 @@
 						</div>
 
 						<div>
-							<button type="submit"  onclick="assetCreator()" class="btn square-border">Create Asset</button>
+							<button type="submit" id="createAsset-btn" onclick="assetCreator()" class="btn square-border">Create Asset</button>
 						</div>
 					</form>
 				</div>
@@ -78,3 +82,10 @@
 	    	</div>
 	  	</div> 
 	</div>
+
+<!----- template for loading recieved value from database ---------->
+
+	<div id="getAssetPanel" class="panel panel-primary square-border">
+      <div class="panel-heading square-border"></div>
+      <div class="panel-body square-border">Panel Content</div>
+    </div>

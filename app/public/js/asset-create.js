@@ -1,54 +1,37 @@
+function CreateAssetObject(asset) {
+  // generates a strings as id of the asset
+  this.id = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)).toUpperCase();
+  this.name = asset.name
+  this.type = asset.type;
+  this.sector = asset.sector;
+  this.coord = asset.coord;
+  this.subSector = asset.subSector;
+  this.workingState = "" // optimal / not optimal / Failed
+  this.inputAssets = [];
+  this.outputAsset = [];
+  this.output = [];
+  this.inputs = [];
 
+  this.depedents = [];
 
-// this script captures data from asset form and exports it to
-// application/backend/createAsset.php script for processing
+ };
 
-// $(document).ready(function(){
+  // this.getinput = function(input, dependencyType){ 
+  // this.inputAssets['dependents'] = {name:input.name, coord: input.coord, dependencyType:dependencyType}
+  //     }
 
-// 	$('#asset-button').click(function(){
-// 		var assetName = $('#assetName').val();
-// 		var sector = $('#sector').val();
-// 		var subSector =$('#subSector').val();
+  // this.removeInputAsset = function(victim){
+  //   if(victim.name in this.inputAssets.dependents){
+  //     delete this.inputAssets(victim);
+  //     return console.log (`${victim} was successful deleted from ${this.name}`)
+  //   }else{
+  //     console.log (`${victim} is not a dependent of ${this.name}`)
+  //     return false
+  //       }
+  //   }
 
-// 		var dataString = 'assetName='+assetName+'&sector='+sector+'&subSector='+subSector;
-//     	$.ajax({
-//        	 	type: "p",
-//         	url: 'application/backend/createAsset.php',
-//         	data: dataString,
-//         	cache:false,
-//         	success: function(data){
-//             	console.log(dataString);
-//         	}
-
-// 		});
-
-// 		return false;
-// 	});
-// });
-
-$('asset-create').on('submit', function(){
-
-	var form = $(this),
-		url  = "application/backend/createAsset.php",
-		type = form.attr('method'),
-		data = {};
-
-form.find('[name]').each(function(index, value){
-	var inputField = $(this),
-	name = inputField.attr('assetName'),
-	value = inputField.val();
-
-	data[name] = value;
-})
-
-	$.ajax({
-		url:url,
-		type:type,
-		data:data,
-		success: function(response){
-			console.log(response);
-		}
-	});
-	return false;
-
-})
+// test samples
+// var asset1 = new CreateAssetObject("local_transformer","transformer","energy",{lat:34, lng:87}, "electricity");
+// var asset2 = new CreateAssetObject("newAre_transformer","transformer","energy",{lat:39, lng:87}, "electricity");
+// asset1.getinput(asset2, "virtual");
+// asset1.removeInputAsset("newAre_transformer");

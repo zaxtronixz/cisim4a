@@ -1,0 +1,51 @@
+{
+   "assets": [
+      {
+         "id": 0,
+         "assetName": "new asset",
+         "assetType": "Transformer",
+         "assetSector": "Power",
+         "assetSubSector": "Electricity",
+         "assetWorkingState": "Optimal",
+         "assetCoordinate": [
+            {
+               "lat": 0,
+               "lng": 0
+            }
+         ],
+         "assetDescription": "A long story is told about this asset , but let me not bore you with the details. it is an asset right",
+         "assetInputCount": [
+            {
+               "Energy": 0,
+               "ICT": 0
+            }
+         ],
+         "assetOutputCount": [
+            {
+               "Energy": 0,
+               "ICT": 0
+            }
+         ],
+         "assetInputSource": [
+            {
+               "assetName": "localDistrStation",
+               "inputType": "electricity",
+               "dependencyLevel": "high"
+            }
+         ],
+         "assetOuputDist": [
+            {
+               "assetName": "neighbourhoodDistrStation",
+               "OutputType": "electricity",
+               "dependencyLevel": "high"
+            }
+         ],
+         "assetDependents": [
+            {
+               "assetName": "localDistrStation",
+               "dependencyLevel": "high"
+            }
+         ]
+      }
+   ]
+}

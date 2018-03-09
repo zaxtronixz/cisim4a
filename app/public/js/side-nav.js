@@ -6,6 +6,8 @@
 // Function to open the control-panel on the workspace
 	function openMenuBtn() {
 				mapClick.infowindow.close();
+				$('#accordion').show();
+				$( "#getAssetPanel" ).hide()
 		    	document.getElementById("mySidenav")
 		    	.style.width = "300px";
 				}

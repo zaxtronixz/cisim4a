@@ -31,15 +31,25 @@ var driver = neo4j.driver(graphenedbURL, neo4j.auth.basic(graphenedbUser, graphe
 //     console.log("This is the request at neo4j.js " + JSON.stringify(req.query.valid));
 //     console.log("This is the method "+ req.method);
 //     res.send(console.log("we also got it baaah : " + (req.body)));
+// .run(`CREATE (n:ASSET{name:'${asset.assetname}',
+//                             sector:'${asset.sector}',
+//                             subSector:'${asset.subSector}'}) 
+//                             RETURN n`)
 
 // the neo4j-routes to process a get request and commit to neo4j db
-cypher.query = function(asset){
+cypher.createAsset = function(asset){
     var session = driver.session();
     session
-    .run(`CREATE (n:ASSET{name:'${asset.assetname}',
-                            sector:'${asset.sector}',
-                            subSector:'${asset.subSector}'}) 
-                            RETURN n`)
+    .run(`CREATE (n:ASSET{
+            id:'${asset.id}',
+            name:'${asset.name}',
+            type:'${asset.type}',
+            sector:'${asset.sector}',
+            coordLat:'${asset.coordLat}',
+            coordLng:'${asset.coordLng}',
+            subSector:'${asset.subSector}',
+            workingState:'${asset.workingState}'}) 
+            RETURN n`)
     .then(function(result) {
         result.records.forEach(function(record) {
             console.log(record)
@@ -49,8 +59,28 @@ cypher.query = function(asset){
     .catch(function(error) {
         console.log(error);
     });
-
 }
 
+
+// get asset from neo4j database function
+// cypher.getAsset = function(assetId){
+//     var matchResult = {};
+//     var session = driver.session();
+//     session
+//     .run(`MATCH (n:ASSET{
+//             id:'${assetId}'})
+//                  RETURN n`)
+//     .then(function(result) {
+//             result.records.forEach(function(record) {
+//             console.log("this is the " + record)
+//             })
+
+//     })
+//     .catch(function(error) {
+//         console.log(error);
+//     });
+
+    
+// }
 
 module.exports = cypher;

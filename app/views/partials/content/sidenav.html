@@ -12,13 +12,9 @@
 	    		<div class="panel-body">
 	  <!-- Asset creation form begins here -->
 				 	<form method='post' id="createAsset-form" action="/postpage">
-				 		<div class="form-group square-border">
-					  		<label for="name">Asset Name:</label>
-					  		<input name="name" class="form-control square-border" id="name" required placeholder="Type Asset Name">
-					    </div>
 					 	<div class="form-group">
-					  		<label for="sector">Asset Type:</label>
-					  		<select name="type" class="form-control square-border" id="type">
+					  		<label for="sector">Asset Name:</label>
+					  		<select name="assetname" class="form-control square-border" id="assetName">
 					    		<option>Transformer</option>
 					    		<option>EHV lines &amp; Tower</option>
 					     		<option>Distribution underground lines</option>
@@ -82,10 +78,3 @@
 	    	</div>
 	  	</div> 
 	</div>
-
-<!----- template for loading recieved value from database ---------->
-
-	<div id="getAssetPanel" class="panel panel-primary square-border">
-      <div class="panel-heading square-border"></div>
-      <div class="panel-body square-border">Panel Content</div>
-    </div>

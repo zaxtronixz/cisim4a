@@ -39,7 +39,7 @@
 					  			lat: event.latLng.lat(),
 					  			lng: event.latLng.lng()
 					  	}
-					     
+ 
 					 // information window is displayed at click position
 					   	mapClick.infowindow = new google.maps.InfoWindow({
 					    	content: contentString,
@@ -57,17 +57,35 @@
 		      		
 		      		// get the item values entered in the form
 		      		// using the index number and option selected
-		      		this.x = document.getElementById("assetName").selectedIndex;
-					this.y = document.getElementById("assetName").options;
+		      		this.x = document.getElementById("type").selectedIndex;
+					this.y = document.getElementById("type").options;
 
 					// the text of the indexed, option 
 					var selectedAss = this.y[this.x].text;
 		      	 	var marker = new google.maps.Marker({
-	          		position: this.coord,
-	          		map: map,
-	          		title: selectedAss,
-	          		icon:customMarker(selectedAss)
-	       		 });
+		          		position: this.coord,
+		          		map: map,
+		          		title: selectedAss,
+		          		icon:customMarker(selectedAss)
+	       		 	});
+		      	 		marker.assetId = mapClick.assetId
+	       		 	// open control panel with asset details
+	       		 	marker.addListener('click', function() {
+    					// open sidemenu
+    						openMenuBtn();
+    					// hide asset creator
+    						$( "#accordion" ).hide()
+    						$( "#getAssetPanel" ).show()
+    					// display asset mananger
+    						console.log("the asset id inside the marker :" + marker.assetId)
+    						//show asset detail
+    						//show upadate asset details
+
+    						
+    						getAssetFromGdb(marker.assetId);
+    						$( "#getAssetPanel ul" ).html("");
+
+  					})  
 
 
 		      	}
@@ -77,7 +95,9 @@
 
     // function triggered by form click
 	function assetCreator(){
+		mapClick.assetId = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)).toUpperCase();
 		mapClick.createAsset()
+		
 		// close control panel
 		closeNav();
 		// map.setCenter(marker.getPosition());
