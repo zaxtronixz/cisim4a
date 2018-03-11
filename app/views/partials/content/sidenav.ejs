@@ -87,5 +87,58 @@
 
 	<div id="getAssetPanel" class="panel panel-primary square-border">
       <div class="panel-heading square-border"></div>
-      <div class="panel-body square-border">Panel Content</div>
+      <div  id= "summary-panel" class="panel-body square-border">
+
+		 <form id="assetPanelForm">
+			<div class="checkbox">
+			  	<label><input type="checkbox" value="">Edit Asset</label>
+			</div>
+			<div class="form-group square-border">
+				<label for="name">Asset Name:</label>
+				<input name="name" class="form-control square-border"  required placeholder="Type Asset Name">
+			</div>
+			<div class="form-group">
+			<label for="sector">Asset Type:</label>
+				<select name="type" class="form-control square-border">
+					<option>Transformer</option>
+					<option>EHV lines &amp; Tower</option>
+					<option>Distribution underground lines</option>
+					<option>Electric grid Operation</option>
+					<option>Antennae</option>
+					<option>Base Station Building</option>
+					<option>Step Up/down SubStation</option>
+					<option>Cable landing Station</option>
+					<option>Fossil Fuel Plant</option>
+					<option>Wired Copper Cable</option>
+				</select>
+			</div>
+			<div class="form-group square-border">
+				<label for="sector">Sector:</label>
+				<select name="sector" class="form-control square-border">
+					<option>Energy</option>
+					<option>ICT</option>
+				</select>
+			</div>
+			<div class="form-group square-border">
+				<label for="sector">Sub Sector:</label>
+				<select name="subSector" class="form-control square-border">
+					<option>Electricity</option>
+					<option>Telecomm</option>
+				</select>
+			</div>
+
+		 	
+      		<div class="panel-heading square-border">
+        		<h4 class="panel-title square-border">
+          			<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Create Interdependencies</a>
+        		</h4>
+      		</div>
+      		<div id="collapse2" class="panel-collapse collapse square-border">
+        		<div class="panel-body square-border">
+        		<P>BODY IS IN HERE</P>
+       			</div>
+      		</div>
+			</form>
+
+      </div>
     </div>

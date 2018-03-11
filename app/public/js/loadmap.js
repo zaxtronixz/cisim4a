@@ -72,10 +72,12 @@
 	       		 	// open control panel with asset details
 	       		 	marker.addListener('click', function() {
     					// open sidemenu
+
     						openMenuBtn();
     					// hide asset creator
     						$( "#accordion" ).hide()
     						$( "#getAssetPanel" ).show()
+    						$("#assetPanelForm").hide()
     					// display asset mananger
     						console.log("the asset id inside the marker :" + marker.assetId)
     						//show asset detail
@@ -83,7 +85,7 @@
 
     						
     						getAssetFromGdb(marker.assetId);
-    						$( "#getAssetPanel ul" ).html("");
+    						
 
   					})  
 
