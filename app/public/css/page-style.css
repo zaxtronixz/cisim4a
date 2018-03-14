@@ -1,4 +1,53 @@
+#createAsset-btn{
+	border: 1px solid #3d3d3f;
+}
+#createAsset-btn button:hover{
+	border: 1px solid #43aed8;
+}
 
+#first-accordion div.card-body{
+	background-color: #dedee0;
+}
+
+/*backgroung color for the control panel*/
+.control-panel-bg{
+	background-color: #57576a;
+}
+
+div.card-header.panel-header-color{
+	background-color:#414154;
+}
+
+.navbar-bg{
+  background-color: #3B3B4C;
+}
+
+
+/* removing style from the dependent listed items*/
+#selected-list li{
+	list-style: none;
+}
+
+
+a.card-link{
+	padding:0px;
+	font-size: 18px;
+}
+
+nav a.navbar-brand{
+	margin-bottom: 16px;
+}
+
+input#userInput{
+	 border:0px;
+	 text-align: left ! important;
+	 height:30px;
+ }
+nav.navbar{
+	padding: 10px 16px 2px 16px;
+	height:50px;
+
+}
 			
 #map{
 	width:100%;

@@ -75,7 +75,7 @@
 
     						openMenuBtn();
     					// hide asset creator
-    						$( "#accordion" ).hide()
+    						$( "#first-accordion" ).hide()
     						$( "#getAssetPanel" ).show()
     						$("#assetPanelForm").hide()
     					// display asset mananger

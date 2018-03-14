@@ -13,7 +13,7 @@ api.use(bodyParser.urlencoded({extended: false}));
 
 
 api.get('/api', function(req, res) {
-	res.send(dataFile.assets[0].assetDependents);
+	res.send(dataFile.projects);
 });
 
 

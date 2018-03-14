@@ -6,7 +6,7 @@
 // Function to open the control-panel on the workspace
 	function openMenuBtn() {
 				mapClick.infowindow.close();
-				$('#accordion').show();
+				$('#first-accordion').show();
 				$( "#getAssetPanel" ).hide()
 		    	document.getElementById("mySidenav")
 		    	.style.width = "300px";
@@ -20,4 +20,17 @@
 
 
 
+// function for selecting dependencies
+	var listItem = ""
+
+	var deleteBtn = '<div class="checkbox">'
+		deleteBtn += '<label><input type="checkbox" value="">'
+		deleteBtn +=  'Remove dependent</label></div>'
+
+	$('#multiple-select option').on('click', function(){
+		$(this).attr('disabled', true)
+		Item = $(this).text()
+		$('#selected-list')
+		.append('<li>'+ Item + ' '+ deleteBtn +'</li>')
+	})
   // });

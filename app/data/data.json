@@ -1,6 +1,15 @@
 {
-   "assets": [
+   "projects":[
       {
+      "projectName":"test project 1",
+      "projectId":"23.02.2018",
+      "mapInstance":{
+         "location":"Cyprus",
+         "lat":"84.09230",
+         "lng":"97.92324"
+      },
+      "assets": [
+         {
          "id": 0,
          "assetName": "new asset",
          "assetType": "Transformer",
@@ -47,5 +56,23 @@
             }
          ]
       }
-   ]
-}
+
+      ],
+      "assetTotal":1,
+      "scenario":{
+         "type":"Extreme Wind",
+         "time":"12:47",
+         "assetApplied":{
+            "name":"local Antennae",
+            "id":"HJKOLPRE"
+         },
+         "assetWorking":[],
+         "assetFailed":[]
+      },
+      "resultVisualization":{
+         "displayType":"graph",
+         "valuesGenerrated":{}
+      }
+   }  
+]}
+
