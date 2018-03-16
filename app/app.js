@@ -13,7 +13,7 @@ app.set('port', process.env.PORT || 3050 );
 
 app.set('view engine', 'ejs');
 app.set('views', 'app/views');
-app.locals.allAsset = dataFile.asset
+app.set('appData', dataFile)
 
 
 app.use(bodyParser.json());
@@ -30,4 +30,5 @@ var server = app.listen(app.get('port'), function() {
 		console.log('Listening on port ' + app.get('port'));
 });
 
+module.exports = app;
 reload(server, app);

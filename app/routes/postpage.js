@@ -5,7 +5,7 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var cypher = require('./cyphermod.js');
-
+var fs = require('fs');
 
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -25,8 +25,6 @@ router.post('/postpage', function (req, res, next) {
 	console.log('Our data at postpage : ' + JSON.stringify(req.body))
 	var asset = req.body;
 	cypher.createAsset(asset)
-	// res.send(console.log('it works we got this: ' + JSON.stringify(req.body)));
-	// res.send(req.body)
 });
 
 

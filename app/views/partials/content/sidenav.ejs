@@ -87,7 +87,7 @@
 		  </div>
 	</div>
 
-<!----- template for loading received value from database ---------->
+<!--======= template for loading received value from database =======-->
 
 	<div id="getAssetPanel" class="panel panel-primary square-border">
      <!--  =============== the new boostsrap 4 form was inserted here ===========-->
@@ -102,10 +102,12 @@
       <div id="collapseOne" class="collapse" data-parent="#second-accordion">
         <div class="card-body">
 <!--============== asset panel form for laoding asset details begins here ======================= -->
-  <form id="assetPanelForm">
 			<div class="checkbox">
-			  	<label><input type="checkbox" value="">Edit Asset</label>
+			  	<label><input id="edit-asset" type="checkbox" name="edit-asset" value="edit"> Edit Asset</label>
 			</div>
+
+  <form id="assetPanelForm">
+
 			<div class="form-group square-border">
 				<label for="name">Asset Name:</label>
 				<input name="name" class="form-control square-border"  required placeholder="Type Asset Name">

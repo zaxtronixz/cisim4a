@@ -14,10 +14,11 @@
 				auto.addListener('place_changed', 
 					function(){
 					var place = auto.getPlace();
+
+					mapClick.places = place;
     				// retrieve the value of the latitude and longitude
 					var lngi = place.geometry.viewport.f.b;
 					var lati = place.geometry.viewport.f.f;
-					
 					// creating a new map object using the latLng values obtained above
 					var mapDiv =  document.getElementById('map');
 			 		map =  new google.maps.Map(mapDiv, {
@@ -47,7 +48,7 @@
 					  	});
 					 	
 					  	mapClick.infowindow.open(map);
-
+					  	mapClick.location
 				      });
 
 				});
@@ -68,7 +69,8 @@
 		          		title: selectedAss,
 		          		icon:customMarker(selectedAss)
 	       		 	});
-		      	 		marker.assetId = mapClick.assetId
+		      	 	
+		      	 	marker.assetId = mapClick.assetId
 	       		 	// open control panel with asset details
 	       		 	marker.addListener('click', function() {
     					// open sidemenu

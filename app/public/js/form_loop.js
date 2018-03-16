@@ -7,7 +7,9 @@ function makeAsset(asset){
 			if((frm.elements[i].type == 'select-one' ) && (frm.elements[i].name == prop)){
 				// this script select an option then disables it	
 				for(ii = 0; ii < frm.elements[i].options.length; ii++){
+
 				    if (frm.elements[i].options[ii].text == asset[prop]){
+
 				        frm.elements[i].options[ii].selected = true;
 						frm.elements[i].disabled = true;
 						console.log("This is a form element: "+ frm.elements[i])
@@ -17,7 +19,7 @@ function makeAsset(asset){
 
 	    	else if((frm.elements[i].type == 'text' ) && (frm.elements[i].name == prop)){
 					frm.elements[i].value = asset[prop];
-					frm.elements[i].disable = true;
+					frm.elements[i].disabled = true;
 	        }// end of if else statement
 
 			// else if (typeof frm.elements.prop){	// properties created based on map details

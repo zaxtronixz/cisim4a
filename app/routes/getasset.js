@@ -15,46 +15,55 @@ router.use(bodyParser.urlencoded({extended: false}));
 
 
 //////////////////////////////////////////////////////////////////////////////////////
-//  Configurating neo4j graphenedb
-//////////////////////////////////////////////////////////////////////////////////////
-var graphenedbURL = "bolt://hobby-kflccfbhieglgbkeildpppal.dbs.graphenedb.com:24786";
-var graphenedbUser = "app89692672-Tf8UcL";
-var graphenedbPass = "b.5IOnVenDmfcG.eDpXEKI1gxxRj1iV";
-
-var driver = neo4j.driver(graphenedbURL, neo4j.auth.basic(graphenedbUser, graphenedbPass));
-
-
+// Posting data and feeding response into our form
+///////////////////////////////////////////////////////////////////////////////////////
 router.post('/getasset', function (req, res, next){
-    var matchResult = {};
     var assetId = JSON.stringify(req.body.assetId);
-    console.log("this is assetId "+ assetId)
+    console.log("before matchedResult, this is assetId "+ assetId)
 
-    var session = driver.session();
-    session
-    .run(`MATCH (n:ASSET{ 
-            id:${assetId}})
-                 RETURN n`)
-    .then(function(result) {
-    		var returned =  result.records[0]._fields[0].properties
-    		// result.records.forEach(function(record) {
-      //       console.log("this is the record._fields[0]" + record._fields[0]);
-      //       })
-      		matchResult.id = returned.id
-      		matchResult.name = returned.name
-      		matchResult.type = returned.type
-      		matchResult.sector = returned.sector
-      		matchResult.subSector = returned.subSector
-      		matchResult.workingState = returned.workingState
-      		matchResult.coordLat = returned.coordLat
-      		matchResult.coordLng = returned.coordLng
-
-      		res.send(matchResult);
-      		console.log("was sent")
-      session.close()
-        })
-    .catch(function(error) {
-        console.log(error);
-    });
+    // send the assetID and the response paramter as argument to cypher
+    cypher.getAssetDetails(assetId, res);
 });
+
+//////////////////////////////////////////////////////////////////////////////
+// Update asset details
+/////////////////////////////////////////////////////////////////////////////
+router.post('/getasset/update', function (req, res, next){
+    var assetId = JSON.stringify(req.body.assetId);
+    console.log("We are about to update this assetId "+ assetId)
+
+    // send the assetID and the response paramter as argument to cypher
+    cypher.updateAsset(assetId);
+});
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+// delete asset completely
+/////////////////////////////////////////////////////////////////////////////
+router.post('/getasset/delete', function (req, res, next){
+    var assetId = JSON.stringify(req.body.assetId);
+    console.log("We are about to update this assetId "+ assetId)
+
+    // send the assetID and the response paramter as argument to cypher
+    cypher.deleteAsset(assetId);
+});
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+// Create asset dependency
+/////////////////////////////////////////////////////////////////////////////
+router.post('/getasset/dependency', function (req, res, next){
+    var assetId = JSON.stringify(req.body.assetDeps);
+    console.log("We are about to update this assetId "+ assetId)
+
+    var assetId = assetDeps.asset.assetId
+    var dependentsArray = assetDeps.dependents
+    // send the assetID and the response paramter as argument to cypher
+    cypher.createDependency(assetId, dependentsArra);
+});
+
+
 
 module.exports = router;
