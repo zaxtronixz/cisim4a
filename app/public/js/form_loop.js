@@ -28,10 +28,10 @@ function makeAsset(asset){
 			// }//-- end of else statement
 	    }//-- end of asset obj loop
 	}//-- end of form element loop
-	leftOvers += "</ul>"
-
+	
+	var assetId = `<input id="update-assetId" name="id" type="hidden" value="${asset.id}">`
+	$("#assetPanelForm").append(assetId)
 	$("#assetPanelForm").append(frm).hide().show('slow');
-	$("#assetPanelForm").append(leftOvers)
 	
 }
 // this the second loop to disable the form 

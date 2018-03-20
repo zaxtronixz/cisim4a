@@ -6,6 +6,7 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var neo4j = require('neo4j-driver').v1; 
 var cypher = require('./cyphermod.js');
+var jsonWriter = require('./jsonWriter.js');
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Setting up body parser to receive text and url-encoded format
@@ -29,11 +30,11 @@ router.post('/getasset', function (req, res, next){
 // Update asset details
 /////////////////////////////////////////////////////////////////////////////
 router.post('/getasset/update', function (req, res, next){
-    var assetId = JSON.stringify(req.body.assetId);
-    console.log("We are about to update this assetId "+ assetId)
+    var asset = req.body;
+    console.log("before matchedResult, this is assetId "+ asset.id)
 
     // send the assetID and the response paramter as argument to cypher
-    cypher.updateAsset(assetId);
+    cypher.updateAsset(asset);
 });
 
 
@@ -42,8 +43,8 @@ router.post('/getasset/update', function (req, res, next){
 // delete asset completely
 /////////////////////////////////////////////////////////////////////////////
 router.post('/getasset/delete', function (req, res, next){
-    var assetId = JSON.stringify(req.body.assetId);
-    console.log("We are about to update this assetId "+ assetId)
+      var assetId = JSON.stringify(req.body.assetId);
+          console.log("before matchedResult, this is assetId "+ assetId)
 
     // send the assetID and the response paramter as argument to cypher
     cypher.deleteAsset(assetId);
@@ -54,7 +55,7 @@ router.post('/getasset/delete', function (req, res, next){
 //////////////////////////////////////////////////////////////////////////////
 // Create asset dependency
 /////////////////////////////////////////////////////////////////////////////
-router.post('/getasset/dependency', function (req, res, next){
+router.post('/getasset/createDependency', function (req, res, next){
     var assetId = JSON.stringify(req.body.assetDeps);
     console.log("We are about to update this assetId "+ assetId)
 

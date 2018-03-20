@@ -1,3 +1,40 @@
+/*attach scroll bar to the create asset element */
+#createAsset-form{
+	overflow: hidden;
+}
+
+/*border added to tables "visualization panel"*/
+.bottom-border tr{
+	border-bottom: 2px solid #cdcdcd;
+	opacity: 0.8;
+}
+
+
+/*Create project popup window properties*/
+#projModalTitle{
+	font-weight: normal;
+	font-family: Futura, "News Gothic", Helvetica,Verdana;
+}
+
+
+/*project button on navbar style*/
+.nav-item #navbardrop{
+	font-size: 14px;
+	padding-bottom: 21px;
+	margin-right: 10px;
+}
+
+/*to remove caret symbol from navbar menu icon*/
+.dropdown-toggle::after {
+    display:none
+}
+
+div.dropdown-menu.square-border{
+	top: 50px;
+}
+
+
+
 #createAsset-btn{
 	border: 1px solid #3d3d3f;
 }

@@ -37,11 +37,11 @@ cypher.createAsset = function(asset){
             id:'${asset.id}',
             name:'${asset.name}',
             type:'${asset.type}',
+            coordLat :'${asset.coordLat}',
+            coordLng :'${asset.coordLng}',
+            projectId :'${asset.projectId}',
             sector:'${asset.sector}',
-            coordLat:'${asset.coordLat}',
-            coordLng:'${asset.coordLng}',
-            subSector:'${asset.subSector}',
-            workingState:'${asset.workingState}'}) 
+            subSector:'${asset.subSector}'}) 
             RETURN n`)
     .then(function(result) {
         result.records.forEach(function(record) {
@@ -114,8 +114,9 @@ cypher.getAssetDetails = function(assetId, res){
 // delete the particular asset selected
 cypher.deleteAsset = function(assetId){
     var session = driver.session();
+    console.log("this is asset Id in cypher :" + assetId)
     session
-    .run(`MATCH (n:ASSET{id:'${assetId}'}) DELETE n`)
+    .run(`MATCH (n:ASSET{id:${assetId}}) DELETE n`)
     .then(function(result) {
         result.records.forEach(function(record) {
             console.log(record)
@@ -129,18 +130,16 @@ cypher.deleteAsset = function(assetId){
 
 
 // update the properties of a particular asset selected
-cypher.updateAsset = function(assetId){
+cypher.updateAsset = function(asset){
     var session = driver.session();
     session
-    .run(`MATCH (n:ASSET{id:'${assetId}')
+    .run(`MATCH (n:ASSET{id:'${asset.id}'})
           SET 
             n.name ='${asset.name}',
             n.type ='${asset.type}',
             n.sector ='${asset.sector}',
-            n.coordLat ='${asset.coordLat}',
-            n.coordLng ='${asset.coordLng}',
             n.subSector ='${asset.subSector}',
-            n.workingState ='${asset.workingState}'}) 
+            n.workingState ='${asset.workingState}'
             RETURN n`)
             .then(function(result) {
         result.records.forEach(function(record) {

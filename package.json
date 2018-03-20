@@ -4,7 +4,7 @@
   "description": "Critical infrastructure simulation application using googlemaps and neo4j database",
   "main": "app/app.js",
   "scripts": {
-    "start": "node app/app.js"
+    "start": "node app/app.js  --ignore data.json"
   },
   "author": "Zakariya'u Muhammad",
   "license": "ISC",

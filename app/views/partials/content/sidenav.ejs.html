@@ -1,20 +1,22 @@
 	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 			 
-	<div class="panel-group square-border" id="accordion">
+	<div id="first-accordion">
 	   	<div class="card square-border">
-	    	<div class="card-header" >
+	   		<!-- create asset begins here -->
+	    	<div class="card-header panel-header-color square-border" >
 	        	<h4 class="panel-title">
-	          		<a class="card-link" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Asset</a>
+	          		<a class="card-link" 
+	          		data-toggle="collapse" aria-expanded="true" href="#collapse1">Create asset</a>
 	        	</h4>
 	      	</div>
-
-	  		<div id="collapseOne" class="collapse show">
+	      	<!-- body of create asset accordion begins here -->
+	  		<div id="collapse1" class="collapse" data-parent="#first-accordion">
 	    		<div class="card-body">
-	  <!-- Asset creation form begins here -->
+	  			<!-- Asset creation form begins here -->
 				 	<form method='post' id="createAsset-form" action="/postpage">
 				 		<div class="form-group square-border">
 					  		<label for="name">Asset Name:</label>
-					  		<input name="name" class="form-control square-border" id="name" required placeholder="Type Asset Name">
+					  		<input name="name" class="form-control square-border" id="name" required placeholder="Type asset name">
 					    </div>
 					 	<div class="form-group">
 					  		<label for="sector">Asset Type:</label>
@@ -49,59 +51,63 @@
 						</div>
 
 						<div>
-							<button type="submit" id="createAsset-btn" onclick="assetCreator()" class="btn square-border">Create Asset</button>
+							<button type="submit" id="createAsset-btn" onclick="assetCreator()" class="btn btn-secondary square-border">Create Asset</button>
 						</div>
 					</form>
 				</div>
-	    	</div>
-	<!-- Asset Creation form ends here
-	 -->
-	      
-	    	<div class="panel panel-default square-border">
-	      		<div class="panel-heading square-border">
+	    	</div><!-- end of body for create asset accordion-->
+	      <div class="card square-border">
+	    	<div class="card-header panel-header-color square-border">
+	      		
 	        		<h4 class="panel-title square-border">
-	          			<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Scenario</a>
+	          			<a class="card-link" data-toggle="collapse" aria-expanded="false"  href="#collapse2">Visualize</a>
 	        		</h4>
-	      		</div>
-	      		<div id="collapse2" class="panel-collapse collapse square-border">
-	        		<div class="panel-body square-border">
-	        
+	      	</div>	
+	      		<div id="collapse2" class="collapse" data-parent="#first-accordion">
+	        		<div class="card-body square-border">
+	      <!--   insert content to denote body of the 2nd panel -->
+	      <p>// put something in here</p>
+
+	      <!-- content for the 2nd panel ends here -->
 	       			</div>
 	      		</div>
-	    	</div>
-	    	<div class="panel panel-default square-border">
-	      		<div class="panel-heading square-border">
-	        		<h4 class="panel-title">
-	          			<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Visualization</a>
+	      	</div>
+	      		<div class="card square-border">	    		<div class="card-header panel-header-color square-border" >
+		        	<h4 class="panel-title square-border">
+	          			<a class="card-link" data-toggle="collapse" aria-expanded="false"  href="#collapse3">Create scenario</a>
 	       			</h4>
 	      		</div>
-	      		<div id="collapse3" class="panel-collapse collapse square-border">
-	        		<div class="panel-body square-border">.
+	      		<div id="collapse3" class="collapse" data-parent="#first-accordion">
+	        		<div class="card-body square-border">
+	        			<p>// insert content for scenario</p>
+	        			<!-- Insert body for scenario in here -->
 	            	</div>
 	      		</div>
-	    	</div>
-	  	</div> 
+		  	</div> 
+		  </div>
 	</div>
 
-<!----- template for loading received value from database ---------->
+<!--======= template for loading received value from database =======-->
 
 	<div id="getAssetPanel" class="panel panel-primary square-border">
      <!--  =============== the new boostsrap 4 form was inserted here ===========-->
 
-     <div id="accordion">
-    <div class="card">
-      <div class="card-header">
-        <a class="card-link" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+     <div id="second-accordion">
+    <div class="card square-border">
+      <div class="card-header square-border">
+        <a class="card-link" data-toggle="collapse"  href="#collapseOne">
           Asset Details
         </a>
       </div>
-      <div id="collapseOne" class="collapse show">
+      <div id="collapseOne" class="collapse" data-parent="#second-accordion">
         <div class="card-body">
 <!--============== asset panel form for laoding asset details begins here ======================= -->
-  <form id="assetPanelForm">
 			<div class="checkbox">
-			  	<label><input type="checkbox" value="">Edit Asset</label>
+			  	<label><input id="edit-asset" type="checkbox" name="edit-asset" value="edit"> Edit Asset</label>
 			</div>
+
+  <form id="assetPanelForm">
+
 			<div class="form-group square-border">
 				<label for="name">Asset Name:</label>
 				<input name="name" class="form-control square-border"  required placeholder="Type Asset Name">
@@ -135,18 +141,23 @@
 					<option>Telecomm</option>
 				</select>
 			</div>
+			<div class="form-group square-border">
+				<input name="update-asset-btn" id = "update-asset-btn" type="button" class="btn btn-primary square-border">
+
+			</div>
+
 			</form>
 <!--============== asset panel form ends here ===================================== -->
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="card-header">
-        <a class="collapsed card-link" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+    <div class="card square-border">
+      <div class="card-header square-border">
+        <a class="collapsed card-link" data-toggle="collapse"  href="#collapseTwo">
         Add dependencies:
       </a>
       </div>
-      <div id="collapseTwo" class="collapse">
+      <div id="collapseTwo" data-parent="#second-accordion" class="collapse">
         <div class="card-body">
          <div class="form-group">
 		  <label for="sel1">Select Dependents:</label>
@@ -163,13 +174,13 @@
         <input type="button" name="create-dependents" value="Create Dependents">
       </div>
     </div>
-    <div class="card">
-      <div class="card-header">
-        <a class="collapsed card-link" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+    <div class="card square-border">
+      <div class="card-header square-border">
+        <a class="collapsed card-link" data-toggle="collapse"   href="#collapseThree">
          Add inputs:
         </a>
       </div>
-      <div id="collapseThree" class="collapse">
+      <div id="collapseThree" data-parent="#second-accordion"  class="collapse">
         <div class="card-body">
          // 3: put stuffs in here 
         </div>
