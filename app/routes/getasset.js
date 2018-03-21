@@ -56,6 +56,19 @@ router.post('/getasset/delete', function (req, res, next){
 // Create asset dependency
 /////////////////////////////////////////////////////////////////////////////
 router.post('/getasset/createDependency', function (req, res, next){
+    var request = req.body;
+    console.log("We are about to update this request body "+ req.body)
+
+
+    // send the assetID and the response paramter as argument to cypher
+    cypher.createDependency(request);
+});
+
+
+//////////////////////////////////////////////////////////////////////////////
+// Create asset visualization
+/////////////////////////////////////////////////////////////////////////////
+router.post('/getasset/createVisualization', function (req, res, next){
     var assetId = JSON.stringify(req.body.assetDeps);
     console.log("We are about to update this assetId "+ assetId)
 
@@ -65,6 +78,19 @@ router.post('/getasset/createDependency', function (req, res, next){
     cypher.createDependency(assetId, dependentsArra);
 });
 
+
+//////////////////////////////////////////////////////////////////////////////
+// Create asset scenario
+/////////////////////////////////////////////////////////////////////////////
+router.post('/getasset/createScenario', function (req, res, next){
+    var assetScenario = JSON.stringify(req.body.assetScenario);
+    console.log("We are about to update this assetId "+ assetId)
+
+    var assetId = assetDeps.asset.assetId
+    var dependentsArray = assetDeps.dependents
+    // send the assetID and the response paramter as argument to cypher
+    cypher.createScenario(assetId, dependentsArra);
+});
 
 
 module.exports = router;

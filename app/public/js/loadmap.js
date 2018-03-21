@@ -4,9 +4,10 @@
 				if(!mapCollector){
 					var mapCollector = {};
 					var newProject = {};
+					var assetList = [];
 				}
 
-
+				
 				// where project instance will be stored safely
 			
 
@@ -100,6 +101,7 @@
     						$( "#first-accordion" ).hide()
     						$( "#getAssetPanel" ).show()
     						$("#assetPanelForm").hide()
+
     					// display asset mananger
     						console.log("the asset id inside the marker :" + marker.assetId)
     						//show asset detail

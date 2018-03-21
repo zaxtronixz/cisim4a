@@ -39,6 +39,7 @@ $(`form#createAsset-form`).submit(function(event){
 	 	// add asset to newly created map instance
 	    newProject.addAsset(asset)
 	 	// post asset data to form url
+	 	assetList.push(asset)
 	 	postForm(url, asset);
 	})
 });

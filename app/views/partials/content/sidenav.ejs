@@ -66,6 +66,7 @@
 	      		<div id="collapse2" class="collapse" data-parent="#first-accordion">
 	        		<div class="card-body square-border">
 	      <!--   insert content for visualization -->
+	     		 <form id="create-visualization-form" action="getasset/createScenario">>
 			     	 <table id="Visualization-table" class="table table-hover bottom-border">
 				    	<tbody>
 					      <tr>
@@ -90,6 +91,7 @@
 					      </tr>
 					    </tbody>
 					</table>
+				</form>
 
 	      <!-- visualization  ends here -->
 	       			</div>
@@ -226,17 +228,13 @@
         <div class="card-body">
         	<form id="create-dependents-form" action="/getasset/createDependency" method="post" >
 		        <div class="form-group">
-				  <label for="sel1">Select Dependents:</label>
+				  <label for="sel1">Select Dependencies:</label>
 				  <select multiple class="form-control" id="multiple-select">
-				    <option>Antennae</option>
-				    <option>Transformer</option>
-				    <option>Underground Cable</option>
-				    <option>Extra High Voltage Transmission Line</option>
 				  </select>
 				</div>
 				<ul id="selected-list">	</ul>
 				<div class="form-group square-border">
-					<input name="create-dependents-btn" id = "create-dependents-btn" type="button" value = "Create dependents"  class="btn btn-secondary square-border">
+					<input name="create-dependents-btn" id = "create-dependents-btn" type="submit" value = "Create dependents"  class="btn btn-secondary square-border">
 				</div>
 			</form>
         </div>
@@ -251,22 +249,18 @@
       <div id="collapseThree" data-parent="#second-accordion"  class="collapse">
         <div class="card-body">
 		<!-- inputs body begins here          -->
-		<form id="add-input-form"></form>
+		<form id="add-input-form" method="post" action="/getasset/addInput">
 	         <div class="form-group">
 			  <label for="input-multiple-select">Select inputs:</label>
 			  <select multiple class="form-control" id="input-multiple-select">
-			    <option>Antennae</option>
-			    <option>Transformer</option>
-			    <option>Underground Cable</option>
-			    <option>Extra High Voltage Transmission Line</option>
 			  </select>
 			</div>
 			<ul id="input-selected-list">	</ul>
 			<div class="form-group square-border">
-				<input name="add-input-btn" id = "add-input-btn" type="button" value = "Add Input"  class="btn btn-secondary square-border">
+				<input name="add-input-btn" id = "add-input-btn" type="submit" value = "Add Input"  class="btn btn-secondary square-border">
 			</div>
         </div>
-
+		</form>
 		<!-- inputbody ends -->
         </div>
       </div>

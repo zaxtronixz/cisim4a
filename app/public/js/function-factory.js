@@ -17,35 +17,28 @@
 	    document.getElementById("mySidenav").style.width = "0";
 	};
 
-// 3.Function To select dependencies and display them on control panel
-	var listItem = ""
 
-	var deleteBtn = '<div class="checkbox">'
-		deleteBtn += '<label><input type="checkbox" value="">'
-		deleteBtn +=  'Remove dependent</label></div>'
-
-	$('#multiple-select option').on('click', function(){
-		$(this).attr('disabled', true)
-		Item = $(this).text()
-		$('#selected-list')
-		.append('<li>'+ Item + ' '+ deleteBtn +'</li>')
-	})
-  
-
-
-
-// create list of asset from map instance
-function createAssetList(asset){
-	mapProjectInstance.addAsset(asset)
-}
 
 // 5.Function: To load asset list to 'select input option'
-function loadAssetToSelect(assetList){
-	// get select input
-	// get asset list
-	//loop through select input and append asset
-}
+function addAssetList(selector,assetId){
+	// remove appended children 
+	if($(selector).has( "option" )){
+		$(selector).children().remove()
+	}
 
+	// check if list is not empty
+	if(assetList.length != 0) {
+		var assetSelection = `<option value ='${assetId}' hidden disabled ></option>`;
+		for(i=0; i< assetList.length; i++){
+			if(assetList[i].id != assetId ){
+					assetSelection += `<option value ='${assetList[i].id}' >`+ assetList[i].type + " : " + assetList[i].sector +'</option>';
+			}
+		}$(selector).append(assetSelection)
+	}else{
+			alert('Assets have not been added to this Project')
+			return false;
+		}
+}
 
 // 6.Function: To change "disabled attribute"  on form to'enable'
 $("#edit-asset,input:checkbox").change(function(){
@@ -61,7 +54,7 @@ $("#edit-asset,input:checkbox").change(function(){
 
 
 // 7.Function: To post new form values 'update asset'
-	// get post values from form
+// get post values from form
 $(`form#assetPanelForm`).submit(function(event){
 		// $('form#createAsset-form').click(function(event){
 		event.preventDefault();
@@ -81,16 +74,91 @@ $(`form#assetPanelForm`).submit(function(event){
 })
 
 
-// 8.Function: To post dependency variable to app
-function postDependency(){
+// 8.Function: To create input for dependency variable to app
+$(`form#add-input-form`).submit(function(event){
+	event.preventDefault();
+		var form = $(this);
+		var url = form.attr('action');
+
 	// get dependency values from form
+	var assetObject = formDataToObject(`add-input-form`)
 	// convert to json
-	// use add data to json
+
+	console.log(" this is what we got input: "+ JSON.stringify(assetObject))
+	var asset = assetObject
+	// postForm(url, asset);
 	// use update asset function  
+
+})
+
+// 9.Function: To post dependency variable to app
+$(`form#create-dependents-form`).submit(function(event){
+	event.preventDefault();
+		var form = $(this);
+		var url = form.attr('action');
+
+	// get dependency values from form
+	
+	var dependency = createMultiSelectArray('create-dependents-form')
+
+	console.log('FF dependency is '+ dependency)
+	
+		$.ajax({type: 'POST',
+				url: url,
+				contentType: 'application/json',
+				data: JSON.stringify(dependency)
+				});
+	// use update asset function  
+
+})
+
+
+// 9.Function: To Create Visualization
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// VISUALIZATION DATA
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$('#generate-scenarioResult-btn').on('click',function(){
+		// get newProject data
+	// get scenario data 
+		// asset data
+	// total number of assets
+	// set dependent to failed
+	// set failed asset in neo4j
+	// every asset dependent on failed asset should be set to failed
+	// return # % of working assets
+	// return # % of failed assets 
+
+})
+
+
+
+// 8.Function: To post dependency variable to app
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// DEPENDENCY DATA
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Function: To create an array of all selected options
+function createMultiSelectArray(selector){
+	// var assetId = $('form#'+selector+' option').prop('hidden', true).val()
+	var assetId = document.querySelectorAll('#'+selector+' option, hidden')[0].value
+	var mySelected = $('form#'+selector+' option').prop('selected', true)
+	
+	var depensArr=[];
+	var myObject ={};
+		myObject.assetId = assetId;
+
+	for(i=0; i<mySelected.length;i++){
+		depensArr.push(mySelected[i].value)
+	}
+	myObject.dependency = depensArr
+	return myObject;
 }
 
-// 9. Function to Delete asset from database
 
+// Function: to delete asset from edit form
 $('#delete-btn').on('click' , function(event){
 	var assetName = $('#assetPanelForm :input[name]').val()
 	var assetDeleted  = confirm("Click OK to delete asset: " + assetName + " from this Project");

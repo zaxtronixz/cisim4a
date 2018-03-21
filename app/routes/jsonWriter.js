@@ -24,104 +24,80 @@ jsonWriter.createNewProject = function(newProject){
 
 // 2. CREATE: json files with asset details
 jsonWriter.addAsset = function(asset){
-	fs.readFile(projectData, 'utf8', function readFileCallback(err, asset){
-	    if (err){
-	        console.log(err);
-	    } else {
-
-		    var data = JSON.parse(projectData)
-		      	data.projects[asset.projectId].push(asset); //add some data
-		    	json = JSON.stringify(data); //convert it back to json
-		    fs.writeFile(projectData, json, 'utf8', callback); // write it back 
-		}
-	});
-}
-
-// 2. UPDATE: json files with asset details
-jsonWriter.updateAsset = function(asset){
-		fs.readFile(projectData, 'utf8', function readFileCallback(err, asset){
-	    if (err){
-	        console.log(err);
-	    } else {
-
-		    var data = JSON.parse(projectData)
-		      	data.projects[asset.projectId].assets = asset; //add some data
-		    	json = JSON.stringify(data); //convert it back to json
-		    fs.writeFile(projectData, json, 'utf8', callback); // write it back 
-		}
-	});
-
-}
-
-// 3. DELETE: asset details from json files s
-jsonWriter.deleteAsset = function(assetId){
-	fs.readFile(projectData, 'utf8', function readFileCallback(err, assetId){
-	    if (err){
-	        console.log(err);
-	    } else {
-
-
-		    var data = JSON.parse(projectData)
-
-		    for (var i = 0; i < data.assets.length; i++) {
-			    if (data.assets[i].id == assetId) {
-			        data.assets.splice(i, 1);
-			        break;
-			    }
+		var id = asset.projectId
+		return function assetJson(){
+			for(i=0; i< jsonFile.projects.length; i++){
+				if(jsonFile.projects[i] == id){
+					return jsonFile.projects.id.push(asset) 
+				}
 			}
-		    json = JSON.stringify(data); //convert it back to json
-		    fs.writeFile(projectData, json, 'utf8', callback); // write it back 
 		}
-	});
+		console.log("this is jsonFile after unshift at jsonWriter "+ JSON.stringify(jsonFile))
+		fs.writeFileSync( 'app/data/data.json', JSON.stringify(jsonFile), 'utf8', function (err) {
+  			console.error(err)
+  		})
 }
 
-// 4. ADD DEPENDENCY: to asset details
+// 3. UPDATE: json files with asset details
+jsonWriter.updateAsset = function(asset){
+		var id = asset.projectId
+		return	function assetUpdate(id, asset){
+				for(i=0; i< jsonFile.projects.length; i++){
+					if(jsonFile.projects[i] == id){
+						for(k=0; k< jsonFile.projects[i].assets.length; k++)
+							return jsonFile.projects.assets[k] = asset 
+					}
+				}
+			}
+		console.log("this is jsonFile after unshift at jsonWriter "+ JSON.stringify(jsonFile))
+		fs.writeFileSync( 'app/data/data.json', JSON.stringify(jsonFile), 'utf8', function (err) {
+  			console.error(err)
+  		})
+}
+
+// 4. DELETE: asset details from json files s
+jsonWriter.deleteAsset = function(assetId){
+		var id = asset.projectId
+		return function assetDelete(id, asset){
+				for(i=0; i< jsonFile.projects.length; i++){
+					if(jsonFile.projects[i] == id){
+						for(k=0; k< jsonFile.projects[i].assets.length; k++)
+							return (jsonFile.projects.assets.assets.splice(k,1)) 
+					}
+				}
+			}
+		console.log("this is jsonFile after unshift at jsonWriter "+ JSON.stringify(jsonFile))
+		fs.writeFileSync( 'app/data/data.json', JSON.stringify(jsonFile), 'utf8', function (err) {
+  			console.error(err)
+  		})
+}
+
+// 5. ADD DEPENDENCY: to asset details
 jsonWriter.createDependency = function(asset, dependentsArray){
-		fs.readFile(projectData, 'utf8', function readFileCallback(err, assetId, dependentsArray){
-	    if (err){
-	        console.log(err);
-	    } else {
-
-		    var data = JSON.parse(projectData)
-		      	data.projects[asset.projectId].assets.dependents = dependentsArray //add some data
-		    	json = JSON.stringify(data); //convert it back to json
-		    fs.writeFile(projectData, json, 'utf8', callback); // write it back 
-		}
-	});
+			jsonFile.projects.push(newProject)    
+		    console.log("this is jsonFile after unshift at jsonWriter "+ JSON.stringify(jsonFile))
+		    fs.writeFileSync( 'app/data/data.json', JSON.stringify(jsonFile), 'utf8', function (err) {
+  				console.error(err)
+  			})
 }
 
-// 5. ADD SCENARIO: to Project instance
+// 6. ADD SCENARIO: to Project instance
 jsonWriter.createScenario = function(assetId, scenario){
-		fs.readFile(projectData, 'utf8', function readFileCallback(err, asset){
-	    if (err){
-	        console.log(err);
-	    } else {
-
-		    var data = JSON.parse(projectData)
-		      	data.projects[asset.projectId].assets = asset; //add some data
-		    	json = JSON.stringify(data); //convert it back to json
-		    fs.writeFile(projectData, json, 'utf8', callback); // write it back 
-		}
-	});
+			jsonFile.projects.push(newProject)    
+		    console.log("this is jsonFile after unshift at jsonWriter "+ JSON.stringify(jsonFile))
+		    fs.writeFileSync( 'app/data/data.json', JSON.stringify(jsonFile), 'utf8', function (err) {
+  				console.error(err)
+  			})
 }
 
-// 6. ADD VISUALIZATION RESULT: to project instance
+// 7. ADD VISUALIZATION RESULT: to project instance
 jsonWriter.createVisualResult = function(mapInstance){
-			fs.readFile(projectData, 'utf8', function readFileCallback(err, asset){
-	    if (err){
-	        console.log(err);
-	    } else {
-
-		    var data = JSON.parse(projectData)
-		      	data.projects[asset.projectId].assets = asset; //add some data
-		    	json = JSON.stringify(data); //convert it back to json
-		    fs.writeFile(projectData, json, 'utf8', callback); // write it back 
-		}
-	});
+			jsonFile.projects.push(newProject)    
+		    console.log("this is jsonFile after unshift at jsonWriter "+ JSON.stringify(jsonFile))
+		    fs.writeFileSync( 'app/data/data.json', JSON.stringify(jsonFile), 'utf8', function (err) {
+  				console.error(err)
+  			})
 }
-
-
-
 
 
 

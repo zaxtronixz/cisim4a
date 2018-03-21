@@ -57,10 +57,15 @@ cypher.createAsset = function(asset){
 
 // 2. CREATE DEPENDENCY
 // create dependency for a particular asset
-cypher.createDependency = function(assetId, dependentsArray){
+cypher.createDependency = function(myObject){
+    var assetId = myObject.assetId;
+    var dependencyArray = myObject.dependency;
     var session = driver.session();
+    // var  dependencyArray = JSON.stringify(dependencyArray)
+    
+    console.log("this is dependencyArray " + dependencyArray)
     session
-    .run(`WITH ${dependentsArray} AS myList
+    .run(`WITH ${dependencyArray} AS myList
                          UNWIND myList AS item
                          MATCH (a:ASSET{id:${assetId}}) 
                          MATCH (b:ASSET{id:item}) 
@@ -152,15 +157,13 @@ cypher.updateAsset = function(asset){
     });
 }
 
+
 // create scenario on an asset selected
 // change it states and cut allrelationships
 cypher.createScenario = function(asset){
     var session = driver.session();
     session
-    .run(`CREATE (n:ASSET{
-            id:'${asset.id}',
-            name:'${asset.name}',
-            RETURN n`)
+   .run(`MATCH (n:ASSET{id:${assetId}}) DELETE n`)
     .then(function(result) {
         result.records.forEach(function(record) {
             console.log(record)
@@ -171,25 +174,6 @@ cypher.createScenario = function(asset){
         console.log(error);
     });
 }
-// get asset from neo4j database function
-// cypher.getAsset = function(assetId){
-//     var matchResult = {};
-//     var session = driver.session();
-//     session
-//     .run(`MATCH (n:ASSET{
-//             id:'${assetId}'})
-//                  RETURN n`)
-//     .then(function(result) {
-//             result.records.forEach(function(record) {
-//             console.log("this is the " + record)
-//             })
 
-//     })
-//     .catch(function(error) {
-//         console.log(error);
-//     });
-
-    
-// }
 
 module.exports = cypher;
