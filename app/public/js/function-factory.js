@@ -16,8 +16,11 @@
 	function closeNav() {
 	    document.getElementById("mySidenav").style.width = "0";
 	};
-
-
+// Function to open menu button by clicking navbar
+$('#start-control-panel').on('click', function(){
+   	document.getElementById("mySidenav")
+   	.style.width = "300px";
+})
 
 // 5.Function: To load asset list to 'select input option'
 function addAssetList(selector,assetId){
@@ -45,7 +48,7 @@ $("#edit-asset,input:checkbox").change(function(){
 	$("#assetPanelForm select, input").attr("disabled", false);
 });
 
-// 7. Function To exchange marker on Map
+// 7. Function To remove marker on Map
 	// listen to change asset type event
 	// get location of asset
 	// delete marker from map
@@ -112,6 +115,14 @@ $(`form#create-dependents-form`).submit(function(event){
 
 })
 
+// Function: st project  name  to given
+$('#startProj-btn').on('click', function(){
+	if($('#projectName').val()){
+		var projectName = $('#projectName').val()
+		document.getElementById('project-title').innerHTML = "<h5>Project: "+projectName+"<h5>"
+	}
+})
+
 
 // 9.Function: To Create Visualization
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -151,7 +162,9 @@ function createMultiSelectArray(selector){
 		myObject.assetId = assetId;
 
 	for(i=0; i<mySelected.length;i++){
-		depensArr.push(mySelected[i].value)
+		if(assetId != mySelected[i].value){
+			depensArr.push(mySelected[i].value)
+		}
 	}
 	myObject.dependency = depensArr
 	return myObject;

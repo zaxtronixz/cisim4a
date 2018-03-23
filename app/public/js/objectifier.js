@@ -58,8 +58,8 @@ function MapProjectInstance(mapCollector) {
       addMe.type = asset.type;
       asset.projectId = this.id;
 
-  		if(typeof asset.serviceProduced != 'undefined'){
-  			asset.serviceProduced = ''
+  		if(typeof asset.serviceProvided != 'undefined'){
+  			asset.serviceProvided = ''
   		}
 
 	  	if(this.assets.push(asset)){

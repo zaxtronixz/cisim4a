@@ -32,6 +32,7 @@ var driver = neo4j.driver(graphenedbURL, neo4j.auth.basic(graphenedbUser, graphe
 // the neo4j-routes to process a get request and commit to neo4j db
 cypher.createAsset = function(asset){
     var session = driver.session();
+    console.log("@Cypher-Create-asset : This is the assetId" + asset.id);
     session
     .run(`CREATE (n:ASSET{
             id:'${asset.id}',
@@ -46,7 +47,7 @@ cypher.createAsset = function(asset){
     .then(function(result) {
         result.records.forEach(function(record) {
             console.log(record)
-        });
+        });return result;
         session.close();
     })
     .catch(function(error) {
@@ -60,6 +61,7 @@ cypher.createAsset = function(asset){
 cypher.createDependency = function(myObject){
     var assetId = myObject.assetId;
     var dependencyArray = myObject.dependency;
+        dependencyArray = JSON.stringify(dependencyArray)
     var session = driver.session();
     // var  dependencyArray = JSON.stringify(dependencyArray)
     
@@ -67,7 +69,7 @@ cypher.createDependency = function(myObject){
     session
     .run(`WITH ${dependencyArray} AS myList
                          UNWIND myList AS item
-                         MATCH (a:ASSET{id:${assetId}}) 
+                         MATCH (a:ASSET{id:'${assetId}'}) 
                          MATCH (b:ASSET{id:item}) 
                          CREATE (a)<-[:PROVIDES_{serviceProvided:b.subSector}]-(b)
                          RETURN a, b`)
@@ -88,7 +90,7 @@ cypher.createDependency = function(myObject){
 cypher.getAssetDetails = function(assetId, res){
  var session = driver.session();
  var matchResult = {};
- console.log(" is this the assetId at getAssetDetails "+ assetId)
+ console.log("@cypher:getAssetDetails - assetId "+ assetId)
     session
     .run(`MATCH (n:ASSET{ 
             id:${assetId}})

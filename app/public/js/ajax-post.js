@@ -33,7 +33,7 @@ $(`form#createAsset-form`).submit(function(event){
 		// adding coordinate property to our object
 		setCoordinate(assetObject, mapCollector)
 		
-		// creating our object using asset object template
+		// creating our asset object using template
 		var asset = new CreateAssetObject(assetObject, mapCollector);
 
 	 	// add asset to newly created map instance

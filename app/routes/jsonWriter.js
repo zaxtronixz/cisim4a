@@ -6,6 +6,7 @@ var jsonWriter = express.Router();
 var bodyParser = require('body-parser');
 var fs = require('fs');
 var jsonFile = require('../data/data.json')
+var cypher = require('./cyphermod.js');
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Setting up body parser to receive text and url-encoded format
@@ -16,7 +17,6 @@ jsonWriter.use(bodyParser.urlencoded({extended: false}));
 // 1. CREATE: NEW PROJECT with asset details
 jsonWriter.createNewProject = function(newProject){
 			jsonFile.projects.push(newProject)    
-		    console.log("this is jsonFile after unshift at jsonWriter "+ JSON.stringify(jsonFile))
 		    fs.writeFileSync( 'app/data/data.json', JSON.stringify(jsonFile), 'utf8', function (err) {
   				console.error(err)
   			})
@@ -25,16 +25,15 @@ jsonWriter.createNewProject = function(newProject){
 // 2. CREATE: json files with asset details
 jsonWriter.addAsset = function(asset){
 		var id = asset.projectId
-		return function assetJson(){
 			for(i=0; i< jsonFile.projects.length; i++){
-				if(jsonFile.projects[i] == id){
-					return jsonFile.projects.id.push(asset) 
-				}
-			}
-		}
-		console.log("this is jsonFile after unshift at jsonWriter "+ JSON.stringify(jsonFile))
+				if(jsonFile.projects[i].id == id){
+					jsonFile.projects[i].assets.push(asset);
+					jsonFile.projects[i].assetTotal += 1;
+				} 
+			} return jsonFile;
 		fs.writeFileSync( 'app/data/data.json', JSON.stringify(jsonFile), 'utf8', function (err) {
   			console.error(err)
+  			
   		})
 }
 
@@ -102,3 +101,13 @@ jsonWriter.createVisualResult = function(mapInstance){
 
 
 module.exports = jsonWriter;
+
+// jsonIo.writeTo('/tmp/hello.json', {first: 'text', second: 'some more'}, function(cb) {
+//     if(cb instanceof Error) throw cb;
+//     console.log('File written succesfully!')
+// })
+
+// jsonIo.read('/tmp/hello.json', function(res) {
+//     if(res instanceof Error) throw res;
+//     console.log(res.first, res.second, 'made it!');
+// })

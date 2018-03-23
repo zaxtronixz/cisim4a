@@ -24,6 +24,7 @@ router.post('/getasset', function (req, res, next){
 
     // send the assetID and the response paramter as argument to cypher
     cypher.getAssetDetails(assetId, res);
+
 });
 
 //////////////////////////////////////////////////////////////////////////////
