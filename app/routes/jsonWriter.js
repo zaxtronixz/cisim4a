@@ -16,7 +16,7 @@ jsonWriter.use(bodyParser.urlencoded({extended: false}));
 
 // 1. CREATE: NEW PROJECT with asset details
 jsonWriter.createNewProject = function(newProject){
-			jsonFile.projects.push(newProject)    
+			jsonFile.projects.push(newProject)   
 		    fs.writeFileSync( 'app/data/data.json', JSON.stringify(jsonFile), 'utf8', function (err) {
   				console.error(err)
   			})
@@ -39,33 +39,49 @@ jsonWriter.addAsset = function(asset){
 
 // 3. UPDATE: json files with asset details
 jsonWriter.updateAsset = function(asset){
-		var id = asset.projectId
-		return	function assetUpdate(id, asset){
-				for(i=0; i< jsonFile.projects.length; i++){
-					if(jsonFile.projects[i] == id){
-						for(k=0; k< jsonFile.projects[i].assets.length; k++)
-							return jsonFile.projects.assets[k] = asset 
-					}
-				}
-			}
-		console.log("this is jsonFile after unshift at jsonWriter "+ JSON.stringify(jsonFile))
+		var projectId = asset.projectId
+	    for(i=0; i< jsonFile.projects.length; i++){
+	    	// match projectId with json file project
+
+	    	if(jsonFile.projects[i].id == projectId){
+	       	   	for(k=0; k< jsonFile.projects[i].assets.length; k++){
+	       	   		// match assetId with jsonfile asset
+	                if(jsonFile.projects[i].assets[k].id == asset.id){
+	                	// Set new asset value at the spot
+	                    jsonFile.projects[i].assets[k] = asset;
+	                    return jsonFile;
+	                }else{
+	                	console.log("No asset Id match with "+ asset.id)
+	            		}
+	             }   
+	        }
+	    }
 		fs.writeFileSync( 'app/data/data.json', JSON.stringify(jsonFile), 'utf8', function (err) {
   			console.error(err)
   		})
 }
 
 // 4. DELETE: asset details from json files s
-jsonWriter.deleteAsset = function(assetId){
-		var id = asset.projectId
-		return function assetDelete(id, asset){
-				for(i=0; i< jsonFile.projects.length; i++){
-					if(jsonFile.projects[i] == id){
-						for(k=0; k< jsonFile.projects[i].assets.length; k++)
-							return (jsonFile.projects.assets.assets.splice(k,1)) 
-					}
-				}
-			}
-		console.log("this is jsonFile after unshift at jsonWriter "+ JSON.stringify(jsonFile))
+jsonWriter.deleteAsset = function(assetId, projectId){
+		console.log("@jsonWriter:deleteAsset - this is pId: " + projectId +" & aId:"+ assetId)
+	    
+	    for(i=0; i< jsonFile.projects.length; i++){
+	    	// match projectId with json file project
+	    	if(`'${jsonFile.projects[i].id}'` == `'${projectId}'`){
+	       	   	for(k=0; k< jsonFile.projects[i].assets.length; k++){
+	       	   		// match assetId with jsonfile asset
+	                if(`'${jsonFile.projects[i].assets[k].id}'` == `'${assetId}'`){
+	                	// Take out matching asset
+	                    jsonFile.projects[i].assets.splice(k,1)
+	                    jsonFile.projects[i].assetTotal -= 1;
+	                    return jsonFile;
+	                }else{
+	                	console.log("No asset Id match with "+ assetId)
+	            		}
+	             }   
+	        }
+	       
+	    }
 		fs.writeFileSync( 'app/data/data.json', JSON.stringify(jsonFile), 'utf8', function (err) {
   			console.error(err)
   		})

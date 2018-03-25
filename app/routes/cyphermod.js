@@ -123,11 +123,9 @@ cypher.deleteAsset = function(assetId){
     var session = driver.session();
     console.log("this is asset Id in cypher :" + assetId)
     session
-    .run(`MATCH (n:ASSET{id:${assetId}}) DELETE n`)
+    .run(`MATCH (n:ASSET{id:'${assetId}'}) DELETE n`)
     .then(function(result) {
-        result.records.forEach(function(record) {
-            console.log(record)
-        });
+        console.log("This was the Result "+ result)
         session.close();
     })
     .catch(function(error) {

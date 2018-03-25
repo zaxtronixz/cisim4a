@@ -4,7 +4,6 @@
 				if(!mapCollector){
 					var mapCollector = {};
 					var newProject = {};
-					var assetList = [];
 				}
 
 				

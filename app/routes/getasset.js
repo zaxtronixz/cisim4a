@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 var neo4j = require('neo4j-driver').v1; 
 var cypher = require('./cyphermod.js');
 var jsonWriter = require('./jsonWriter.js');
+// var http = require('http');
+// var rp = require('request-promise');
+// var got = require('got');
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Setting up body parser to receive text and url-encoded format
@@ -32,10 +35,11 @@ router.post('/getasset', function (req, res, next){
 /////////////////////////////////////////////////////////////////////////////
 router.post('/getasset/update', function (req, res, next){
     var asset = req.body;
-    console.log("before matchedResult, this is assetId "+ asset.id)
+    console.log("@getasset:update assetId is :"+ asset.id)
 
     // send the assetID and the response paramter as argument to cypher
     cypher.updateAsset(asset);
+    jsonWriter.updateAsset(asset);
 });
 
 
@@ -44,11 +48,18 @@ router.post('/getasset/update', function (req, res, next){
 // delete asset completely
 /////////////////////////////////////////////////////////////////////////////
 router.post('/getasset/delete', function (req, res, next){
-      var assetId = JSON.stringify(req.body.assetId);
-          console.log("before matchedResult, this is assetId "+ assetId)
+      var assetId = req.body.assetId;
+      var projectId  = req.body.projectId;
+          console.log("@getasset: delete fx assetId = "+ assetId)
+          console.log("@getasset: delete fx projectId = "+ projectId)
 
     // send the assetID and the response paramter as argument to cypher
+    // jsonWriter.deleteAsset(assetId, projectId)
     cypher.deleteAsset(assetId);
+    jsonWriter.deleteAsset(assetId, projectId)
+
+   
+
 });
 
 

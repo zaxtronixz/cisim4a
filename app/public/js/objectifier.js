@@ -10,12 +10,9 @@
 	  this.coordLng = asset.coordLng;
 	  this.subSector = asset.subSector;
 	  this.workingState = ""; // optimal / not optimal / Failed
-	  this.inputAssets = [];
-	  this.outputAsset = [];
-	  this.output = [];
-	  this.inputs = [];
-
 	  this.depedents = [];
+	  this.inputs = [];
+    this.output = [];
 	};
 
 

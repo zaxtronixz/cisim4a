@@ -1,3 +1,6 @@
+// This function builds the asset details from database into a panel form
+// and also disables the form
+
 function makeAsset(asset){
 	var frm = document.getElementById('assetPanelForm');
 	var leftOvers = "<ul>";
@@ -28,9 +31,14 @@ function makeAsset(asset){
 			// }//-- end of else statement
 	    }//-- end of asset obj loop
 	}//-- end of form element loop
+	if ($( "#update-assetId" ).length){
+		$( "#update-assetId" ).val(`${asset.id}`);
+	}else{
+		var assetId = `<input id="update-assetId" name="id" type="hidden" value="${asset.id}">`
+		$("#assetPanelForm").append(assetId)
+	}
 	
-	var assetId = `<input id="update-assetId" name="id" type="hidden" value="${asset.id}">`
-	$("#assetPanelForm").append(assetId)
+	
 	$("#assetPanelForm").append(frm).hide().show('slow');
 	
 }

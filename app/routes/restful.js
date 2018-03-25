@@ -9,8 +9,12 @@ var projects =  require('../models/projects')
 /////////////////////////////////////////////////////////////////////////////////////
 // Setting up body parser to receive text and url-encoded format
 //////////////////////////////////////////////////////////////////////////////////////
+restful.post("/projects", function(req, res){
+	res.send(console.log('Got the project request ..'))
+})
 
 projects.methods(['get','put','post', 'delete']);
+
 projects.register(restful, '/projects')
 
 module.exports = restful;

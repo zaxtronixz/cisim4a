@@ -1,26 +1,5 @@
 $(document).ready(function(){
 
-	// function CreateAssetObject(asset, mapCollector) {
-	//   // generates a strings as id of the asset
-	//   this.id = mapCollector.assetId || asset.id
-	//   this.name = asset.name;
-	//   this.type = asset.type;
-	//   this.sector = asset.sector;
-	//   this.coordLat = asset.coordLat;
-	//   this.coordLng = asset.coordLng;
-	//   this.subSector = asset.subSector;
-	//   this.workingState = ""; // optimal / not optimal / Failed
-	//   this.inputAssets = [];
-	//   this.outputAsset = [];
-	//   this.output = [];
-	//   this.inputs = [];
-
-	//   this.depedents = [];
-	// };
-
-
-
-
 $(`form#createAsset-form`).submit(function(event){
 		// $('form#createAsset-form').click(function(event){
 		event.preventDefault();
@@ -39,7 +18,6 @@ $(`form#createAsset-form`).submit(function(event){
 	 	// add asset to newly created map instance
 	    newProject.addAsset(asset)
 	 	// post asset data to form url
-	 	assetList.push(asset)
 	 	postForm(url, asset);
 	})
 });

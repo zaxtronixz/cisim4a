@@ -8,9 +8,9 @@ var cypher = require('./cyphermod.js');
 var jsonWriter = require('./jsonWriter.js');
 var fs = require('fs');
 var jsonFile = require('../data/data.json')
-var axios = require('axios')
+// var axios = require('axios')
 
-var restful = require('./restful.js')
+// var restful = require('./restful.js')
 /////////////////////////////////////////////////////////////////////////////////////
 // setting up body parser to receive text format
 router.use(bodyParser.json());
@@ -37,18 +37,9 @@ router.post('/postpage', function (req, res, next) {
 	console.log('Our data at postpage : ' + JSON.stringify(req.body))
 	var asset = req.body;
 	
-	if(jsonWriter.addAsset(asset)){
-		console.log('about to write to neo4j ....... ')
-		if(cypher.createAsset(asset)){
-			console.log('!! succeeded !!')
-		}else{console.log('XX failed  XX')}
-	}else{
-		console.log('could not even write to Json ....... ')
-	}
+	jsonWriter.addAsset(asset)
+	cypher.createAsset(asset)
 	
-
- 	// jsonWriter.addAsset(asset , cypher.createAsset);
- 	// console.log('Our Stringified(asset) at postpage : ' + JSON.stringify(req.body))
 });
 
 

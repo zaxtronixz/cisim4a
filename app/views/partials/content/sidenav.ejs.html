@@ -65,10 +65,35 @@
 	      	</div>	
 	      		<div id="collapse2" class="collapse" data-parent="#first-accordion">
 	        		<div class="card-body square-border">
-	      <!--   insert content to denote body of the 2nd panel -->
-	      <p>// put something in here</p>
+	      <!--   insert content for visualization -->
+	     		 <form id="create-visualization-form" action="getasset/createScenario">>
+			     	 <table id="Visualization-table" class="table table-hover bottom-border">
+				    	<tbody>
+					      <tr>
+					      	<div class="checkbox">
+					        <td>
+					        	<label>Display interdependencies</label>
+					        </td>
+					        <td>
+					        	<input id="display-interdependencies" type="checkbox" name="display-interdependencies" value="display-interdependencies">
+							 </td>
+							</div>
+					      </tr>
+					      <tr>
+					       	<div class="checkbox">
+					        <td>
+					        	<label>Display working state</label>
+					        </td>
+					        <td>
+					        	<input id="display-working-state" type="checkbox" name="display-working-state" value="display-working-state">
+							 </td>
+							</div>
+					      </tr>
+					    </tbody>
+					</table>
+				</form>
 
-	      <!-- content for the 2nd panel ends here -->
+	      <!-- visualization  ends here -->
 	       			</div>
 	      		</div>
 	      	</div>
@@ -79,8 +104,33 @@
 	      		</div>
 	      		<div id="collapse3" class="collapse" data-parent="#first-accordion">
 	        		<div class="card-body square-border">
-	        			<p>// insert content for scenario</p>
 	        			<!-- Insert body for scenario in here -->
+	        			<form id="create-scenario-form" action="getasset/createScenario">
+	        			<div class="form-group">
+					  		<label for="scenario">Select Scenario Type:</label>
+					  		<select name="type" class="form-control square-border" id="scenario-selection">
+					    		<option disabled selected>---</option>
+					    		<option>Fire Disaster</option>
+					     		<option>Extreme Wind</option>
+					   		</select>
+						</div>  
+						<div class="form-group">
+					  		<label for="scenario-selected-asset">Apply scenario to:</label>
+					  		<select name="type" class="form-control square-border" id="scenario-selected-asset">
+					    		<option disabled selected>---</option>
+					    		<option>Asset 1</option>
+					     		<option>Asset 2</option>
+					   		</select>
+						</div>  
+						<div class="form-group square-border">
+							<input name="create-scenario-btn" id = "create-scenario-btn" type="submit" value = "Create Scenario"  class="btn btn-secondary square-border">
+						</div>
+						<div class="form-group square-border">
+							<input name="generate-scenarioResult-btn" id = "generate-scenarioResult-btn" type="button" value = "Generate Scenario Result"  class="btn btn-info square-border">
+						</div>
+					</form>
+
+	        			<!-- Scenario content ends here -->
 	            	</div>
 	      		</div>
 		  	</div> 
@@ -102,13 +152,30 @@
       <div id="collapseOne" class="collapse" data-parent="#second-accordion">
         <div class="card-body">
 <!--============== asset panel form for laoding asset details begins here ======================= -->
-			<div class="checkbox">
-			  	<label><input id="edit-asset" type="checkbox" name="edit-asset" value="edit"> Edit Asset</label>
-			</div>
+	
 
-  <form id="assetPanelForm">
+	<!-- table for edit and delete asset			 -->
+		 	 <table id="panel-table" class="table">
+		    	<tbody>
+			      <tr>
+			        <td>
+			        	<div class="checkbox">
+						  	<label><input id="edit-asset" type="checkbox" name="edit-asset" value="edit"> Edit Asset</label>
+						</div>
+			        </td>
+			        <td>
+			        	<div class="checkbox">
+						  	<label><input id="delete-btn" type="checkbox" name="delete-asset" value="delete">Delete</label>
+						</div>
+			        </td>
+			      </tr>
+			    </tbody>
+			</table>
 
-			<div class="form-group square-border">
+
+  <form id="assetPanelForm" action="/getasset/update" method="post">
+
+ 			<div class="form-group square-border">
 				<label for="name">Asset Name:</label>
 				<input name="name" class="form-control square-border"  required placeholder="Type Asset Name">
 			</div>
@@ -142,7 +209,7 @@
 				</select>
 			</div>
 			<div class="form-group square-border">
-				<input name="update-asset-btn" id = "update-asset-btn" type="button" class="btn btn-primary square-border">
+				<input name="update-asset-btn" id = "update-asset-btn" type="submit" value = "Update asset"  class="btn btn-secondary square-border">
 
 			</div>
 
@@ -159,19 +226,18 @@
       </div>
       <div id="collapseTwo" data-parent="#second-accordion" class="collapse">
         <div class="card-body">
-         <div class="form-group">
-		  <label for="sel1">Select Dependents:</label>
-		  <select multiple class="form-control" id="multiple-select">
-		    <option>Antennae</option>
-		    <option>Transformer</option>
-		    <option>Underground Cable</option>
-		    <option>Extra High Voltage Transmission Line</option>
-		  </select>
-		</div>
-		<ul id="selected-list">	</ul>
-
+        	<form id="create-dependents-form" action="/getasset/createDependency" method="post" >
+		        <div class="form-group">
+				  <label for="sel1">Select Dependencies:</label>
+				  <select multiple class="form-control" id="multiple-select">
+				  </select>
+				</div>
+				<ul id="selected-list">	</ul>
+				<div class="form-group square-border">
+					<input name="create-dependents-btn" id = "create-dependents-btn" type="submit" value = "Create dependents"  class="btn btn-secondary square-border">
+				</div>
+			</form>
         </div>
-        <input type="button" name="create-dependents" value="Create Dependents">
       </div>
     </div>
     <div class="card square-border">
@@ -182,7 +248,20 @@
       </div>
       <div id="collapseThree" data-parent="#second-accordion"  class="collapse">
         <div class="card-body">
-         // 3: put stuffs in here 
+		<!-- inputs body begins here          -->
+		<form id="add-input-form" method="post" action="/getasset/addInput">
+	         <div class="form-group">
+			  <label for="input-multiple-select">Select inputs:</label>
+			  <select multiple class="form-control" id="input-multiple-select">
+			  </select>
+			</div>
+			<ul id="input-selected-list">	</ul>
+			<div class="form-group square-border">
+				<input name="add-input-btn" id = "add-input-btn" type="submit" value = "Add Input"  class="btn btn-secondary square-border">
+			</div>
+        </div>
+		</form>
+		<!-- inputbody ends -->
         </div>
       </div>
     </div>

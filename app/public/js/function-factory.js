@@ -4,19 +4,20 @@
 ///////////////////////////////////////////////////////////////////////
  
 // 1.Function:To open the control-panel on the workspace
-	function openMenuBtn() {
-				mapCollector.infowindow.close();
-				$('#first-accordion').show();
-				$( "#getAssetPanel" ).hide()
-		    	document.getElementById("mySidenav")
-		    	.style.width = "300px";
-		    }
+function openMenuBtn() {
+	mapCollector.infowindow.close();
+	$('#first-accordion').show(); // c
+	$( "#getAssetPanel" ).hide() //
+	document.getElementById("mySidenav")
+	.style.width = "300px";
+}
 
 // 2.Function: To close the control panel by clicking 'closeNav' icon
-	function closeNav() {
-	    document.getElementById("mySidenav").style.width = "0";
-	};
-// Function to open menu button by clicking navbar
+function closeNav(){
+    document.getElementById("mySidenav").style.width = "0";
+};
+
+// 3.Function to open menu button by clicking navbar
 $('#start-control-panel').on('click', function(){
    	document.getElementById("mySidenav")
    	.style.width = "300px";
@@ -24,22 +25,23 @@ $('#start-control-panel').on('click', function(){
 
 // 5.Function: To load asset list to 'select input option'
 function addAssetList(selector,assetId){
-	// remove appended children 
+// remove appended children 
 	if($(selector).has( "option" )){
 		$(selector).children().remove()
 	}
-
+	assetList = newProject.assets
 	// check if list is not empty
 	if(assetList.length != 0) {
 		var assetSelection = `<option value ='${assetId}' hidden disabled ></option>`;
 		for(i=0; i< assetList.length; i++){
 			if(assetList[i].id != assetId ){
-					assetSelection += `<option value ='${assetList[i].id}' >`+ assetList[i].type + " : " + assetList[i].sector +'</option>';
+				assetSelection += `<option value ='${assetList[i].id}' >`+ assetList[i].type + " : " + assetList[i].sector +'</option>';
 			}
-		}$(selector).append(assetSelection)
+		}
+		$(selector).append(assetSelection);
 	}else{
-			alert('Assets have not been added to this Project')
-			return false;
+		alert('Assets have not been added to this Project')
+		return false;
 		}
 }
 
@@ -66,7 +68,24 @@ $(`form#assetPanelForm`).submit(function(event){
 		
 		// converts form data to object;
 		var assetObject = formDataToObject(`assetPanelForm`)
-		// convert to json
+		
+		
+		newProject.assets.find(function(element, index) {
+		  if (element.id == assetObject.id){
+		  		// add leftover properties to asset to post
+		  		assetObject.coordLat = element.coordLat
+				assetObject.coordLng = element.coordLng
+				assetObject.projectId = element.projectId
+
+				// update asset in newProject instance
+				for (var prop in assetObject){
+                	newProject.assets[index][prop] = assetObject[prop]
+                	console.log("@update: This is asset object prop in newProject "+newProject.assets[index][prop] +" \n & this is the asset object property"+assetObject[prop])
+                }
+            }else{
+                	console.log("@update: asset with "+assetObject.id+" is not found")
+                }
+		});
 		// var asset = new CreateAssetObject(assetObject, null);
 		var asset = assetObject
 		console.log(" the upadated form data is "+ asset )
@@ -115,7 +134,7 @@ $(`form#create-dependents-form`).submit(function(event){
 
 })
 
-// Function: st project  name  to given
+// Function: set project  name  to given
 $('#startProj-btn').on('click', function(){
 	if($('#projectName').val()){
 		var projectName = $('#projectName').val()
@@ -155,7 +174,8 @@ $('#generate-scenarioResult-btn').on('click',function(){
 function createMultiSelectArray(selector){
 	// var assetId = $('form#'+selector+' option').prop('hidden', true).val()
 	var assetId = document.querySelectorAll('#'+selector+' option, hidden')[0].value
-	var mySelected = $('form#'+selector+' option').prop('selected', true)
+	// select form elements to populate
+	var mySelected = $('form#'+selector+' option').prop('selected', true) 
 	
 	var depensArr=[];
 	var myObject ={};
@@ -164,6 +184,8 @@ function createMultiSelectArray(selector){
 	for(i=0; i<mySelected.length;i++){
 		if(assetId != mySelected[i].value){
 			depensArr.push(mySelected[i].value)
+		}else{
+			console.log("Error:NO#2 No assets to create dependents")
 		}
 	}
 	myObject.dependency = depensArr
@@ -173,16 +195,29 @@ function createMultiSelectArray(selector){
 
 // Function: to delete asset from edit form
 $('#delete-btn').on('click' , function(event){
-	var assetName = $('#assetPanelForm :input[name]').val()
-	var assetDeleted  = confirm("Click OK to delete asset: " + assetName + " from this Project");
+	 if ($(this).is(':checked')) {
 
-	if(assetDeleted== true){
-		var assetId = $('#update-assetId').val()
+		var assetName = $('#assetPanelForm :input[name]').val() // 
+		var assetDeleted  = confirm("Click OK to delete asset: " + assetName + " from this Project");
+
+		if(assetDeleted == true){
+			var assetId = $('#update-assetId').val()
+			var projectId = window.newProject.id
+
+			for(i=0; i< newProject.assets.length;i++){
+			  	if (newProject.assets[i].id == assetId){
+			  		newProject.assets.splice(i,1)
+			  		newProject.assetTotal -= 1;
+			  	}
+			  }
+			
 		// send to delete asset from database
-		postForm('getasset/delete', {assetId : assetId})
+			postForm('getasset/delete', {assetId : assetId, projectId: projectId})
+		}
 	}else{
 		return false;
 	}
+	$(this).prop('checked', false); 
 });
 
 
