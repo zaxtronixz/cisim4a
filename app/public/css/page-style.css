@@ -1,3 +1,10 @@
+
+/*hover colour to dependent selection option*/
+#multiple-select option:hover{
+	background-color: #ccc;
+}
+
+
 /*attach scroll bar to the create asset element */
 #createAsset-form{
 	overflow: hidden;

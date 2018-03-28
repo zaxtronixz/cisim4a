@@ -1,166 +1,144 @@
 
 			// an object to store all the map varibales
 			// start map Collector if not previously defined
-				if(!mapCollector){
+			
 					var mapCollector = {};
-					var newProject = {};
-				}
-
-				
+					var map;
 				// where project instance will be stored safely
+					var contentString = "<div>Click to create an asset at this location <br><br> ";
+      					contentString += "<button onclick='openMenuBtn()'>"
+      					contentString += " Create an Object";
+      					contentString += "</button> </div>";
 			
 
 			function initMap(){
 				// user's input is inserte into the autocomplete object
+				    newProject = createMapProjectInstance(mapCollector)
+				    mapCollector.markers = [];
+
+				if (navigator.geolocation) {
+			        navigator.geolocation.getCurrentPosition(function(position) {
+			            var pos = {
+			              lat: position.coords.latitude,
+			              lng: position.coords.longitude
+			            };
+			            map = new google.maps.Map(document.getElementById('map'), {
+				          center: pos,
+				          zoom: 10
+				        });
+			            map.setCenter(pos);
+			            google.maps.event.addListener(map, 'click', clickEventer);
+          			})
+          		}else{
+          			infoWindow = new google.maps.InfoWindow;
+          			handleLocationError(false, infoWindow, map.getCenter())
+
+          		}
+
 				
 				var userInput = document.getElementById('userInput');
 				var auto = new google.maps.places.Autocomplete(userInput)
-
-				var map;
-
 				// map is loaded into a <div> based on the user's input 
-				auto.addListener('place_changed', 
-					function(){
-
-					// get the place object from auto complete
+				auto.addListener('place_changed', function(){
+				// get the place details from auto complete
 					var place = auto.getPlace();
-
-					// get the place object and assigned to mapCollector places
-					// properties
-					console.log("this is place.name: " + place.name)
-					mapCollector.places = place.name
+						mapCollector.places = place.name // save place to
+						console.log("this is place.name: " + place.name)
 					
+					// retrieve the value of the latitude and longitude
+					var latitude = place.geometry.location.lat();
+					var longitude = place.geometry.location.lng();
 
-
-    				// retrieve the value of the latitude and longitude
-					var lngi = place.geometry.viewport.f.b;
-					var lati = place.geometry.viewport.f.f;
+					var location = {lat:latitude, lng:longitude}
 					// creating a new map object using the latLng values obtained above
+					
 					var mapDiv =  document.getElementById('map');
 			 		map =  new google.maps.Map(mapDiv, {
-						center:{lat:lati, lng:lngi},
+						center:location,
 						zoom:10
 					})
-					map.setCenter(place.geometry.location);
-      				map.setZoom(7);
 
-      				
-      					var contentString = "<div>Click to create an asset at this location <br><br> ";
-      					contentString += "<button onclick='openMenuBtn()'>"
-      					contentString += " Create an Object";
-      					contentString += "</button> </div>";
-      				// controlling the map zoom value using 
+					map.setCenter(location);
       				// getting position of click event
-					  google.maps.event.addListener(map, 'click', function(event) {
-					  	
-					   	mapCollector.coord = {
-					  			lat: event.latLng.lat(),
-					  			lng: event.latLng.lng()
-					  	}
- 
-					 // information window is displayed at click position
-					   	mapCollector.infowindow = new google.maps.InfoWindow({
-					    	content: contentString,
-					    	position:mapCollector.coord
-					  	});
-					 	
-					  	mapCollector.infowindow.open(map);
-				
-				      });
+					google.maps.event.addListener(map, 'click', clickEventer);
+ 	});
 
-				    newProject = createMapProjectInstance(mapCollector)
-
-				});
-
-			    mapCollector.createAsset = function (){
-		      		this.infowindow.close();
-		      		
-		      		// get the item values entered in the form
-		      		// using the index number and option selected
-		      		this.x = document.getElementById("type").selectedIndex;
-					this.y = document.getElementById("type").options;
-
-					// the text of the indexed, option 
-					var selectedAss = this.y[this.x].text;
-		      	 	var marker = new google.maps.Marker({
-		          		position: this.coord,
+				// create marker function
+				mapCollector.createMarker = function(assetSelected){
+					this.infowindow.close();
+					closeNav();
+					var marker = new google.maps.Marker({
+		          		position: mapCollector.coordinates,
 		          		map: map,
-		          		title: selectedAss,
-		          		icon:customMarker(selectedAss)
+		          		animation: google.maps.Animation.DROP,
+		          		title: assetSelected,
+		          		icon:customMarker(assetSelected)
 	       		 	});
 
-		      	 	
-		      	 	marker.assetId = mapCollector.assetId
-	       		 	// open control panel with asset details
-	       		 	marker.addListener('click', function() {
-    					// open sidemenu
+					 /////////////////////////////////////////////////////////////////////
+					// open menu when marker is clicked
+					marker.addListener('click', function(event) {
+	    				openMenuBtn();
+	    				// hide asset creator
+	    				$( "#first-accordion" ).hide()
+	    				$( "#getAssetPanel" ).show()
+	    				$("#assetPanelForm").hide()
 
-    						openMenuBtn();
-    					// hide asset creator
-    						$( "#first-accordion" ).hide()
-    						$( "#getAssetPanel" ).show()
-    						$("#assetPanelForm").hide()
+	    				// remove selected dependencies before appending new
+						$('ul#selected-list').children().remove()
 
-    					// display asset mananger
-    						console.log("the asset id inside the marker :" + marker.assetId)
-    						//show asset detail
-    						//show upadate asset details
-    						
-    						getAssetFromGdb(marker.assetId);
-    						
+						// remove selected inputs before appending new
+						$('#input-selected-list').children().remove()
+	    				//show upadate asset details
+	    				var id = marker.id
+	   					getAssetFromGdb(id);
+	   				})
 
-  					})  
-	       		 	
-
-		      	}
+       		 	marker.id = mapCollector.markerId
+       		 	mapCollector.markers.push(marker)
+				}
 
 
 
- 	};
 
+				// Create infowindow on clicked spot on map
+				function clickEventer(event) {
+					   	mapCollector.coordinates = {
+							lat: event.latLng.lat(),
+							lng: event.latLng.lng()
+					  	}
+ 						// information window is displayed at click position
+						mapCollector.infowindow = new google.maps.InfoWindow({
+						   	content: contentString,
+						   	position:mapCollector.coordinates
+						});
+					  	mapCollector.infowindow.open(map);
+			    };
+}
 
  
   	function createMapProjectInstance(mapCollector){
-    		// create a new map instance 
-    		if(typeof mapCollector.places != "undefined"){
-    			console.log('Project instance was successfully created')
-
-    			var newProject = new MapProjectInstance(mapCollector)
-
-    			// stringify the object for posting
-    			// project  =  JSON.stringify(newProject)
-
-    			// console.log('project object now looks like this '+ newProject)
-    			// // send the project object as strings to backend
-    			// $.post('/postpage/createNewProject', JSON.stringify(newProject))
-
-    			$.ajax({
-				    type: 'POST',
-				    url: '/postpage/createNewProject',
-				    contentType: 'application/json',
-				    data: JSON.stringify(newProject)
-				});
-
-    			// return the project to the console
-    			return newProject;
-
-    		}else{
-    			console.log('mapCollect.places have not been defined')
-    			return false;
-    		}
-
-
-	     		
+    	var newProject = new MapProjectInstance(mapCollector)
+    	// post new project data to api
+		$.ajax({
+		    type: 'POST',
+		    url: '/postpage/createNewProject',
+		    contentType: 'application/json',
+		    data: JSON.stringify(newProject)
+		});
+    	// return the project to the console
+    	return newProject;
 	}
 
     // function triggered by form click
 	function assetCreator(){
-		mapCollector.assetId = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)).toUpperCase();
-		mapCollector.createAsset()
-		
-		// close control panel
-		closeNav();
-		// map.setCenter(marker.getPosition());
+ //    // using the index number and option selected
+	//     this.x = document.getElementById("type").selectedIndex; //x
+	//     this.y = document.getElementById("type").options; //y
+	//     var assetSelected = this.y[this.x].text; // text of selected index
+	//     mapCollector.createMarker(assetSelected)// create a marker for this asset
+	// 	
+	console.log("asset does nothing")
 	}
 
 

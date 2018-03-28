@@ -2,12 +2,12 @@
 // ASSET OBJECT
 	function CreateAssetObject(asset, mapCollector) {
 	  // generates a strings as id of the asset
-	  this.id = asset.id || mapCollector.assetId
+	  this.id = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)).toUpperCase()
 	  this.name = asset.name;
 	  this.type = asset.type;
 	  this.sector = asset.sector;
-	  this.coordLat = asset.coordLat;
-	  this.coordLng = asset.coordLng;
+	  this.coordLat = mapCollector.coordinates.lat;
+	  this.coordLng = mapCollector.coordinates.lng;
 	  this.subSector = asset.subSector;
 	  this.workingState = ""; // optimal / not optimal / Failed
 	  this.depedents = [];
@@ -28,6 +28,7 @@ function MapProjectInstance(mapCollector) {
   // this.coord = mapCollector.geocode;
 
   this.assets = [] 
+  this.markers = [];
   this.assetsWorkingState = { // optimal / Failed
   	optimal:[],
   	failed:[]
@@ -48,12 +49,20 @@ function MapProjectInstance(mapCollector) {
 
 
       }
-// this function adds and asset to the map
+
+this.createAsset = function(asset, mapCollector){
+    var asset  = new CreateAssetObject(asset, mapCollector)
+    asset.projectId = this.id;
+    this.addAsset(asset)
+    return asset;
+}
+
+// this function adds and asset to the newProject instance
  this.addAsset = function(asset) {
       var addMe  = {};
       addMe.id = asset.id;
       addMe.type = asset.type;
-      asset.projectId = this.id;
+     
 
   		if(typeof asset.serviceProvided != 'undefined'){
   			asset.serviceProvided = ''

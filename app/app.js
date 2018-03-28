@@ -25,6 +25,7 @@ app.use(require('./routes/postpage'));
 app.use(require('./routes/api'));
 app.use(require('./routes/getasset'));
 app.use(require('./routes/jsonWriter'));
+app.use(require('./routes/getmap'));
 
 
 // run server at configured port

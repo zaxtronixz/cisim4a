@@ -19,8 +19,7 @@ function closeNav(){
 
 // 3.Function to open menu button by clicking navbar
 $('#start-control-panel').on('click', function(){
-   	document.getElementById("mySidenav")
-   	.style.width = "300px";
+	openMenuBtn();
 })
 
 // 5.Function: To load asset list to 'select input option'
@@ -49,6 +48,21 @@ function addAssetList(selector,assetId){
 $("#edit-asset,input:checkbox").change(function(){
 	$("#assetPanelForm select, input").attr("disabled", false);
 });
+
+// 7 Function to show markers bouncing on hover
+$('#multiple-select').on('mouseenter','option',function(e) {
+var markerId = $(this).val();
+	mapCollector.markers.forEach(function(marker){
+	if(marker.id == markerId){
+		if (marker.getAnimation() !== null) {
+			marker.setAnimation(null);
+		}else {	
+			marker.setAnimation(google.maps.Animation.BOUNCE)
+			marker.setAnimation(null);
+			 }
+		}
+	})
+})
 
 // 7. Function To remove marker on Map
 	// listen to change asset type event
@@ -208,6 +222,9 @@ $('#delete-btn').on('click' , function(event){
 			  	if (newProject.assets[i].id == assetId){
 			  		newProject.assets.splice(i,1)
 			  		newProject.assetTotal -= 1;
+
+			  		// Delete marker from map
+			  		markerRemover(assetId)
 			  	}
 			  }
 			
@@ -235,3 +252,69 @@ $('#startProj-btn').on('click' , function(event){
 	}
 })
 
+// Function: To remove marker from the map
+function markerRemover(id){
+        //Find and remove the marker from the Array
+        for (var i = 0; i < mapCollector.markers.length; i++) {
+            if (mapCollector.markers[i].id == id) {
+                //Remove the marker from Map                  
+               mapCollector.markers[i].setMap(null);
+ 
+                //Remove the marker from array.
+                mapCollector.markers.splice(i, 1);
+                return;
+            }
+        }
+}
+
+
+// Function to add circles for Working State
+$('#display-working-state').on('click', function(){
+	$("#rightMenu").css("display", "block");
+	mapCollector.markers.forEach(function(item, index){
+			if(item.id == newProject.assets[index].id ){
+
+				 	var position ={
+          				lat: mapCollector.markers[index].getPosition().lat(),
+          				lng: mapCollector.markers[index].getPosition().lng()
+          			}
+				if(newProject.assets[index].workingState == 'optimal'){
+          			// get the position of marker clicked
+
+          			addCircles('#0000FF', position)
+        		}else{
+        			addCircles('#FF0000', position)
+        		}
+      		}
+      	})
+      	 // Add circles to CI assets
+      	function addCircles(color, position){
+      		var cityCircle = new google.maps.Circle({
+            	strokeColor: color,
+            	strokeOpacity: 0.8,
+            	strokeWeight: 2,
+            	fillColor: color,
+            	fillOpacity: 0.35,
+            	map: map,
+            	center: position,
+            	radius: 3640 
+          }); // end of addCicles fx
+	}
+	// open right menu 
+    // document.getElementById("rightMenu").style.display = "block";
+
+		// get asset data from project instance
+		var total = newProject.assetTotal
+		var failed = newProject.assetsWorkingState.failed.length
+		var optimal = newProject.assetsWorkingState.optimal.length
+		// assign data to cloumn in a table
+		$('#asset-total-column').html(total);
+		$('#asset-optimal-column').html(optimal);
+		$('#asset-failed-column').html(failed);
+		// close the nav bar
+		closeNav()
+})
+	$('#rightMenu').on("click", function(){
+		 document.getElementById("rightMenu").style.display = "none";
+	   
+	})

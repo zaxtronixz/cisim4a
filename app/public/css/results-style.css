@@ -1,0 +1,17 @@
+.w3-animate-right{
+	width:40%;
+	background: rgba(0, 0, 0, 0.5);
+    color:#fff;
+    }
+
+ #asset-failed-column-title{
+ 	border-color: #FF7373;
+ }
+
+  #asset-optimal-column-title{
+ 	border-color: #76C1EA;
+ }
+
+ .lighten-up{
+ 	background: rgba(0, 0, 0, 0.4);
+ }

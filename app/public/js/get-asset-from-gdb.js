@@ -23,8 +23,12 @@
 
 		// function to load selected dependencies
 		$('#multiple-select option').on('click', function(){
+
+			var counter = 0;
+
 			$(this).attr('disabled', true)
 			Item = $(this).text()
+
 			$('#selected-list')
 			.append('<li>'+ Item + ' '+ deleteBtn +'</li>')
 		})
@@ -33,6 +37,7 @@
 		$('#input-multiple-select option').on('click', function(){
 			$(this).attr('disabled', true)
 			Item = $(this).text()
+
 			$('#input-selected-list')
 			.append('<li>'+ Item + ' '+ deleteBtn +'</li>')
 		})
