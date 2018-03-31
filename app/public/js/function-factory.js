@@ -28,10 +28,12 @@ function addAssetList(selector,assetId){
 	if($(selector).has( "option" )){
 		$(selector).children().remove()
 	}
-	assetList = newProject.assets
+
+	var assetList = newProject.assets
 	// check if list is not empty
 	if(assetList.length != 0) {
 		var assetSelection = `<option value ='${assetId}' hidden disabled ></option>`;
+		
 		for(i=0; i< assetList.length; i++){
 			if(assetList[i].id != assetId ){
 				assetSelection += `<option value ='${assetList[i].id}' >`+ assetList[i].type + " : " + assetList[i].sector +'</option>';
@@ -134,15 +136,15 @@ $(`form#create-dependents-form`).submit(function(event){
 		var url = form.attr('action');
 
 	// get dependency values from form
-	
 	var dependency = createMultiSelectArray('create-dependents-form')
-
-	console.log('FF dependency is '+ dependency)
+	newProject.addAssetDependents(dependency )// add dependents to asset
+	// convert object to text before submitting
+	dependency = JSON.stringify(dependency)
 	
 		$.ajax({type: 'POST',
 				url: url,
 				contentType: 'application/json',
-				data: JSON.stringify(dependency)
+				data:dependency 
 				});
 	// use update asset function  
 
@@ -213,21 +215,19 @@ $('#delete-btn').on('click' , function(event){
 
 		var assetName = $('#assetPanelForm :input[name]').val() // 
 		var assetDeleted  = confirm("Click OK to delete asset: " + assetName + " from this Project");
-
+		// confirmation window action to proceed and delete asset
 		if(assetDeleted == true){
 			var assetId = $('#update-assetId').val()
 			var projectId = window.newProject.id
 
 			for(i=0; i< newProject.assets.length;i++){
 			  	if (newProject.assets[i].id == assetId){
-			  		newProject.assets.splice(i,1)
+			  		newProject.assets.splice(i,1) 
 			  		newProject.assetTotal -= 1;
-
 			  		// Delete marker from map
 			  		markerRemover(assetId)
 			  	}
 			  }
-			
 		// send to delete asset from database
 			postForm('getasset/delete', {assetId : assetId, projectId: projectId})
 		}
@@ -240,17 +240,15 @@ $('#delete-btn').on('click' , function(event){
 
 // Function for Project instance creation
 $('#startProj-btn').on('click' , function(event){
-	var projectName = $('#projectName').val()
-
-	// checking if the map collector object was previously defined
-	if(mapCollector){
-		mapCollector.name = projectName;
+	var projectName = $('#projectName').val() // get project name entered
+	
+	if(projectName != ""){ // if project name is not empty
+		newProject.name = projectName // set the project instance name
+	}else{
+		// project name is empty
+		console.log('Project name is not defined')
 	}
-	else{
-		var mapCollector = {};
-			mapCollector.name = projectName;
-	}
-})
+})	
 
 // Function: To remove marker from the map
 function markerRemover(id){
@@ -272,15 +270,14 @@ function markerRemover(id){
 $('#display-working-state').on('click', function(){
 	$("#rightMenu").css("display", "block");
 	mapCollector.markers.forEach(function(item, index){
+			// check for matching of markersId and assetIds
 			if(item.id == newProject.assets[index].id ){
-
+					// Get the positions of markers on map
 				 	var position ={
           				lat: mapCollector.markers[index].getPosition().lat(),
           				lng: mapCollector.markers[index].getPosition().lng()
           			}
 				if(newProject.assets[index].workingState == 'optimal'){
-          			// get the position of marker clicked
-
           			addCircles('#0000FF', position)
         		}else{
         			addCircles('#FF0000', position)
@@ -314,7 +311,18 @@ $('#display-working-state').on('click', function(){
 		// close the nav bar
 		closeNav()
 })
+
+// Function to close the statistic menu
 	$('#rightMenu').on("click", function(){
 		 document.getElementById("rightMenu").style.display = "none";
 	   
 	})
+
+// Function to return the index of and array object
+ function returnItemIndex(array1 , value){
+    return  array1.findIndex(function findId(element){
+       return (element.id == value)
+      })
+    }
+
+// Functions 

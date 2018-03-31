@@ -10,9 +10,11 @@
 	  this.coordLng = mapCollector.coordinates.lng;
 	  this.subSector = asset.subSector;
 	  this.workingState = ""; // optimal / not optimal / Failed
-	  this.depedents = [];
+	  this.dependents = [];
 	  this.inputs = [];
     this.output = [];
+    
+
 	};
 
 
@@ -49,7 +51,7 @@ function MapProjectInstance(mapCollector) {
 
 
       }
-
+// create asset from scratch
 this.createAsset = function(asset, mapCollector){
     var asset  = new CreateAssetObject(asset, mapCollector)
     asset.projectId = this.id;
@@ -83,4 +85,25 @@ this.createAsset = function(asset, mapCollector){
 	  	}// end of asset working state 
 
   }// end of addAsset function 
+
+// This function adds dependent to the asset
+this.addAssetDependents =  function(dependentsObj){
+  var id = dependentsObj.assetId;
+  var dependentsArray = dependentsObj.dependency;
+  var assetsArr = this.assets
+  var indexVal =  returnItemIndex(assetsArr, id) // get index value of the asset
+  var dependents = this.assets[indexVal].dependents // get dependents array of the asset
+  
+       // dependentsArray.forEach(function(item, index){
+        for(i=0; i<dependentsArray.length;i++){
+               if(!dependents.includes(dependentsArray[i])){// check if dependent already exists
+                 this.assets[indexVal].dependents.push(dependentsArray[i])
+               }else{
+                  console.log("Nothing new to add as dependents")
+               }
+
+           }// }) // end of each function
+    } // end of add dependents function
+
+
 }  
