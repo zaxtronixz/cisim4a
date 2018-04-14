@@ -1,0 +1,77 @@
+<!-- This is the control panel that is navigated by click menu button on the navbar -->
+
+
+	    <div id="control-panel">
+	      	<div class="card square-border">
+	    		<div class="card-header panel-header-color square-border">
+	      			<h4 class="panel-title square-border">
+	          			<a class="card-link" data-toggle="collapse" aria-expanded="false"  href="#collapse2">Visualization</a>
+	        		</h4>
+	      		</div>	
+	      		<div id="collapse2" class="collapse" data-parent="#control-panel">
+	        		<div class="card-body square-border">
+	       		 		<form id="create-visualization-form" action="getasset/createScenario">
+			     	 		<table id="Visualization-table" class="table table-hover bottom-border">
+				    			<tbody>
+					     			<tr>
+					      				<div class="checkbox">
+					        				<td>
+					        					<label>Interdependencies</label>
+					       		 			</td>
+					        				<td>
+					        					<input id="display-interdependencies" type="checkbox"  data-toggle="toggle" data-on="Show" data-off="Hide"  name="display-interdependencies" value="display-interdependencies" data-style="android">
+											 </td>
+										</div>
+					      			</tr>
+					      			<tr>
+					       				<div class="checkbox">
+					        				<td>
+					        					<label>Working state</label>
+					        				</td>
+					        				<td>
+					        					<input id="display-working-state" type="checkbox" data-toggle="toggle" data-on="Show" data-off="Hide"  name="display-working-state" value="display-working-state" data-style="android">
+							 				</td>
+										</div>
+					      			</tr>
+					    		</tbody>
+							</table>
+						</form>
+	       			</div>
+	      		</div>
+	      	</div>
+      		<div class="card square-border">	    		
+      			<div class="card-header panel-header-color square-border" >
+		        	<h4 class="panel-title square-border">
+	          			<a class="card-link" data-toggle="collapse" aria-expanded="false"  href="#collapse3">Create scenario</a>
+	       			</h4>
+	      		</div>
+	      		<div id="collapse3" class="collapse" data-parent="#control-panel">
+	        		<div class="card-body square-border">
+	        			<!-- Insert body for scenario in here -->
+	        			<div id="create-scenario-form" >
+		        			<div class="form-group">
+						  		<label for="scenario">Select Scenario Type:</label>
+						  		<select name="type" class="form-control square-border" id="scenario-selection">
+						    		<option disabled selected>---</option>
+						    		<option>Fire Disaster</option>
+						     		<option>Extreme Wind</option>
+						   		</select>
+							</div>  
+							<div class="form-group">
+						  		<label for="scenario-selected-asset">Apply scenario to:</label>
+						  		<select name="type" class="form-control square-border" id="select-asset-scenario">
+						    		
+						   		</select>
+							</div>  
+							<div class="form-group square-border">
+								<input name="create-scenario-btn" id = "create-scenario-btn" type="submit" value = "Create Scenario"  class="btn btn-secondary square-border">
+							</div>
+							<div class="form-group square-border">
+								<input name="generate-scenarioResult-btn" id = "generate-scenarioResult-btn" type="button" value = "Generate Scenario Result"  class="btn btn-info square-border">
+							</div>
+						</div>
+	        			<!-- Scenario content ends here -->
+	            	</div>
+	      		</div>
+		  	</div> 
+		 </div>

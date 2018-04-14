@@ -1,0 +1,317 @@
+{
+  "id": "jfl5f7jso3i46y0f",
+  "name": "not_defined_jfl5f7jso3i46y0f",
+  "assets": [
+    {
+      "id": "JFL5FHHQ1KXCX",
+      "name": "A",
+      "type": "Transformer",
+      "sector": "Energy",
+      "coordLat": "35.231770252157936",
+      "coordLng": "33.60264517500002",
+      "subSector": "Electricity",
+      "workingState": "failed",
+      "dependents[]": "1",
+      "inputs[]": [
+        "1",
+        "2"
+      ],
+      "projectId": "jfl5f7jso3i46y0f"
+    },
+    {
+      "id": "JFL5FM027QQYC",
+      "name": "AA",
+      "type": "Transformer",
+      "sector": "Energy",
+      "coordLat": "35.09143181922365",
+      "coordLng": "33.593032137890646",
+      "subSector": "Electricity",
+      "workingState": "failed",
+      "dependents[]":[ 
+        "JFL5FR1PHC40Y",
+        "JFL5FWP1POU3Y",
+        "JFL5G892KFBFN"
+        ],
+      "inputs[]": [
+        "JFL5FR1PHC40Y",
+        "JFL5FWP1POU3Y",
+        "JFL5G892KFBFN"
+      ],
+      "projectId": "jfl5f7jso3i46y0f"
+    },
+    {
+      "id": "JFL5FR1PHC40Y",
+      "name": "AAJI",
+      "type": "Transformer",
+      "sector": "Energy",
+      "coordLat": "34.93509141576078",
+      "coordLng": "33.47630240156252",
+      "subSector": "Electricity",
+      "workingState": "failed",
+      "dependents[]": [],
+      "inputs[]": [
+   
+      ],
+      "projectId": "jfl5f7jso3i46y0f"
+    },
+    {
+      "id": "JFL5FWP1POU3Y",
+      "name": "AAJIH",
+      "type": "Transformer",
+      "sector": "Energy",
+      "coordLat": "35.23289198303378",
+      "coordLng": "33.15220572187502",
+      "subSector": "Electricity",
+      "workingState": "failed",
+      "dependents[]": [],
+      "inputs[]": [
+      
+      ],
+      "projectId": "jfl5f7jso3i46y0f"
+    },
+    {
+      "id": "JFL5G892KFBFN",
+      "name": "KI",
+      "type": "EHV lines & Tower",
+      "sector": "Energy",
+      "coordLat": "35.05546626965762",
+      "coordLng": "33.134352938671896",
+      "subSector": "Electricity",
+      "workingState": "failed",
+      "dependents[]": ["JFL5GFSN9R1B7"],
+      "inputs[]": [
+      "JFL5GFSN9R1B7"
+      ],
+      "projectId": "jfl5f7jso3i46y0f"
+    },
+    {
+      "id": "JFL5GFSN9R1B7",
+      "name": "KIK",
+      "type": "Distribution underground lines",
+      "sector": "Energy",
+      "coordLat": "34.94972584491361",
+      "coordLng": "33.18791128828127",
+      "subSector": "Electricity",
+      "workingState": "failed",
+      "dependents[]": [
+        "JFL5GNXGP5OAU",
+        "JFL5GV2E91I5J",
+        "JFL5HOUMFO27D",
+        "JFL5IHJWV0WHX"
+      ],
+      "inputs[]": [
+       "JFL5GNXGP5OAU",
+        "JFL5GV2E91I5J",
+        "JFL5HOUMFO27D",
+        "JFL5IHJWV0WHX"
+      ],
+      "projectId": "jfl5f7jso3i46y0f"
+    },
+    {
+      "id": "JFL5GNXGP5OAU",
+      "name": "KIKO",
+      "type": "Electric grid Operation",
+      "sector": "Energy",
+      "coordLat": "35.2743851197088",
+      "coordLng": "33.430983798046896",
+      "subSector": "Electricity",
+      "workingState": "failed",
+      "dependents[]": [],
+      "inputs[]": [
+     
+      ],
+      "projectId": "jfl5f7jso3i46y0f"
+    },
+    {
+      "id": "JFL5GV2E91I5J",
+      "name": "KIKOK",
+      "type": "Antennae",
+      "sector": "Energy",
+      "coordLat": "34.9362172338015",
+      "coordLng": "33.29502798750002",
+      "subSector": "Electricity",
+      "workingState": "failed",
+      "dependents[]": ["JFL5H4K3A6832"],
+      "inputs[]": [
+       "JFL5H4K3A6832"
+      ],
+      "projectId": "jfl5f7jso3i46y0f"
+    },
+    {
+      "id": "JFL5H4K3A6832",
+      "name": "KIKOKO",
+      "type": "Antennae",
+      "sector": "Energy",
+      "coordLat": "35.02623259127374",
+      "coordLng": "32.969558016796896",
+      "subSector": "Electricity",
+      "workingState": "failed",
+      "dependents[]": ["JFL5HES2YFYJP"],
+      "inputs[]": [
+       "JFL5HES2YFYJP"
+      ],
+      "projectId": "jfl5f7jso3i46y0f"
+    },
+    {
+      "id": "JFL5HES2YFYJP",
+      "name": "WE",
+      "type": "Step Up/down SubStation",
+      "sector": "Energy",
+      "coordLat": "35.30913328357894",
+      "coordLng": "33.79490591718752",
+      "subSector": "Electricity",
+      "workingState": "failed",
+      "dependents[]": ["JFL5HOUMFO27D"],
+      "inputs[]": [
+     "JFL5HOUMFO27D"
+      ],
+      "projectId": "jfl5f7jso3i46y0f"
+    },
+    {
+      "id": "JFL5HOUMFO27D",
+      "name": "WED",
+      "type": "Cable landing Station",
+      "sector": "Energy",
+      "coordLat": "35.28895874639648",
+      "coordLng": "33.25863577558596",
+      "subSector": "Electricity",
+      "workingState": "failed",
+      "dependents[]": [],
+      "inputs[]": [],
+      "projectId": "jfl5f7jso3i46y0f"
+    },
+    {
+      "id": "JFL5HWFHEJTJ2",
+      "name": "WEDE",
+      "type": "Fossil Fuel Plant",
+      "sector": "Energy",
+      "coordLat": "35.1992333106394",
+      "coordLng": "33.02105642988283",
+      "subSector": "Electricity",
+      "workingState": "failed",
+      "dependents[]": [
+        "JFL5I573PDP2M"
+        ],
+      "inputs[]": [
+       "JFL5I573PDP2M"
+      ],
+      "projectId": "jfl5f7jso3i46y0f"
+    },
+    {
+      "id": "JFL5I573PDP2M",
+      "name": "WEDE",
+      "type": "Wired Copper Cable",
+      "sector": "Energy",
+      "coordLat": "34.98911324719288",
+      "coordLng": "33.79147268964846",
+      "subSector": "Electricity",
+      "workingState": "failed",
+      "dependents[]": [],
+      "inputs[]": [
+        
+      ],
+      "projectId": "jfl5f7jso3i46y0f"
+    },
+    {
+      "id": "JFL5IHJWV0WHX",
+      "name": "GAH",
+      "type": "Fossil Fuel Plant",
+      "sector": "Energy",
+      "coordLat": "34.866387303020716",
+      "coordLng": "33.53329397871096",
+      "subSector": "Electricity",
+      "workingState": "failed",
+      "dependents[]": [
+        "JFL5IPC70BVVS"],
+      "inputs[]": [
+        "JFL5IPC70BVVS"
+      ],
+      "projectId": "jfl5f7jso3i46y0f"
+    },
+    {
+      "id": "JFL5IPC70BVVS",
+      "name": "GAH",
+      "type": "EHV lines & Tower",
+      "sector": "Energy",
+      "coordLat": "35.39313969712983",
+      "coordLng": "33.84091116621096",
+      "subSector": "Electricity",
+      "workingState": "failed",
+      "dependents[]": ["JFL5IUYCI9UF4"],
+      "inputs[]": [
+        "JFL5IUYCI9UF4"
+      ],
+      "projectId": "jfl5f7jso3i46y0f"
+    },
+    {
+      "id": "JFL5IUYCI9UF4",
+      "name": "GAHA",
+      "type": "EHV lines & Tower",
+      "sector": "Energy",
+      "coordLat": "35.153210560015424",
+      "coordLng": "33.32524038984377",
+      "subSector": "Electricity",
+      "workingState": "failed",
+      "dependents[]": [],
+      "inputs[]": [
+             ],
+      "projectId": "jfl5f7jso3i46y0f"
+    },
+    {
+      "id": "JFL5J1179H9IO",
+      "name": "GAHAJ",
+      "type": "EHV lines & Tower",
+      "sector": "Energy",
+      "coordLat": "35.20259980589004",
+      "coordLng": "33.75096060468752",
+      "subSector": "Electricity",
+      "workingState": "failed",
+      "dependents[]": ["JFL5J5YO4WCTP"],
+      "inputs[]": [
+        "JFL5J5YO4WCTP"
+      ],
+      "projectId": "jfl5f7jso3i46y0f"
+    },
+    {
+      "id": "JFL5J5YO4WCTP",
+      "name": "GAHAJA",
+      "type": "EHV lines & Tower",
+      "sector": "Energy",
+      "coordLat": "35.061086931601466",
+      "coordLng": "33.80863882734377",
+      "subSector": "Electricity",
+      "workingState": "failed",
+      "dependents[]": [
+        "JFL5JE1K549DZ",
+        "JFL5JE1K549DZ"],
+      "inputs[]": [
+        "JFL5JE1K549DZ",
+        "JFL5JE1K549DZ"
+      ],
+      "projectId": "jfl5f7jso3i46y0f"
+    },
+    {
+      "id": "JFL5JE1K549DZ",
+      "name": "GAHAJAJ",
+      "type": "Transformer",
+      "sector": "Energy",
+      "coordLat": "34.918202290973916",
+      "coordLng": "33.013503329296896",
+      "subSector": "Electricity",
+      "workingState": "failed",
+      "dependents[]": [],
+      "inputs[]": [
+     
+      ],
+      "projectId": "jfl5f7jso3i46y0f"
+    }
+  ],
+  "markers": [],
+  "assetsWorkingState": {
+    "optimal": [],
+    "failed": []
+  },
+  "assetTotal": 19,
+  "scenario": {},
+  "resultVisualization": {}
+}

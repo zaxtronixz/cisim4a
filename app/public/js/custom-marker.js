@@ -12,7 +12,7 @@ function customMarker(AssetName){
 	    case "EHV lines & Tower":
 	        return fileLoc + "high_voltage.png";
 	        break;
-	    case "Distribution underground lines":
+	    case "Distr. underground lines":
 	        return fileLoc + "distribution.png";
 	        break;
 	    case "Electric grid Operation":

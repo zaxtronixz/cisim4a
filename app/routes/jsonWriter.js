@@ -30,7 +30,8 @@ jsonWriter.addAsset = function(asset){
 					jsonFile.projects[i].assets.push(asset);
 					jsonFile.projects[i].assetTotal += 1;
 				} 
-			} return jsonFile;
+			} 
+		// return jsonFile;
 		fs.writeFileSync( 'app/data/data.json', JSON.stringify(jsonFile), 'utf8', function (err) {
   			console.error(err)
   			
@@ -42,7 +43,6 @@ jsonWriter.updateAsset = function(asset){
 		var projectId = asset.projectId
 	    for(i=0; i< jsonFile.projects.length; i++){
 	    	// match projectId with json file project
-
 	    	if(jsonFile.projects[i].id == projectId){
 	       	   	for(k=0; k< jsonFile.projects[i].assets.length; k++){
 	       	   		// match assetId with jsonfile asset
@@ -88,9 +88,52 @@ jsonWriter.deleteAsset = function(assetId, projectId){
 }
 
 // 5. ADD DEPENDENCY: to asset details
-jsonWriter.createDependency = function(asset, dependentsArray){
-			jsonFile.projects.push(newProject)    
-		    console.log("this is jsonFile after unshift at jsonWriter "+ JSON.stringify(jsonFile))
+jsonWriter.createDependency = function(receivedObject){
+	var assetId = receivedObject.assetId;
+	var dependency = receivedObject.dependency;
+	var projectId = receivedObject.projectId;
+
+	var project = getProjectGivenId(projectId) // get project given id
+  	var asset   = getAssetFromProject(project, assetId) // get asset given project and asset id
+  	if(asset.dependents){//  if dependents already exist
+  		for(i=0;i<dependency.length;i++){// loop through the dependency list
+  			if(!asset.dependents.includes(dependency[i])){// only assets not already in list
+  				asset.dependents.push(dependency[i])
+  			}
+  		}
+  	}else{
+  		asset.dependents = [];// declare dependents
+  		asset.dependents = dependency // add dependency
+  	}
+  	// jsonFile = addProjectBack(project)
+		    console.log("this is jsonFile after unshift at jsonWriter "+ JSON.stringify(project))
+		    fs.writeFileSync( 'app/data/data.json', JSON.stringify(jsonFile), 'utf8', function (err) {
+  				console.error(err)
+  			})
+}
+
+
+// 5. ADD INPUTS: to asset details
+jsonWriter.addInputs = function(receivedObject){
+	var assetId = receivedObject.assetId;
+	var inputs = receivedObject.dependency;
+	var projectId = receivedObject.projectId;
+
+	var project = getProjectGivenId(projectId) // get project given id
+  	var asset   = getAssetFromProject(project, assetId) // get asset given project and asset id
+  	if(asset.inputs){//  if dependents already exist
+  		for(i=0;i<inputs.length;i++){// loop through the dependency list
+  			if(!asset.inputs.includes(inputs[i])){// only assets not already in list
+  				asset.inputs.push(inputs[i]) // add inputs
+  			}
+  		}changeWorkingState(asset) // check working state
+  	}else{
+  		asset.inputs = [];// declare dependents
+  		asset.inputs = inputs // add dependency
+  		changeWorkingState(asset) // check wworking state
+  	}
+  	// jsonFile = addProjectBack(project)
+		    console.log("this is jsonFile after unshift at jsonWriter "+ JSON.stringify(project))
 		    fs.writeFileSync( 'app/data/data.json', JSON.stringify(jsonFile), 'utf8', function (err) {
   				console.error(err)
   			})
@@ -114,7 +157,33 @@ jsonWriter.createVisualResult = function(mapInstance){
   			})
 }
 
+// FUNCTION : To return project given project Id
+function getProjectGivenId(projectId){
+ 	for(i=0; i< jsonFile.projects.length; i++){
+    	// match projectId with json file project
+    	if(jsonFile.projects[i].id == projectId){
+    		return jsonFile.projects[i]
+    	}
+   	}
+}//----------------------------------------------- end of return project
 
+// FUNCTION : To return asset given project and assetId
+function getAssetFromProject(project, assetId){
+   	for(k=0; k< project.assets.length; k++){
+   		// match assetId with jsonfile asset
+    	if(project.assets[k].id == assetId){
+    			return project.assets[k] //return the asset desired
+    	}
+    }
+}
+
+function changeWorkingState(asset){
+	if(asset.dependents.length == asset.inputs.length){
+		asset.workingState = "optimal"
+	}else{
+		console.log("@jsonWriter: inputs/ dependents required")
+	}
+}
 
 module.exports = jsonWriter;
 

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+	
+<style type="text/css">
+	#mynetwork{
+		background-color: #111;
+	}
+</style>
+
+	<title>
+		
+
+	</title>
+</head>
+<body>
+	<h1> Vis graph</h1>
+	<div id="mynetwork"></div>
+
+<script type="text/javascript">
+    // create an array with nodes
+    var nodes = new vis.DataSet([
+        {id: "123", label: 'asset one'},
+        {id: 2, label: 'asset two'},
+        {id: 3, label: 'asset three'},
+        {id: 4, label: 'asset four'},
+        {id: 5, label: 'asset five'}
+    ]);
+
+    // create an array with edges
+    var edges = new vis.DataSet([
+        {from: "123", to: 3},
+        {from: "123", to: 2},
+        {from: 2, to: 4},
+        {from: 2, to: 5}
+    ]);
+
+    // create a network
+    var container = document.getElementById('mynetwork');
+
+    // provide the data in the vis format
+    var data = {
+        nodes: nodes,
+        edges: edges
+    };
+    var options = {};
+
+    // initialize your network!
+    var network = new vis.Network(container, data, options);
+</script>
+
+</body>
+</html>

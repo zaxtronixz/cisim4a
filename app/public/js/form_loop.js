@@ -3,7 +3,7 @@
 
 function makeAsset(asset){
 	var frm = document.getElementById('assetPanelForm');
-	var leftOvers = "<ul>";
+	console.log("@makeAsset: this is asset "+ JSON.stringify(asset))
 
 	for(i = 0; i < frm.elements.length; i++){
 		for (prop in asset){
@@ -24,11 +24,6 @@ function makeAsset(asset){
 					frm.elements[i].value = asset[prop];
 					frm.elements[i].disabled = true;
 	        }// end of if else statement
-
-			// else if (typeof frm.elements.prop){	// properties created based on map details
-			// 			leftOvers += " <li><lable>"+ prop + "</lable>"
-			// 			leftOvers += " "+ asset[prop] + "</li>"
-			// }//-- end of else statement
 	    }//-- end of asset obj loop
 	}//-- end of form element loop
 	if ($( "#update-assetId" ).length){

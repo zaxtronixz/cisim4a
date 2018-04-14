@@ -14,28 +14,32 @@
 						<% include partials/template/results-template.ejs %>
 	<!-- =============== resultpanel ends ====================================-->			
 	
-	<div class="container-fluid" style="margin-top:50px">
+	<div class="container-fluid" >
+		<div class="row">
 
-		<div id="mySidenav" class="sidenav control-panel-bg" style="margin-top:50px">
+			<div id="mySidenav" class="sidenav control-panel-bg nice-fonting2" style="margin-top:50px">
 		
 	<!--=============== Side navigation Content starts here ============ -->
 						<% include partials/content/sidenav.ejs %>
 	<!--=============== Sidenav Ends =================================== -->
-		</div>
+	<!--=============== asset Details starts here ============ -->
+						<% include partials/template/asset-details.ejs %>
+	<!--=============== Asset details Ends =================================== -->
+	<!--=============== control panel Content starts here ============ -->
+						<% include partials/template/control-panel.ejs %>
+	<!--=============== ControlPanel Ends =================================== -->	
+
+			</div>
+	<!-- 	<h4>Map Section</h4> -->
+			<div id="project-title"></div>
+	
 		
-		<div id="project-title" class="container-fluid"></div>
-		<hr>
-		<h3>Map Section</h3>
-		<div id="map"></div>
+			<div id="map"></div>
 
 		</div> <!-- row div closed here -->
-
-		</div>
-		<br>
-
-
+	</div>
 	<!--=============== Footer starts here ============================ -->
-						<% include partials/template/footer.ejs %>
+						<!-- <% include partials/template/footer.ejs %> -->
 	<!--=============== Footer Ends =================================== -->
 	<!--=============== Scriptpath starts here ======================== -->
 						<% include partials/template/scriptpath.ejs %>

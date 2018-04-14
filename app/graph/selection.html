@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+
+   <link rel="stylesheet" href="multi/multi-select.css">
+
+
+    <style>
+
+    </style>
+  </head>
+<body>
+  <!-- start -->
+  <h1>Pre-selected-options</h1>
+  <select id='pre-selected-options' multiple='multiple'>
+    <option value='elem_1' selected>elem 1</option>
+    <option value='elem_2'>elem 2</option>
+    <option value='elem_3'>elem 3</option>
+    <option value='elem_4' selected>elem 4</option>
+    ...
+    <option value='elem_100'>elem 100</option>
+  </select>
+  <!-- ends -->
+  <!-- jQuery -->
+
+  <script src="../js/jquery.multi-select.js"></script>
+  <script type="text/javascript">
+  // run pre selected options
+  $('#pre-selected-options').multiSelect();
+  </script>
+</body>
+</html> 

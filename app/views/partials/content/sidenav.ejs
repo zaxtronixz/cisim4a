@@ -1,6 +1,7 @@
-	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
 			 
-	<div id="first-accordion">
+<div id="first-accordion">
+	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 	   	<div class="card square-border">
 	   		<!-- create asset begins here -->
 	    	<div class="card-header panel-header-color square-border" >
@@ -23,7 +24,7 @@
 					  		<select name="type" class="form-control square-border" id="type">
 					    		<option>Transformer</option>
 					    		<option>EHV lines &amp; Tower</option>
-					     		<option>Distribution underground lines</option>
+					     		<option>Distr. underground lines</option>
 					    		<option>Electric grid Operation</option>
 					         	<option>Antennae</option>
 					    		<option>Base Station Building</option>
@@ -51,224 +52,14 @@
 						</div>
 
 						<div>
-							<button type="submit" id="createAsset-btn" onclick="assetCreator()" class="btn btn-secondary square-border">Create Asset</button>
+							<button type="submit" id="createAsset-btn"  class="btn btn-secondary square-border">Create Asset</button>
 						</div>
 					</form>
 				</div>
 	    	</div><!-- end of body for create asset accordion-->
-	      <div class="card square-border">
-	    	<div class="card-header panel-header-color square-border">
-	      		
-	        		<h4 class="panel-title square-border">
-	          			<a class="card-link" data-toggle="collapse" aria-expanded="false"  href="#collapse2">Visualize</a>
-	        		</h4>
-	      	</div>	
-	      		<div id="collapse2" class="collapse" data-parent="#first-accordion">
-	        		<div class="card-body square-border">
-	      <!--   insert content for visualization -->
-	     		 <form id="create-visualization-form" action="getasset/createScenario">
-			     	 <table id="Visualization-table" class="table table-hover bottom-border">
-				    	<tbody>
-					      <tr>
-					      	<div class="checkbox">
-					        <td>
-					        	<label>Display interdependencies</label>
-					        </td>
-					        <td>
-					        	<input id="display-interdependencies" type="checkbox" name="display-interdependencies" value="display-interdependencies">
-							 </td>
-							</div>
-					      </tr>
-					      <tr>
-					       	<div class="checkbox">
-					        <td>
-					        	<label>Display working state</label>
-					        </td>
-					        <td>
-					        	<input id="display-working-state" type="checkbox" name="display-working-state" value="display-working-state">
-							 </td>
-							</div>
-					      </tr>
-					    </tbody>
-					</table>
-				</form>
 
-	      <!-- visualization  ends here -->
-	       			</div>
-	      		</div>
-	      	</div>
-	      		<div class="card square-border">	    		<div class="card-header panel-header-color square-border" >
-		        	<h4 class="panel-title square-border">
-	          			<a class="card-link" data-toggle="collapse" aria-expanded="false"  href="#collapse3">Create scenario</a>
-	       			</h4>
-	      		</div>
-	      		<div id="collapse3" class="collapse" data-parent="#first-accordion">
-	        		<div class="card-body square-border">
-	        			<!-- Insert body for scenario in here -->
-	        			<form id="create-scenario-form" action="getasset/createScenario">
-	        			<div class="form-group">
-					  		<label for="scenario">Select Scenario Type:</label>
-					  		<select name="type" class="form-control square-border" id="scenario-selection">
-					    		<option disabled selected>---</option>
-					    		<option>Fire Disaster</option>
-					     		<option>Extreme Wind</option>
-					   		</select>
-						</div>  
-						<div class="form-group">
-					  		<label for="scenario-selected-asset">Apply scenario to:</label>
-					  		<select name="type" class="form-control square-border" id="scenario-selected-asset">
-					    		<option disabled selected>---</option>
-					    		<option>Asset 1</option>
-					     		<option>Asset 2</option>
-					   		</select>
-						</div>  
-						<div class="form-group square-border">
-							<input name="create-scenario-btn" id = "create-scenario-btn" type="submit" value = "Create Scenario"  class="btn btn-secondary square-border">
-						</div>
-						<div class="form-group square-border">
-							<input name="generate-scenarioResult-btn" id = "generate-scenarioResult-btn" type="button" value = "Generate Scenario Result"  class="btn btn-info square-border">
-						</div>
-					</form>
+		</div>
 
-	        			<!-- Scenario content ends here -->
-	            	</div>
-	      		</div>
-		  	</div> 
-		  </div>
-	</div>
+</div>
+<!-- ==========================Second accordion is inserted here======================== -->
 
-<!--======= template for loading received value from database =======-->
-
-	<div id="getAssetPanel" class="panel panel-primary square-border">
-     <!--  =============== the new boostsrap 4 form was inserted here ===========-->
-
-     <div id="second-accordion">
-    <div class="card square-border">
-      <div class="card-header square-border">
-        <a class="card-link" data-toggle="collapse"  href="#collapseOne">
-          Asset Details
-        </a>
-      </div>
-      <div id="collapseOne" class="collapse" data-parent="#second-accordion">
-        <div class="card-body">
-<!--============== asset panel form for laoding asset details begins here ======================= -->
-	
-
-	<!-- table for edit and delete asset			 -->
-		 	 <table id="panel-table" class="table">
-		    	<tbody>
-			      <tr>
-			        <td>
-			        	<div class="checkbox">
-						  	<label><input id="edit-asset" type="checkbox" name="edit-asset" value="edit"> Edit Asset</label>
-						</div>
-			        </td>
-			        <td>
-			        	<div class="checkbox">
-						  	<label><input id="delete-btn" type="checkbox" name="delete-asset" value="delete">Delete</label>
-						</div>
-			        </td>
-			      </tr>
-			    </tbody>
-			</table>
-
-
-  <form id="assetPanelForm" action="/getasset/update" method="post">
-
- 			<div class="form-group square-border">
-				<label for="name">Asset Name:</label>
-				<input name="name" class="form-control square-border"  required placeholder="Type Asset Name">
-			</div>
-			<div class="form-group">
-			<label for="sector">Asset Type:</label>
-				<select name="type" class="form-control square-border">
-					<option>Transformer</option>
-					<option>EHV lines &amp; Tower</option>
-					<option>Distribution underground lines</option>
-					<option>Electric grid Operation</option>
-					<option>Antennae</option>
-					<option>Base Station Building</option>
-					<option>Step Up/down SubStation</option>
-					<option>Cable landing Station</option>
-					<option>Fossil Fuel Plant</option>
-					<option>Wired Copper Cable</option>
-				</select>
-			</div>
-			<div class="form-group square-border">
-				<label for="sector">Sector:</label>
-				<select name="sector" class="form-control square-border">
-					<option>Energy</option>
-					<option>ICT</option>
-				</select>
-			</div>
-			<div class="form-group square-border">
-				<label for="sector">Sub Sector:</label>
-				<select name="subSector" class="form-control square-border">
-					<option>Electricity</option>
-					<option>Telecomm</option>
-				</select>
-			</div>
-			<div class="form-group square-border">
-				<input name="update-asset-btn" id = "update-asset-btn" type="submit" value = "Update asset"  class="btn btn-secondary square-border">
-
-			</div>
-
-			</form>
-<!--============== asset panel form ends here ===================================== -->
-        </div>
-      </div>
-    </div>
-    <div class="card square-border">
-      <div class="card-header square-border">
-        <a class="collapsed card-link" data-toggle="collapse"  href="#collapseTwo">
-        Add dependencies:
-      </a>
-      </div>
-      <div id="collapseTwo" data-parent="#second-accordion" class="collapse">
-        <div class="card-body">
-        	<form id="create-dependents-form" action="/getasset/createDependency" method="post" >
-		        <div class="form-group">
-				  <label for="sel1">Select Dependencies:</label>
-				  <select multiple class="form-control" id="multiple-select">
-				  </select>
-				</div>
-				<ul id="selected-list">	</ul>
-				<div class="form-group square-border">
-					<input name="create-dependents-btn" id = "create-dependents-btn" type="submit" value = "Create dependents"  class="btn btn-secondary square-border">
-				</div>
-			</form>
-        </div>
-      </div>
-    </div>
-    <div class="card square-border">
-      <div class="card-header square-border">
-        <a class="collapsed card-link" data-toggle="collapse"   href="#collapseThree">
-         Add inputs:
-        </a>
-      </div>
-      <div id="collapseThree" data-parent="#second-accordion"  class="collapse">
-        <div class="card-body">
-		<!-- inputs body begins here          -->
-		<form id="add-input-form" method="post" action="/getasset/addInput">
-	         <div class="form-group">
-			  <label for="input-multiple-select">Select inputs:</label>
-			  <select multiple class="form-control" id="input-multiple-select">
-			  </select>
-			</div>
-			<ul id="input-selected-list">	</ul>
-			<div class="form-group square-border">
-				<input name="add-input-btn" id = "add-input-btn" type="submit" value = "Add Input"  class="btn btn-secondary square-border">
-			</div>
-        </div>
-		</form>
-		<!-- inputbody ends -->
-        </div>
-      </div>
-    </div>
-  </div>
-		
-     <!--  =============== New boostsrap 4 form ends here ===========-->
-
-
-
-    </div>

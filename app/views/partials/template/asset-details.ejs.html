@@ -1,0 +1,102 @@
+<!--======= template for loading received value from database =======-->
+
+<div id="getAssetPanel" class="panel panel-primary square-border">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div id="second-accordion">
+    	<div class="card square-border">
+      		<div class="card-header square-border">
+        		<a class="card-link" data-toggle="collapse"  href="#collapseOne">
+          Asset Details</a>
+     		 </div>
+      		<div id="collapseOne" class="collapse" data-parent="#second-accordion">
+        		<div class="card-body">
+
+				 	<table id="panel-table" class="table">			
+
+					</table>	
+
+			  		<form id="assetPanelForm" action="/getasset/update" method="post">
+			 			<div class="form-group square-border">
+							<label for="name">Asset Name:</label>
+							<input name="name" class="form-control square-border"  required placeholder="Type Asset Name">
+						</div>
+						<div class="form-group">
+							<label for="sector">Asset Type:</label>
+							<select name="type" class="form-control square-border">
+								<option>Transformer</option>
+								<option>EHV lines &amp; Tower</option>
+								<option>Distribution underground lines</option>
+								<option>Electric grid Operation</option>
+								<option>Antennae</option>
+								<option>Base Station Building</option>
+								<option>Step Up/down SubStation</option>
+								<option>Cable landing Station</option>
+								<option>Fossil Fuel Plant</option>
+								<option>Wired Copper Cable</option>
+							</select>
+						</div>
+						<div class="form-group square-border">
+							<label for="sector">Sector:</label>
+							<select name="sector" class="form-control square-border">
+								<option>Energy</option>
+								<option>ICT</option>
+							</select>
+						</div>
+						<div class="form-group square-border">
+							<label for="sector">Sub Sector:</label>
+							<select name="subSector" class="form-control square-border">
+								<option>Electricity</option>
+								<option>Telecomm</option>
+							</select>
+						</div>
+						<div class="form-group square-border">
+							<input name="update-asset-btn" id = "update-asset-btn" type="submit" value = "Update asset"  class="btn btn-secondary square-border" >
+						</div>
+					</form>
+       		</div>
+      		</div>
+    	</div>
+    	<div class="card square-border">
+      		<div class="card-header square-border">
+        		<a class="collapsed card-link" data-toggle="collapse"  href="#collapseTwo"> Add dependencies:</a>
+      		</div>
+      		<div id="collapseTwo" data-parent="#second-accordion" class="collapse">
+        		<div class="card-body">
+        			<div id="create-dependents-form">
+		        		<div class="form-group">
+				  			<label for="sel1">Select Dependencies:</label>
+				  			<div multiple class="form-control" id="multiple-select">
+				  			</div>
+						</div>
+						<ul id="selected-list">	</ul>
+						<div class="form-group square-border">
+							<input name="create-dependents-btn" id = "create-dependents-btn" type="submit" value = "Create dependents"  class="btn btn-secondary square-border">
+						</div>
+					</div>
+        		</div>
+      		</div>
+    	</div>
+    	<div class="card square-border">
+      		<div class="card-header square-border">
+        		<a class="collapsed card-link" data-toggle="collapse"   href="#collapseThree"> Add inputs:</a>
+      		</div>
+      		<div id="collapseThree" data-parent="#second-accordion"  class="collapse">
+        		<div class="card-body">
+				
+					<form id="add-input-form" method="post" action="/getasset/addInput">
+	         			<div class="form-group">
+			 				<label for="input-multiple-select">Select inputs:</label>
+			  				<select multiple class="form-control" id="input-multiple-select">
+			 				</select>
+						</div>
+						<ul id="input-selected-list">	</ul>
+						<div class="form-group square-border">
+							<input name="add-input-btn" id = "add-input-btn" type="submit" value = "Add Input"  class="btn btn-secondary square-border">
+						</div>
+					</form>
+		
+        		</div>
+      		</div>
+    	</div>
+  	</div>
+</div>	 

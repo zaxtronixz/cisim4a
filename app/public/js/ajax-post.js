@@ -20,9 +20,11 @@ $(`form#createAsset-form`).submit(function(event){
 		mapCollector.createMarker(assetSelected)// create a marker for this asset
 	 	// post asset data to form url
 	 	postForm(url, asset);
+	 	closeNav()
 	})
 });
 
+// FUNCTION : TO start new project instance
 function assetMaker(obj, mapCollector,  somefx){
 	// var asset = somefx(obj, mapCollector)
 	var asset = newProject.createAsset(somefx(obj, mapCollector), mapCollector);

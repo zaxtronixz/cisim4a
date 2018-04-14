@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  
+  <script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+<!--   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script> -->
+ <script src="0.4.1/scripts/vendor.js" charset="utf-8"></script>
+ <link rel="stylesheet" href="0.4.1/styles/vendor.css">
+
+ <link rel="stylesheet" href="0.4.1/alchemy.min.css">
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.4/lodash.min.js"></script> -->
+
+<style>
+
+#graph-panel{
+    height: 400px;
+}
+
+
+.on-top{
+     z-index: 3;
+     display: inline-block;
+     color:#ccc;
+}
+
+
+#pane {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+   background: rgba(0, 0, 0, 0.85);
+    overflow-x: hidden;
+    transition: 0.9s;
+    padding-top: 20px;
+  }
+
+
+#mySidenav a {
+    position: absolute;
+    right: -20px;
+    transition: 0.9s;
+    padding: 15px;
+    width: 100px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    border-radius: 0 5px 5px 0;
+}
+
+#stats-btn {
+    top: 120px;
+    background-color: #f44336;
+}
+
+#graph-btn{
+    top: 200px;
+    background-color: #555
+}
+</style>
+</head>
+<body>
+
+<div id="mySidenav" class="sidenav">
+  <a href="#" id="stats-btn">Stats</a>
+  <a href="#" id="graph-btn">Graph</a>
+</div>
+
+<div >
+  <h2>Hoverable Sidenav Buttons</h2>
+   
+</div>
+
+<div id = "pane">
+
+<div class="container" >
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    
+    <table>
+        <tr>
+            <td>
+    <li class="nav-item">
+      <a class="nav-link" id="stats-header" data-toggle="tab" href="#stats-pane">Statistics</a>
+    </li>
+    </td><td>
+    <li class="nav-item">
+      <a class="nav-link" id="graph-header" data-toggle="tab" href="#graph-pane">Graph</a>
+    </li>
+        </td>
+        </tr>
+    </table>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content fade show">
+    <div id="stats-pane" class="tab-pane fade hide"><br>
+     <!--  <h3>Statistics</h3> -->
+      <p class="on-top">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div id="graph-pane" class="tab-pane fade show"><br>
+     <!--  <h3>Graphs</h3> -->
+       <table class="table table-dark">
+    <thead>
+      <tr>
+        <th>Project</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+     <tr >
+        <td colspan="2" id="graph-panel" >
+           <div class="alchemy" id="alchemy"></div>
+        </td>
+      
+
+      </tr>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+
+      </tr>
+
+    </tbody>
+  </table>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+ 
+</div>
+
+
+
+
+
+
+<script>
+
+document.getElementById("graph-btn").addEventListener("click", function(){
+    openResultPane("graph" ) 
+});
+
+function openResultPane(name) {
+    $('#'+name+"-pane").toggleClass("active")
+    $('#'+name+"-header").toggleClass("active")
+    if(document.getElementById('pane').style.width == "50%"){
+        // open side nav
+        document.getElementById('pane').style.width = "0";
+        document.getElementById(name+"-btn").style.marginRight = "0";
+    }else{
+        document.getElementById('pane').style.width = "50%";
+        document.getElementById(name+"-btn").style.marginRight = "50%";
+    }
+}
+</script>
+   <script type="text/javascript" src="0.4.1/alchemy.min.js"></script>
+ <script type="text/javascript">
+    var config = {
+      dataSource: 'data.json',
+      forceLocked: true,
+      graphHeight: function(){ return 400; },
+      graphWidth: function(){ return 400; },      
+      linkDistance: function(){ return 40; },
+      nodeTypes: {"node_type":[ "Maintainer",
+                                "Contributor"]},
+      nodeCaption: function(node){ 
+        return node.caption + " " + node.fun_fact;}
+      };
+
+    alchemy = new Alchemy(config)
+  </script>
+    
+</body>
+</html> 

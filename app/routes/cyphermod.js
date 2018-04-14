@@ -21,7 +21,9 @@ var graphenedbURL = "bolt://hobby-kflccfbhieglgbkeildpppal.dbs.graphenedb.com:24
 var graphenedbUser = "app89692672-Tf8UcL";
 var graphenedbPass = "b.5IOnVenDmfcG.eDpXEKI1gxxRj1iV";
 
-var driver = neo4j.driver(graphenedbURL, neo4j.auth.basic(graphenedbUser, graphenedbPass));
+// var driver = neo4j.driver(graphenedbURL, neo4j.auth.basic(graphenedbUser, graphenedbPass));
+
+var driver = neo4j.driver("bolt://localhost", neo4j.auth.basic("neo4j", "2friedXs"));
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -34,7 +36,7 @@ cypher.createAsset = function(asset){
     var session = driver.session();
     console.log("@Cypher-Create-asset : This is the assetId " + asset.id);
     session
-    .run(`CREATE (n:ASSET{
+    .run( `CREATE (n:ASSET{
             id:'${asset.id}',
             name:'${asset.name}',
             type:'${asset.type}',
@@ -43,7 +45,8 @@ cypher.createAsset = function(asset){
             projectId :'${asset.projectId}',
             sector:'${asset.sector}',
             subSector:'${asset.subSector}'}) 
-            RETURN n`)
+            RETURN n`
+            )
     .then(function(result) {
         result.records.forEach(function(record) {
             console.log(record)
@@ -56,8 +59,7 @@ cypher.createAsset = function(asset){
 }
 
 
-// 2. CREATE DEPENDENCY
-// create dependency for a particular asset
+// 2. CREATE DEPENDENCY: create dependency for a particular asset
 cypher.createDependency = function(myObject){
     var assetId = myObject.assetId;
     var dependencyArray = myObject.dependency;
@@ -71,7 +73,7 @@ cypher.createDependency = function(myObject){
                          UNWIND myList AS item
                          MATCH (a:ASSET{id:'${assetId}'}) 
                          MATCH (b:ASSET{id:item}) 
-                         CREATE (a)<-[:PROVIDES_{serviceProvided:b.subSector}]-(b)
+                         CREATE (a)-[:DEPENDS_ON{serviceRequired:b.subSector}]->(b)
                          RETURN a, b`)
     .then(function(result) {
         result.records.forEach(function(record) {
@@ -85,21 +87,16 @@ cypher.createDependency = function(myObject){
 }
 
 
-
-
+// 3. CREATE ASSET DETAIL: create dependency for a particular asset
 cypher.getAssetDetails = function(assetId, res){
  var session = driver.session();
  var matchResult = {};
- console.log("@cypher:getAssetDetails - assetId "+ assetId)
     session
     .run(`MATCH (n:ASSET{ 
             id:${assetId}})
                  RETURN n`)
     .then(function(result) {
             var returned =  result.records[0]._fields[0].properties
-            // result.records.forEach(function(record) {
-      //       console.log("this is the record._fields[0]" + record._fields[0]);
-      //       })
             matchResult.id = returned.id
             matchResult.name = returned.name
             matchResult.type = returned.type
@@ -160,14 +157,20 @@ cypher.updateAsset = function(asset){
 
 // create scenario on an asset selected
 // change it states and cut allrelationships
-cypher.createScenario = function(asset){
+cypher.createScenario = function(scenObject, res){
+    var assetId = scenObject.assetId
     var session = driver.session();
+    console.log("@cypher: assetId is "+ assetId)
     session
-   .run(`MATCH (n:ASSET{id:${assetId}}) DELETE n`)
+   .run(`MATCH (a:ASSET)<-[:DEPENDS_ON*]-(dependents)
+         WHERE a.id = '${assetId}'
+         RETURN collect(distinct dependents)`)
     .then(function(result) {
-        result.records.forEach(function(record) {
-            console.log(record)
+        var assetsAffected = []
+         result.records.forEach(function(record) {
+                    assetsAffected.push(record) // affected assets to the list
         });
+        res.json(assetsAffected);
         session.close();
     })
     .catch(function(error) {

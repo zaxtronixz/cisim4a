@@ -29,3 +29,45 @@
       </div>
     </div>
   </div>
+
+  <!-- model to load old project -->
+
+   <!-- Modal to load recent project -->
+  <div class="modal fade" id="recentProjectModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Select recent Project</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div  class="modal-body">
+          <table class="table">
+            <thead>
+                <tr>
+                  <th >Name</th>
+                  <th>id</th>
+                  <th>Location</th>
+                </tr>
+            </thead>
+          </table>
+          <div id="recent-project-panel" class="form-group">
+            <table class="table table-hover">
+              <tbody  id="recentProjectTable">
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="recentProject-btn" data-dismiss="modal">Load Project</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>

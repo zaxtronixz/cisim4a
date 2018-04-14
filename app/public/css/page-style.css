@@ -1,13 +1,126 @@
+/*some nice fonts for later use*/
+.nice-fonting{
+	    --font-family-sans-serif: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    	--font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+ 
 
-/*hover colour to dependent selection option*/
-#multiple-select option:hover{
-	background-color: #ccc;
+.nice-fonting2{
+	font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.9rem
+}
+
+.nice-fonting3{
+	    --font-family-sans-serif: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+#recentProjectModal{
+	font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.9rem;
+   }
+
+div.modal-body .form-group{
+	max-height:250px;
+	overflow-y: scroll;
+}
+
+.active{
+	background-color: #0a7af8;
+	color:#fff;
+}
+
+ /*make the dropdown button on b=nvabar hoverable*/
+/*.dropdown:hover > .dropdown-menu {
+    display: block;
+}
+.dropdown > .dropdown-toggle:active {
+    /*Without this, clicking will make it sticky*/
+    /*pointer-events: none;*/
+
+ /*Working state check button style*/
+
+
+/*Make body height same with screen*/
+body{
+	height: 100vh;
+}
+  /*expand navbar input field on focus*/
+  input#userInput[type=text] {
+    width: 150px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    background-color: #434857;
+    color: #657576;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input#userInput[type=text]:focus {
+    width: 100%;
+     background-color: #fff;
+}
+
+/*navbar style for button hover*/
+ul.topnav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/*selection element to remove list style*/
+.selection-list-group{
+	padding-left:0px;
+	list-style: none;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	border: 1px solid #ccc;
+	overflow:auto;
+	height: 250px;
+}
+
+#mySidenav div.card-body{
+	overflow-y: scroll;
 }
 
 
-/*attach scroll bar to the create asset element */
+/*hover colour to highlight select option*/
+.selection-list-item{
+  margin: 2px 0 2px 0;
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 14px;
+  color: black;
+  display: block;
+  position: relative;
+}
+
+.selection-list-item:hover{
+	cursor: pointer;
+	background-color: #999;
+	color:#fff;
+}
+
+/*attach scroll bar to the create asset element 
 #createAsset-form{
 	overflow: hidden;
+}
+*/
+/*page title style */
+#project-title{
+	padding: 5px;
+    position: absolute;
+    right: 100px;
+    top: 55px;
+    z-index: 30;
+    width: 160px;
+    overflow:hidden;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+
 }
 
 /*border added to tables "visualization panel"*/
@@ -25,26 +138,26 @@
 
 
 /*project button on navbar style*/
-.nav-item #navbardrop{
+/*.nav-item #navbardrop{
 	font-size: 14px;
 	padding-bottom: 21px;
 	margin-right: 10px;
 }
-
+*/
 /*to remove caret symbol from navbar menu icon*/
-.dropdown-toggle::after {
+/*.dropdown-toggle::after {
     display:none
-}
+}*/
 
 div.dropdown-menu.square-border{
 	top: 50px;
 }
 
 
-
 #createAsset-btn{
 	border: 1px solid #3d3d3f;
 }
+
 #createAsset-btn button:hover{
 	border: 1px solid #43aed8;
 }
@@ -65,8 +178,11 @@ div.card-header.panel-header-color{
 .navbar-bg{
   background-color: #3B3B4C;
 }
-
-
+/*remove margin from the selected option*/
+ul#selected-list{
+	margin:0;
+	padding: 0;
+}
 /* removing style from the dependent listed items*/
 #selected-list li{
 	list-style: none;
@@ -78,24 +194,24 @@ a.card-link{
 	font-size: 18px;
 }
 
-nav a.navbar-brand{
+/*nav a.navbar-brand{
 	margin-bottom: 16px;
-}
+}*/
 
 input#userInput{
 	 border:0px;
 	 text-align: left ! important;
-	 height:30px;
  }
+
 nav.navbar{
-	padding: 10px 16px 2px 16px;
+	padding: 2px 16px 2px 16px;
 	height:50px;
 
 }
 			
 #map{
 	width:100%;
-	min-height: 400px;
+	min-height: 90vh;
 
 }
 .square-border{
@@ -104,6 +220,7 @@ nav.navbar{
 
     /* Set black background color, white text and some padding */
 footer {
+padding: 5px 15px 5px 15px;
   background-color: #555;
   z-index: 1;
   color: white;

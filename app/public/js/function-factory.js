@@ -3,57 +3,91 @@
 // Each function has it description atop
 ///////////////////////////////////////////////////////////////////////
  
-// 1.Function:To open the control-panel on the workspace
+// 1.FUNCTION:To open the control-panel on the workspace
 function openMenuBtn() {
-	mapCollector.infowindow.close();
-	$('#first-accordion').show(); // c
-	$( "#getAssetPanel" ).hide() //
-	document.getElementById("mySidenav")
-	.style.width = "300px";
-}
+	document.getElementById("mySidenav").style.width = "300px";
+};//---------------------------------------------------------------
 
-// 2.Function: To close the control panel by clicking 'closeNav' icon
+// 2.FUNCTION: To close the control panel by clicking 'closeNav' icon
 function closeNav(){
     document.getElementById("mySidenav").style.width = "0";
-};
+};//-----------------------------------------------------------------
 
-// 3.Function to open menu button by clicking navbar
-$('#start-control-panel').on('click', function(){
-	openMenuBtn();
-})
-
-// 5.Function: To load asset list to 'select input option'
-function addAssetList(selector,assetId){
-// remove appended children 
-	if($(selector).has( "option" )){
-		$(selector).children().remove()
+// 3.FUNCTION:To set project  name  to given
+$('#startProj-btn').on('click', function(){
+	if($('#projectName').val()){
+		var projectName = $('#projectName').val()
+		document.getElementById('project-title').innerHTML = "<h5>Project: "+projectName+"<h5>"
 	}
+})//----------------------------------------------------------------------
 
-	var assetList = newProject.assets
-	// check if list is not empty
-	if(assetList.length != 0) {
-		var assetSelection = `<option value ='${assetId}' hidden disabled ></option>`;
-		
-		for(i=0; i< assetList.length; i++){
-			if(assetList[i].id != assetId ){
-				assetSelection += `<option value ='${assetList[i].id}' >`+ assetList[i].type + " : " + assetList[i].sector +'</option>';
-			}
-		}
-		$(selector).append(assetSelection);
-	}else{
-		alert('Assets have not been added to this Project')
-		return false;
-		}
-}
+// 3.FUNCTION: To open asset creation panel by clicking on Marker
+function openCreateAssetPanel(){
+	OpenSideNavOfChoice('#first-accordion'); // open desired panel
+	mapCollector.infowindow.close(); // close marker infoWindow
+	openMenuBtn() // open sideNav
+};//-----------------------------------------------------------------------
 
-// 6.Function: To change "disabled attribute"  on form to'enable'
+
+// 3.FUNCTION: To change "disabled attribute"  on form to'enable'
 $("#edit-asset,input:checkbox").change(function(){
 	$("#assetPanelForm select, input").attr("disabled", false);
-});
+});//-------------------------------------------------------------------------
 
-// 7 Function to show markers bouncing on hover
+// 4.FUNCTION: To open Control panel by clicking navbar:'menu-btn'
+$('#start-control-panel').on('click', function(){
+	// declare variables
+	var assetList = newProject.assets;
+	// Is sideNav already opened
+	if( document.getElementById("mySidenav").style.width == '300px' )
+	{
+		closeNav();// close the sideNav
+	}else{
+		addAssetList('#select-asset-scenario', null)
+		OpenSideNavOfChoice('#control-panel'); //open sideNav of choice
+		openMenuBtn() // open sideNav
+	}
+});//-------------------------------------------------------------------------
+
+
+// 5.Function: To load asset list to 'selected input option'
+function addAssetList(selector, assetId, listType){
+	// Variables declaration
+	var assetList = Array.from(newProject.assets) //get assets array
+	// initialization: remove appended children
+	$(selector).children().remove()
+	// hide the id of the dependent as option
+	if(assetId){
+		var assetSelection = '<ul class="selection-list-group"> '; // create empty array
+		assetSelection += `<li style='display:none' id='${assetId}' name='${newProject.id}' >`; 
+	 	assetSelection += "</li >";
+		if(assetList.length != 0){ 	// check if list is not empty
+			var indexVal = returnItemIndex(assetList, assetId) // get the dependent asset indexvalue
+			var asset = assetList[indexVal] // assign the dependent asset to a variable
+			assetList.splice(indexVal, 1) // remove the dependent asset from List
+			assetSelection += createOptionList(asset, assetList, listType) // create option of the remainig assets
+			
+			assetSelection += '</ul>' 
+			$(selector).append(assetSelection);	// attach the option list created to an element
+		}else{
+			alert('Assets are too few')
+			return false;
+		}
+	}else{ // create scenario asset selection optionList
+		var assetSelection = ""; 
+		assetList.forEach(function(item){
+			assetSelection += `<option id=${item.id} class="selection-list-item">`;
+			assetSelection += item.name +" : " +item.type +'</option>'; // create empty array
+		});// create list for scenario
+		$(selector).append(assetSelection);
+	}
+};//------------------------------------------------------------------------------
+
+
+
+// 7.FUNCTION: to show markers bouncing on hover
 $('#multiple-select').on('mouseenter','option',function(e) {
-var markerId = $(this).val();
+	var markerId = $(this).attr('id');
 	mapCollector.markers.forEach(function(marker){
 	if(marker.id == markerId){
 		if (marker.getAnimation() !== null) {
@@ -66,26 +100,82 @@ var markerId = $(this).val();
 	})
 })
 
-// 7. Function To remove marker on Map
-	// listen to change asset type event
-	// get location of asset
-	// delete marker from map
-	// put new marker on map
-	// post asset details to database
+
+// 8. Function to create "select option" given asset List and array
+function createOptionList(asset, assetList, listType){
+	var htmlElem = ''; // declare where to store assets	
+ 
+	if(listType == "dependents"){ // CREATE DEPENDENCY OPTIONS
+		if(asset.dependents){// if dependents already exists
+			assetList.forEach(function(item){ // Loop through assetList
+			if(!asset.dependents.includes(item.id)){ // check if item is not in dependents
+				var newElement = '';
+				htmlElem += createNewAssetOption(newElement, item) // add to the html element
+				}
+			})
+			return htmlElem;
+		}else{ // if inputs was not previously populated
+			assetList.forEach(function(item){ // push all assets into optionList
+				var newElement = '';
+				htmlElem += createNewAssetOption(newElement, item)
+			})
+			return htmlElem;
+		}	
+	}else if (listType == "inputs") {// CREATE INPUT OPTIONS
+		if(asset.dependents){// if dependents already exists
+			if(asset.inputs){// if inputs is defined
+				assetList.forEach(function(item){ //for each item from List
+					var newElement = ''; // where store assets
+					if((!asset.inputs.includes(item.id))&& (asset.dependents.includes(item.id))){ // if item is not already in input
+						htmlElem += createNewAssetOption(newElement, item) // add to the html element
+					}
+				})
+				// return html list created
+				return htmlElem 
+			}else{ // input is not defined
+				var newElement = ''; // where to store assets
+				asset.inputs = []// define asset input property
+				assetList.forEach(function(item){ //for each item from List
+					if(asset.dependents.includes(item.id)){
+						htmlElem += createNewAssetOption(newElement, item) // add to the html element
+					}
+				})
+				// return html list created
+				return htmlElem
+			}
+		}else { // tell user to create dependency first
+			console.log("dependents must be created to add inputs")
+		}
+	}
+}
+// FUNCTION TO only add new assets to Option_List
+function createNewAssetOption(htmlElem, item){
+	htmlElem += `<li class='selection-list-item' id= ${item.id}>`
+	htmlElem +=  item.name + " : " 
+	htmlElem +=  item.type + " : " 
+	htmlElem +=  item.sector +'</li>';
+	return htmlElem;
+}
+
+// 6.FUNCTION: To Load assets to Scenario creation
+function loadScenarioAsset(selector){
+	// load assets into selection
+	newProject.assets.forEach(function(item){
+
+	})
+
+}
 
 
-// 7.Function: To post new form values 'update asset'
-// get post values from form
+// 7.FUNCTION: To post new form values 'update asset'
 $(`form#assetPanelForm`).submit(function(event){
 		// $('form#createAsset-form').click(function(event){
 		event.preventDefault();
 		var form = $(this);
 		var url = form.attr('action');
-		
 		// converts form data to object;
 		var assetObject = formDataToObject(`assetPanelForm`)
-		
-		
+	
 		newProject.assets.find(function(element, index) {
 		  if (element.id == assetObject.id){
 		  		// add leftover properties to asset to post
@@ -113,71 +203,88 @@ $(`form#assetPanelForm`).submit(function(event){
 
 
 // 8.Function: To create input for dependency variable to app
-$(`form#add-input-form`).submit(function(event){
-	event.preventDefault();
-		var form = $(this);
-		var url = form.attr('action');
-
-	// get dependency values from form
-	var assetObject = formDataToObject(`add-input-form`)
-	// convert to json
-
-	console.log(" this is what we got input: "+ JSON.stringify(assetObject))
-	var asset = assetObject
-	// postForm(url, asset);
-	// use update asset function  
-
+$(`#add-input-btn`).on('click', function(event){
+	var url = '/getasset/addInputs'; // url to post data
+	// get inputs values from List
+	var inputs = createMultiSelectArray('input-multiple-select', 'input-selected-list')
+	newProject.addInput(inputs)// add dependents to asset
+	// convert object to text before submitting
+	$.ajax({type: 'POST',
+			url: url,
+			contentType: 'application/json',
+			data: JSON.stringify(inputs) 
+	});
+	closeNav()
 })
 
 // 9.Function: To post dependency variable to app
-$(`form#create-dependents-form`).submit(function(event){
-	event.preventDefault();
-		var form = $(this);
-		var url = form.attr('action');
-
-	// get dependency values from form
-	var dependency = createMultiSelectArray('create-dependents-form')
-	newProject.addAssetDependents(dependency )// add dependents to asset
+$(`#create-dependents-btn`).on('click', function(event){
+	var url = '/getasset/createDependency'; // url to post data
+	// get dependency values from List
+	var dependency = createMultiSelectArray('multiple-select', 'selected-list')
+	newProject.addAssetDependents(dependency)// add dependents to asset
 	// convert object to text before submitting
-	dependency = JSON.stringify(dependency)
-	
-		$.ajax({type: 'POST',
-				url: url,
-				contentType: 'application/json',
-				data:dependency 
-				});
-	// use update asset function  
-
+	$.ajax({type: 'POST',
+			url: url,
+			contentType: 'application/json',
+			data: JSON.stringify(dependency) 
+	});
+	// use update asset function 
+	closeNav() 
 })
 
-// Function: set project  name  to given
-$('#startProj-btn').on('click', function(){
-	if($('#projectName').val()){
-		var projectName = $('#projectName').val()
-		document.getElementById('project-title').innerHTML = "<h5>Project: "+projectName+"<h5>"
+// 9.FUNCTION: Open a specific menu button
+function OpenSideNavOfChoice(selector){
+	// close all the panels
+	$('#getAssetPanel').hide();
+	$('#first-accordion').hide();
+	$('#control-panel').hide();
+
+	switch (selector) {
+	    case '#getAssetPanel': // open menu with get asset panel
+	        $('#getAssetPanel').show();
+	        break; 
+
+	    case '#first-accordion': // open menu to create asset
+	        $('#first-accordion').show();
+	        break; 
+	    case '#control-panel': // open menu for control panel
+	        $('#control-panel').show();
+	        break;
 	}
-})
 
+}
 
-// 9.Function: To Create Visualization
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// VISUALIZATION DATA
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-$('#generate-scenarioResult-btn').on('click',function(){
-		// get newProject data
-	// get scenario data 
-		// asset data
-	// total number of assets
-	// set dependent to failed
-	// set failed asset in neo4j
-	// every asset dependent on failed asset should be set to failed
-	// return # % of working assets
-	// return # % of failed assets 
+$('#create-scenario-btn').on('click',function(){
+	// get the post address
+	url = "/getasset/createScenario";
+	// get selected asset id
+	var assetId = $( "#select-asset-scenario :selected" ).attr('id')
+	// get selected scenario
+	var scenario = $( "#scenario-selection :selected" ).text()
+	// create scenario object
+	var scenObject = {assetId : assetId, type: scenario}
+
+	// add scenario to project
+
+	// post the scenario
+		$.ajax({type: 'POST',
+			url: url,
+			contentType: 'application/json',
+			data: JSON.stringify(scenObject),
+			success : scenarioCallback
+	});
 
 })
 
+
+// FUNCTION: Scenario callback function
+function scenarioCallback(assetsAffected){
+	console.log("This are affected assets by scenario "+JSON.stringify(assetsAffected))
+}
 
 
 // 8.Function: To post dependency variable to app
@@ -187,25 +294,18 @@ $('#generate-scenarioResult-btn').on('click',function(){
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Function: To create an array of all selected options
-function createMultiSelectArray(selector){
+function createMultiSelectArray(optionSel, selector){
 	// var assetId = $('form#'+selector+' option').prop('hidden', true).val()
-	var assetId = document.querySelectorAll('#'+selector+' option, hidden')[0].value
-	// select form elements to populate
-	var mySelected = $('form#'+selector+' option').prop('selected', true) 
-	
-	var depensArr=[];
-	var myObject ={};
-		myObject.assetId = assetId;
-
-	for(i=0; i<mySelected.length;i++){
-		if(assetId != mySelected[i].value){
-			depensArr.push(mySelected[i].value)
-		}else{
-			console.log("Error:NO#2 No assets to create dependents")
-		}
+	var assetId = $( '#'+optionSel+" li" ).first().attr('id')
+	var projectId = $( '#'+optionSel+" li" ).first().attr('name')
+	// select form select options that have been "selected"
+	var arr = $('#'+selector+" li")
+	var dependencies = [];
+	for(i=0;i<arr.length;i++){
+		var dependent = ($(arr[i]).attr('id')) //get id of all selected assets
+		dependencies.push(dependent) // dependent id to array
 	}
-	myObject.dependency = depensArr
-	return myObject;
+	return {assetId:assetId ,projectId: projectId, dependency: dependencies } // assetid and dependencies
 }
 
 
@@ -267,56 +367,82 @@ function markerRemover(id){
 
 
 // Function to add circles for Working State
-$('#display-working-state').on('click', function(){
-	$("#rightMenu").css("display", "block");
-	mapCollector.markers.forEach(function(item, index){
-			// check for matching of markersId and assetIds
-			if(item.id == newProject.assets[index].id ){
-					// Get the positions of markers on map
-				 	var position ={
-          				lat: mapCollector.markers[index].getPosition().lat(),
-          				lng: mapCollector.markers[index].getPosition().lng()
-          			}
-				if(newProject.assets[index].workingState == 'optimal'){
-          			addCircles('#0000FF', position)
-        		}else{
-        			addCircles('#FF0000', position)
-        		}
-      		}
-      	})
-      	 // Add circles to CI assets
-      	function addCircles(color, position){
-      		var cityCircle = new google.maps.Circle({
-            	strokeColor: color,
-            	strokeOpacity: 0.8,
-            	strokeWeight: 2,
-            	fillColor: color,
-            	fillOpacity: 0.35,
-            	map: map,
-            	center: position,
-            	radius: 3640 
-          }); // end of addCicles fx
-	}
-	// open right menu 
-    // document.getElementById("rightMenu").style.display = "block";
+$('#display-working-state').change( function(){
+	if(this.checked){
+		$("#rightMenu").css("display", "block"); // display the statistic menu
 
-		// get asset data from project instance
-		var total = newProject.assetTotal
-		var failed = newProject.assetsWorkingState.failed.length
-		var optimal = newProject.assetsWorkingState.optimal.length
-		// assign data to cloumn in a table
-		$('#asset-total-column').html(total);
-		$('#asset-optimal-column').html(optimal);
-		$('#asset-failed-column').html(failed);
-		// close the nav bar
-		closeNav()
+		if(mapCollector.markerCircles){
+			mapCollector.markers.forEach(function(item, index){
+				// check for matching of markersId and assetIds
+				if(item.id == newProject.assets[index].id ){
+					// Get the positions of marker from map
+					var position = getMarkersLatLng(index)
+					//  circles to marker position
+					if(newProject.assets[index].workingState == 'optimal'){
+	          			addCircles('#0000FF', position, item.id)
+	        		}else{
+	        			addCircles('#FF0000', position, item.id)
+	        		}
+				}else{
+					// Get the positions of marker from map
+					markerCircle.setMap(null)
+
+				}
+			})
+		}
+	}else{ // hide circles from marker
+			console.log("Could not delete the colour")
+		}
+   	displayProjectStat()// display project statistic
+	// close the nav bar
+	closeNav()
 })
 
+
+// FUNCTION: To display statistics about the assets created
+function displayProjectStat(){
+	// Get data from project instance
+	var total = newProject.assetTotal
+	var failed = newProject.assetsWorkingState.failed.length
+	var optimal = newProject.assetsWorkingState.optimal.length
+
+	// Populate table with data 
+	$('#asset-total-column').html(total);
+	$('#asset-optimal-column').html(optimal);
+	$('#asset-failed-column').html(failed);
+}
+
+// FUNCTION: To get Markers latLong given index 
+function getMarkersLatLng(index){
+	var position = {
+     				lat: mapCollector.markers[index].getPosition().lat(),
+     				lng: mapCollector.markers[index].getPosition().lng()
+     			}
+    return position;
+}//----------------------------------------------------------------------------------------
+
+// FUNCTION: To add a circle color to a given latLong
+function addCircles(color, position, id){
+    markerCircle = new google.maps.Circle({
+         	strokeColor: color,
+         	strokeOpacity: 0.8,
+         	strokeWeight: 2,
+         	fillColor: color,
+         	fillOpacity: 0.35,
+         	map: map,
+         	center: position,
+         	radius: 3640
+         })
+
+    markerCircle.id = id; // add the asset id to the circle
+    mapCollector.markerCircles.push(markerCircle)// push the circle into an array 
+
+};//-----------------------------------------------------------------------------------
+
 // Function to close the statistic menu
-	$('#rightMenu').on("click", function(){
-		 document.getElementById("rightMenu").style.display = "none";
-	   
-	})
+$('#rightMenu').on("click", function(){
+	 document.getElementById("rightMenu").style.display = "none";
+})
 
 // Function to return the index of and array object
  function returnItemIndex(array1 , value){
@@ -325,4 +451,3 @@ $('#display-working-state').on('click', function(){
       })
     }
 
-// Functions 
