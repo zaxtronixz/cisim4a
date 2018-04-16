@@ -19,7 +19,7 @@
 	font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 0.9rem;
    }
-
+ /***********************************fonts style ends here**************************************/
 div.modal-body .form-group{
 	max-height:250px;
 	overflow-y: scroll;
@@ -29,7 +29,54 @@ div.modal-body .form-group{
 	background-color: #0a7af8;
 	color:#fff;
 }
+ /******************************************************result panel begins here **************************************/
+/*sytle for display panel navigation*/
+#visualPanel a {
+    z-index: 5;
+    position: absolute;
+    right: -20px;
+    transition: 0.9s;
+    padding: 10px;
+    width: 80px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: white;
+    border-radius: 0 5px 5px 0;
 
+}
+
+ /*display panel style*/
+#visDisplayPanel{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 6;
+    top: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.85);
+    overflow-x: hidden;
+    transition: 0.9s;
+    padding-top: 20px;
+    font-weight:lighter;
+  }
+
+#stats-btn {
+    top: 180px;
+   /* background-color: #f44336;*/
+    background: rgba(243, 0, 0, 0.5);
+  -webkit-box-shadow: -1px 3px 4px -1px rgba(0,0,0,0.37);
+-moz-box-shadow: -1px 3px 4px -1px rgba(0,0,0,0.37);
+box-shadow: -1px 3px 4px -1px rgba(0,0,0,0.37);
+}
+
+#graph-btn{
+    top: 240px;
+    /*background-color: #555*/
+    background: rgba(0, 0, 0, 0.5);
+ -webkit-box-shadow: -1px 3px 4px -1px rgba(0,0,0,0.37);
+-moz-box-shadow: -1px 3px 4px -1px rgba(0,0,0,0.37);
+box-shadow: -1px 3px 4px -1px rgba(0,0,0,0.37);
+}
  /*make the dropdown button on b=nvabar hoverable*/
 /*.dropdown:hover > .dropdown-menu {
     display: block;
@@ -38,8 +85,17 @@ div.modal-body .form-group{
     /*Without this, clicking will make it sticky*/
     /*pointer-events: none;*/
 
- /*Working state check button style*/
+ /*font style for the top navbar*/
+#navbar-body .nav-item a{
+	font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.9rem;
+}
 
+#navbar-brand a:link#brand-id  {
+	font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.9rem;
+    color: #fff;
+ }
 
 /*Make body height same with screen*/
 body{

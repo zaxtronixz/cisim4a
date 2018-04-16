@@ -4,10 +4,10 @@
 }
 
 .bar1, .bar2, .bar3 {
-    width: 25px;
-    height: 2px;
-    background-color: #cfd2da;
-    margin: 4px 0;
+    width: 20px;
+    height: 3.5px;
+    background-color: #fff;
+    margin: 2.5px 0;
     transition: 0.4s;
 }
 
@@ -50,3 +50,5 @@
 }
 
 .close-selection:hover {background: #bbb;}
+
+/****************************style for the right panel****************************/

@@ -42,11 +42,11 @@
 }
 
 
-#pane {
+#visDisplayPanel{
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 6;
     top: 0;
     right: 0;
     background: rgba(0, 0, 0, 0.85);
@@ -56,7 +56,8 @@
   }
 
 
-#mySidenav a {
+#visualPanel a {
+    z-index: 5;
     position: absolute;
     right: -20px;
     transition: 0.9s;
@@ -81,7 +82,7 @@
 </head>
 <body>
 
-<div id="mySidenav" class="sidenav">
+<div id="visualPanel" class="visual-panel-nav">
   <a href="#" id="stats-btn">Stats</a>
   <a href="#" id="graph-btn">Graph</a>
 </div>
@@ -92,7 +93,7 @@
    
 </div>
 
-<div id = "pane">
+<div id = "visDisplayPanel">
 
 <div class="container" >
 
@@ -123,13 +124,8 @@
     <div id="graph-pane" class="tab-pane fade show"><br>
      <!--  <h3>Graphs</h3> -->
        <table class="table table-dark">
-    <thead>
-      <tr>
-        <th>Project</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
+ 
+      <tbody>
      <tr >
         <td colspan="2" id="graph-panel" >
            <div id="mynetwork"></div>
@@ -138,9 +134,12 @@
 
       </tr>
       <tr>
-        <td>John</td>
-        <td>Doe</td>
-
+        <td>
+           <div>Project</div>
+        </td>
+        <td>
+          
+        </td>
       </tr>
       <tr>
         <td>Mary</td>
@@ -174,13 +173,13 @@ document.getElementById("graph-btn").addEventListener("click", function(){
 function openResultPane(name) {
     $('#'+name+"-pane").toggleClass("active")
     $('#'+name+"-header").toggleClass("active")
-    if(document.getElementById('pane').style.width == "50%"){
+    if(document.getElementById('visDisplayPanel').style.width == "50%"){
         // open side nav
-        document.getElementById('pane').style.width = "0";
+        document.getElementById('visDisplayPanel').style.width = "0";
         document.getElementById(name+"-btn").style.marginRight = "0";
     }else{
         createGraph()
-        document.getElementById('pane').style.width = "50%";
+        document.getElementById('visDisplayPanel').style.width = "50%";
         document.getElementById(name+"-btn").style.marginRight = "50%";
     }
 }
@@ -222,41 +221,35 @@ $.getJSON( "graphData.json",function (result){
     // create an array with edges
     var edges = new vis.DataSet(myEdges);
 
-    // create a network
-    function showLoading(){
-      var container = document.getElementById('mynetwork');
-      container.innerHTML = "<img src='images/loading.gif'>"
-      return container;
-    }
-
-    var container = showLoading();
-    // provide the data in the vis format
+    var container = document.getElementById('mynetwork');
+ 
     var data = {
         nodes: nodes,
         edges: edges
     };
+    var fontStyle = { size: 14,
+                    color:'red',
+                    face:'courier',
+                    strokeWidth:1,
+                    strokeColor:'#ffffff'
+                  } 
 
     var options = {
       nodes: {
           shape: 'dot',
-          font: { size: 14,
-                  color:'red',
-                  face:'courier',
-                  strokeWidth:1,
-                  strokeColor:'#ffffff'
-                },
+          font: fontStyle,
           borderWidth: 2,
           shadow:true,
           scaling:{
             label: {
-              min:3,
-              max:5
+              min:6,
+              max:8
             }
           }
         },
         autoResize: true,
-        height: '360px',
-        width: '480px',
+        height: '480px',
+        width: '530px',
         // clickToUse: false
         ////////////////////////
         edges:{
@@ -271,7 +264,7 @@ $.getJSON( "graphData.json",function (result){
         console.log("asset have not been created for rendering")
   }
 })
-}
+}// --------------------------- create graph ends here 
 
 // FUNCTION : Nodes maker
 function createNodesAndEdges(assetsArr){

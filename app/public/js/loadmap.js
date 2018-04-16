@@ -6,6 +6,7 @@
 				var map;
 				// where project instance will be stored safely
 				var newProject = {};
+				var scenario = {};
 				var contentString = "<div>Click to create an asset at this location <br><br> ";
       				contentString += "<button onclick='openCreateAssetPanel()'>"
       				contentString += " Create an Object";
@@ -68,7 +69,7 @@
 	          				var assetSelected = asset.type// asset.type as asset assetSelected
 	          				
 	          				mapCollector.markerId = asset.id//assign asset id to map collector
-	          				
+	          				console.log("this is " + asset.name+ " workingState " +asset.workingState)
           					newProject.addAsset(asset)// add assets to the project instance
 	          				
 	          				// create marker create objects

@@ -49,6 +49,27 @@ $('#start-control-panel').on('click', function(){
 	}
 });//-------------------------------------------------------------------------
 
+// 5. FUNCTION: To check an array of objects if an item exist
+function checkArray(arr, prop, test){
+	var found = false;
+	arr.forEach(function(item){
+		if(item[prop] == test){
+			found  = true;
+		}
+	}); return found;
+}
+
+// FUNCTION: To find index value given an array of objects
+function findIndexValue(arr, prop, test){
+	var found = null;
+	for(i=0;i<arr.length;i++){
+    	if(arr[i][prop] == test ){
+			found = i;
+		}
+	}
+	return found;
+}
+
 
 // 5.Function: To load asset list to 'selected input option'
 function addAssetList(selector, assetId, listType){
@@ -268,8 +289,8 @@ $('#create-scenario-btn').on('click',function(){
 	// create scenario object
 	var scenObject = {assetId : assetId, type: scenario}
 
-	// add scenario to project
-
+	// create scenario to project
+	window.scenario = new CreateScenario(scenObject)
 	// post the scenario
 		$.ajax({type: 'POST',
 			url: url,
@@ -283,7 +304,13 @@ $('#create-scenario-btn').on('click',function(){
 
 // FUNCTION: Scenario callback function
 function scenarioCallback(assetsAffected){
-	console.log("This are affected assets by scenario "+JSON.stringify(assetsAffected))
+	var r = assetsAffected;
+	var affected = []
+		for (i=0;i<r[0]._fields[0].length;i++){
+			affected.push(r[0]._fields[0][i].properties)
+		}
+	window.scenario.currentWorkingState(affected); // create current working state data
+
 }
 
 

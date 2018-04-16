@@ -17,15 +17,15 @@
 // ----> post array to GDB
 // ----> create cypher query to implement deps
 
-4 create input and change of state
-// follow procedures 3 add these:
---> implement input on GDB and JSON
---> call change state of assets
+// 4 create input and change of state
+// // follow procedures 3 add these:
+// --> implement input on GDB and JSON
+// --> call change state of assets
 
 5. Create Scenario
 ---> use the Impact query from ALCAME 
 ---> return affected nodes
----> change node state to failed
----> remove the affected node
+---> change node state to failed state
+---> remove the impactNode from affectedNode inputs
 
 6. Generate Graph of Scenario
