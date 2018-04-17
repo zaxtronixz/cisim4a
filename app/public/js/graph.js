@@ -3,7 +3,7 @@
 
 function createGraph(){
 
-// get project data
+// get project instance data 
   var assets = newProject.assets
 
   if(assets.length != 0){
@@ -64,14 +64,35 @@ function createGraph(){
 
 // FUNCTION : Nodes maker
 function createNodesAndEdges(assetsArr){
-  var DIR = 'app/public/images/graph/';
+  var DIR = '/images/graph/';
   myEdges = []; // an empty array to collate edges
   myNodes = []; // an empty array to collate nodes 
   assetsArr.forEach(function(item){
+   		var color = {};
+   		
+   		if(scenario.assetAffected){ // check if scenario is created
+   			// check if item is affected by scenario
+   			if(checkArray(scenario.assetAffected, "id", item.id)){
+		    	color.Sel = "#b83b3f" // color red
+ 		  	// if item was already in failed state		
+			}
+		}else if(item.workingState == "failed"){
+		   			color.Sel = "#b83b3f" // color red
+		// item was the impact node
+		}else if(item.id == scenario.impactNode){
+   					color.Sel = "#b70006" // color red
+		// item working state is optimal
+   		}else if(item.workingState == "optimal"){
+		    		color.Sel = "#00f"
+		}else{
+		    		color.Sel = "#f00"
+	    }
+
         nodeObj = {} // create node object
         nodeObj  = { // assign assets values to node
           id: item.id,
           lable: item.name,
+          color:color.Sel,
           shape :'circularImage',
           image: DIR + switchNames(item.type)+'.png',
           title : item.type + " " + item.sector + " " + item.subSector
@@ -88,10 +109,18 @@ function edgeMaker(asset, myEdges){
   if(asset.inputs){
   if(asset['inputs'].length != 0){
     asset['inputs'].forEach(function(item){
+    	var color = {};
+    	if(item.workingState == "optimal"){
+    		color.Sel = "#00f"
+    	}else{
+    		color.Sel = "#f00"
+    	}
+
       edge = {  from: asset.id, to: item, 
                 arrows: "from", // create edge with arrow
                 label: 'dependents', // lable on the edge
-                font: {align: 'horizontal', color: "#00f"} // label fonts properties
+                length:300,
+                font: {align: 'horizontal', color: color.Sel} // label fonts properties
               },
         myEdges.push(edge) //push created edge into an array
         })
@@ -105,26 +134,35 @@ function edgeMaker(asset, myEdges){
  function  switchNames(assetName){
     switch(assetName) {
       case "Cable landing Station":
-          return "antenna"
+          return "cable_landing_station"
           break;
       case  "EHV lines & Tower":
           return "ehv"
           break;
       case "Wired Copper Cable":
-          return "fossil"
-          break;
+	       return "wired_copper_cable";
+	       break;
       case "Antennae":
           return "satellite"
           break;
+      case "Base Station Building":
+	       return  "base_station_building";
+	       break;     
       case "Electric grid Operation":
-          return "station"
+          return "electric_grid_operation"
           break;
       case "Transformer":
           return "transformer"
           break;
       case "Distribution underground lines":
-          return "wire"
+          return "distribution"
           break;
+      case "Step Up/down SubStation":
+	       return "step_up_and_down_substation";
+	       break;
+	  case "Fossil Fuel Plant":
+	       return  "fossil_fuel_plant";
+	       break;
       default: 
          return "flame";
   }

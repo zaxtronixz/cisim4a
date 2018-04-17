@@ -76,12 +76,21 @@ var bgd = ['#36a2eb','#ff6384']
 
 function createStats(){
 // var assets = newProject.assets
+var state = {}
 
-var optimal = newProject.assetsWorkingState.optimal.length;
-var failed  = newProject.assetsWorkingState.failed.length;
+ if(!scenario.assetAffected){ // check if scenario is not created
+ 	state.optimal = newProject.assetsWorkingState.optimal.length;
+	state.failed  = newProject.assetsWorkingState.failed.length;
+ }else{ 
+ 	state.optimal = scenario.currentOptimalAssets.length;
+	state.failed  = scenario.currentFailedAssets.length;
+ }
+
+
+
 var bgd = ['#36a2eb','#ff6384']
 var label = ["Asset at Optimal state", "Assets at failed state"]
-var data = [optimal, failed]
+var data = [state.optimal, state.failed]
 var labels = ['Optimal', 'Failed']
 
 		var chart = new Chart(ctx, {

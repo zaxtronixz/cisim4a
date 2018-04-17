@@ -37,7 +37,7 @@ function customMarker(AssetName){
 	        return fileLoc + "wired_copper_cable.png";
 	        break;
 	    default:
-	        return fileLoc + "transformer.png";
+	        return fileLoc + "flame.png";
 	        break;
 	}
 
