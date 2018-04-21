@@ -43,6 +43,9 @@ function createGraph(){
             }
           }
         },
+        layout: {
+        improvedLayout: false
+    },
         autoResize: true,
         height: '480px',
         width: '530px',

@@ -1,0 +1,3068 @@
+[
+ {
+   "id": 1,
+   "lng": 9.52257601112577,
+   "lat": 52.3604090734199,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 2,
+   "lng": 9.11321011483187,
+   "lat": 52.5438533448625,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 3,
+   "lng": 9.38974515063535,
+   "lat": 52.0263130791669,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 4,
+   "lng": 9.12526574244048,
+   "lat": 52.5382641233458,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 5,
+   "lng": 10.366274939217,
+   "lat": 52.2846467643429,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 6,
+   "lng": 9.91814868737007,
+   "lat": 52.3799963378317,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 7,
+   "lng": 9.9171797569037,
+   "lat": 52.2781686248742,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 8,
+   "lng": 10.4149924241538,
+   "lat": 53.4126068813272,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 9,
+   "lng": 10.3787706356666,
+   "lat": 53.2197927695925,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 10,
+   "lng": 12.9416466491702,
+   "lat": 52.5621144028949,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 11,
+   "lng": 13.2061030014846,
+   "lat": 52.6571363047161,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 12,
+   "lng": 13.709669749528,
+   "lat": 52.5397952998981,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 13,
+   "lng": 11.3704263094168,
+   "lat": 48.2914922548393,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 14,
+   "lng": 11.8132329291411,
+   "lat": 48.2212664672329,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 15,
+   "lng": 11.868156362746,
+   "lat": 48.206802931481,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 16,
+   "lng": 10.7610404155909,
+   "lat": 52.3677293936344,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 17,
+   "lng": 13.4947634286677,
+   "lat": 52.5897644694349,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 18,
+   "lng": 13.6834769799404,
+   "lat": 54.1390906728297,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 19,
+   "lng": 11.2939727766244,
+   "lat": 48.0520427780619,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 20,
+   "lng": 9.98460987842098,
+   "lat": 53.7411288196703,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 21,
+   "lng": 10.1575057595216,
+   "lat": 53.5551266364644,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 22,
+   "lng": 9.20210266340539,
+   "lat": 53.8951623622383,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 23,
+   "lng": 9.98853665499904,
+   "lat": 53.7662776782512,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 24,
+   "lng": 9.72699275106814,
+   "lat": 54.2914209859116,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 25,
+   "lng": 9.34476101692227,
+   "lat": 53.9218370813918,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 26,
+   "lng": 9.34400181356048,
+   "lat": 53.8517774981988,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 27,
+   "lng": 9.52960514781347,
+   "lat": 53.618990731832,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 28,
+   "lng": 9.77654483603303,
+   "lat": 53.6906352940911,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 29,
+   "lng": 10.3822011082464,
+   "lat": 52.9932426669735,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 30,
+   "lng": 9.50178971212981,
+   "lat": 53.5428143880013,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 31,
+   "lng": 9.74615085631454,
+   "lat": 50.9168400022101,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 32,
+   "lng": 11.1228546271538,
+   "lat": 50.9989090757631,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 33,
+   "lng": 10.3859411718194,
+   "lat": 51.0018133141165,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 34,
+   "lng": 8.122642304058,
+   "lat": 53.5605160665145,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 35,
+   "lng": 8.08565060815886,
+   "lat": 53.6058342194744,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 36,
+   "lng": 8.06005701182283,
+   "lat": 53.6202026205826,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 37,
+   "lng": 11.6389126099956,
+   "lat": 52.2687358982154,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 38,
+   "lng": 13.2115276810432,
+   "lat": 52.5806278358522,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 39,
+   "lng": 11.727353429381,
+   "lat": 52.5689470103264,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 40,
+   "lng": 13.1433929675199,
+   "lat": 53.9081470154338,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 41,
+   "lng": 11.8531051573669,
+   "lat": 53.0865440610132,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 42,
+   "lng": 12.1869848529515,
+   "lat": 53.8157751978716,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 43,
+   "lng": 12.4993660253653,
+   "lat": 52.4052284426773,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 44,
+   "lng": 13.5061280249068,
+   "lat": 52.4738227039188,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 45,
+   "lng": 13.3057533352426,
+   "lat": 52.2307818607751,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 46,
+   "lng": 13.5241987812625,
+   "lat": 52.5356343208068,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 47,
+   "lng": 13.4564307414427,
+   "lat": 52.521451771614,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 48,
+   "lng": 13.5370284535837,
+   "lat": 52.5374809881862,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 49,
+   "lng": 10.9993330683763,
+   "lat": 52.2001420103124,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 50,
+   "lng": 10.9772332757472,
+   "lat": 52.1694333350195,
+   "type": "Fossil Fuel Plant"
+ },
+ {
+   "id": 51,
+   "lng": 9.25938384941478,
+   "lat": 51.0603668957955,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 52,
+   "lng": 8.31334018942867,
+   "lat": 49.0090434774209,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 53,
+   "lng": 7.75349549403634,
+   "lat": 48.0993557332288,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 54,
+   "lng": 8.4384675602346,
+   "lat": 49.2524597535318,
+   "type": "Fossil Fuel Plant"
+ },
+ {
+   "id": 55,
+   "lng": 8.51211173756804,
+   "lat": 49.2939665911691,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 56,
+   "lng": 8.62320969485988,
+   "lat": 49.356582256425,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 57,
+   "lng": 8.44554253599103,
+   "lat": 48.9860882032815,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 58,
+   "lng": 8.64158407529801,
+   "lat": 48.8900525292561,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 59,
+   "lng": 8.56374402466983,
+   "lat": 53.0317216060084,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 60,
+   "lng": 8.47470705828713,
+   "lat": 53.4286512121137,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 61,
+   "lng": 8.51888183670623,
+   "lat": 53.2026352879915,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 62,
+   "lng": 8.82002488536158,
+   "lat": 53.1073883123751,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 63,
+   "lng": 8.12061826655718,
+   "lat": 48.7053527235337,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 64,
+   "lng": 11.4407746571386,
+   "lat": 48.1718035686213,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 65,
+   "lng": 13.3264050703954,
+   "lat": 50.3463722141376,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 66,
+   "lng": 12.1147699347953,
+   "lat": 49.6311522364994,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 67,
+   "lng": 8.69516076534637,
+   "lat": 53.0925361336519,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 68,
+   "lng": 8.77244299222179,
+   "lat": 49.9746686767501,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 69,
+   "lng": 8.41937108566179,
+   "lat": 49.6337357665925,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 70,
+   "lng": 8.38855643052221,
+   "lat": 49.9823050863709,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 71,
+   "lng": 12.262173544509,
+   "lat": 51.7410202813412,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 72,
+   "lng": 11.8942662085419,
+   "lat": 51.4057031779769,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 73,
+   "lng": 13.1570905224719,
+   "lat": 51.8284516784236,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 74,
+   "lng": 13.9024347133056,
+   "lat": 51.874723530085,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 75,
+   "lng": 11.5165549994374,
+   "lat": 51.5843592162484,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 76,
+   "lng": 8.70221847039735,
+   "lat": 51.7363525890089,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 77,
+   "lng": 8.99279243937742,
+   "lat": 51.3430094105575,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 78,
+   "lng": 11.6463786860412,
+   "lat": 50.5348769896165,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 79,
+   "lng": 14.4719654746961,
+   "lat": 51.5538127702297,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 80,
+   "lng": 14.5081092115389,
+   "lat": 51.4137104048148,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 81,
+   "lng": 14.4281805295455,
+   "lat": 51.888864175856,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 82,
+   "lng": 8.14191383627294,
+   "lat": 53.5640011817982,
+   "type": "Fossil Fuel Plant"
+ },
+ {
+   "id": 83,
+   "lng": 10.1562825155965,
+   "lat": 54.2755482828972,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 84,
+   "lng": 10.1773541417844,
+   "lat": 54.3395212774033,
+   "type": "Electric grid Operation"
+ },
+ {
+   "id": 85,
+   "lng": 7.03496796550368,
+   "lat": 52.2028607768236,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 86,
+   "lng": 7.30824781629083,
+   "lat": 52.4767901583642,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 87,
+   "lng": 7.06034476225792,
+   "lat": 51.6964980793073,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 88,
+   "lng": 6.67467535942029,
+   "lat": 51.324957491388,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 89,
+   "lng": 6.72376717933502,
+   "lat": 51.3556543954881,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 90,
+   "lng": 7.54571775348996,
+   "lat": 51.9703244532995,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 91,
+   "lng": 7.30460120682915,
+   "lat": 52.4817909166958,
+   "type": "Fossil Fuel Plant"
+ },
+ {
+   "id": 92,
+   "lng": 7.30433880131157,
+   "lat": 52.4824259961208,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 93,
+   "lng": 7.27715397426964,
+   "lat": 52.7532426203196,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 94,
+   "lng": 8.30775696202904,
+   "lat": 52.3456357754793,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 95,
+   "lng": 7.88957673752775,
+   "lat": 52.2773967844269,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 96,
+   "lng": 7.31784997667688,
+   "lat": 52.4691115144199,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 97,
+   "lng": 13.3352804208787,
+   "lat": 49.5896898733245,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 98,
+   "lng": 12.2147735094259,
+   "lat": 54.1003234808405,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 99,
+   "lng": 6.99647662277982,
+   "lat": 49.3754093214106,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 100,
+   "lng": 6.4747398132316,
+   "lat": 49.9224693104147,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 101,
+   "lng": 11.6993927384808,
+   "lat": 53.5722744896829,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 102,
+   "lng": 11.3706374165175,
+   "lat": 53.6009910913085,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 103,
+   "lng": 6.94821096676896,
+   "lat": 51.4445758936096,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 104,
+   "lng": 6.92675898550662,
+   "lat": 51.4992056970517,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 105,
+   "lng": 6.68079563463015,
+   "lat": 51.6462972769253,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 106,
+   "lng": 7.16721463545721,
+   "lat": 51.3899067765993,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 107,
+   "lng": 7.12557294579876,
+   "lat": 51.4489772806916,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 108,
+   "lng": 6.99606886995841,
+   "lat": 51.5141696109019,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 109,
+   "lng": 7.31318287435069,
+   "lat": 51.4466114132712,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 110,
+   "lng": 7.99288732000281,
+   "lat": 51.6837077158762,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 111,
+   "lng": 8.62480055555283,
+   "lat": 51.4278884079658,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 112,
+   "lng": 7.35311188155085,
+   "lat": 51.5758105365035,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 113,
+   "lng": 7.12323886855291,
+   "lat": 51.5256121997715,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 114,
+   "lng": 8.2117054289867,
+   "lat": 51.1779850077285,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 115,
+   "lng": 6.57648211320418,
+   "lat": 51.0555954842661,
+   "type": "Fossil Fuel Plant"
+ },
+ {
+   "id": 116,
+   "lng": 6.77252314401924,
+   "lat": 51.1471055233119,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 117,
+   "lng": 6.97257748891579,
+   "lat": 50.795693016675,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 118,
+   "lng": 7.13689471769255,
+   "lat": 50.6428608849405,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 119,
+   "lng": 6.45655251893853,
+   "lat": 50.8713380734833,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 120,
+   "lng": 7.86394571439194,
+   "lat": 50.7682419302039,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 121,
+   "lng": 6.32166521557731,
+   "lat": 50.8383474955825,
+   "type": "Fossil Fuel Plant"
+ },
+ {
+   "id": 122,
+   "lng": 6.16738172896202,
+   "lat": 50.8020443318383,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 123,
+   "lng": 6.70219721289106,
+   "lat": 51.0088597430362,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 124,
+   "lng": 6.61240236819431,
+   "lat": 51.0359242961049,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 125,
+   "lng": 6.96568445966487,
+   "lat": 51.0693295406357,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 126,
+   "lng": 7.23319688909308,
+   "lat": 51.2325069074323,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 127,
+   "lng": 6.30090126366431,
+   "lat": 50.8289532360211,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 129,
+   "lng": 6.62582903685647,
+   "lat": 51.2606112581148,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 130,
+   "lng": 7.12308198261157,
+   "lat": 51.1715887959352,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 131,
+   "lng": 6.80109337218585,
+   "lat": 51.1225390893163,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 132,
+   "lng": 7.00877917051357,
+   "lat": 51.1742549445955,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 133,
+   "lng": 6.84265069037124,
+   "lat": 50.8635385173748,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 134,
+   "lng": 6.80461624403732,
+   "lat": 50.9662477744576,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 135,
+   "lng": 7.71862724482037,
+   "lat": 51.5342075253387,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 136,
+   "lng": 7.93077012209125,
+   "lat": 51.6729710114195,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 137,
+   "lng": 6.22183149094702,
+   "lat": 51.6946456455863,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 138,
+   "lng": 7.00674991840299,
+   "lat": 51.5999114356605,
+   "type": "Fossil Fuel Plant"
+ },
+ {
+   "id": 139,
+   "lng": 7.03761992937395,
+   "lat": 51.5985496345954,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 140,
+   "lng": 7.26408347971959,
+   "lat": 51.5735734400302,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 141,
+   "lng": 7.27894732573719,
+   "lat": 51.4722814207425,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 142,
+   "lng": 7.18667757416348,
+   "lat": 51.5505890861964,
+   "type": "Fossil Fuel Plant"
+ },
+ {
+   "id": 143,
+   "lng": 7.35135789785079,
+   "lat": 51.5683686345539,
+   "type": "Fossil Fuel Plant"
+ },
+ {
+   "id": 144,
+   "lng": 7.17937918293452,
+   "lat": 51.4722019618656,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 145,
+   "lng": 6.93488872133436,
+   "lat": 51.033522366054,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 146,
+   "lng": 6.82804663323414,
+   "lat": 51.1626523772377,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 147,
+   "lng": 7.50597986222128,
+   "lat": 51.4016012425797,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 148,
+   "lng": 6.84699935555237,
+   "lat": 51.2055917675691,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 149,
+   "lng": 7.19316581458292,
+   "lat": 50.7983350844101,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 150,
+   "lng": 7.04738454562441,
+   "lat": 50.9055286430507,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 151,
+   "lng": 6.7097559453279,
+   "lat": 51.0909324851035,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 153,
+   "lng": 6.33000626218352,
+   "lat": 51.2429166388389,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 154,
+   "lng": 7.0235445515269,
+   "lat": 50.9990684211965,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 155,
+   "lng": 7.72438409063489,
+   "lat": 51.4093341491518,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 156,
+   "lng": 6.84223119628968,
+   "lat": 50.8598647273121,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 157,
+   "lng": 8.36422958832611,
+   "lat": 51.9271205112378,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 158,
+   "lng": 6.48812326066423,
+   "lat": 50.8810703279012,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 159,
+   "lng": 8.05408740677995,
+   "lat": 53.332302708936,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 160,
+   "lng": 8.47791063608626,
+   "lat": 53.428485495717,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 161,
+   "lng": 8.05283756803222,
+   "lat": 53.3338809660191,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 162,
+   "lng": 6.85153261718464,
+   "lat": 50.9841665158571,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 163,
+   "lng": 6.59601984709512,
+   "lat": 50.9525274662191,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 164,
+   "lng": 7.33861261905923,
+   "lat": 51.6319781599433,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 165,
+   "lng": 7.7083185190139,
+   "lat": 51.6762033258373,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 166,
+   "lng": 7.61702105012869,
+   "lat": 51.6371337810622,
+   "type": "Fossil Fuel Plant"
+ },
+ {
+   "id": 167,
+   "lng": 7.52228012599778,
+   "lat": 51.5321980611413,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 168,
+   "lng": 6.90660784108641,
+   "lat": 51.5652424548867,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 169,
+   "lng": 6.96734395630657,
+   "lat": 51.490861901735,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 170,
+   "lng": 6.87287367577891,
+   "lat": 51.4457833914382,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 171,
+   "lng": 6.86804500654219,
+   "lat": 51.374474803487,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 172,
+   "lng": 6.78752992543912,
+   "lat": 51.5055494229858,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 173,
+   "lng": 6.62284324444971,
+   "lat": 51.2587133994989,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 174,
+   "lng": 6.81216589807283,
+   "lat": 51.5196200390464,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 175,
+   "lng": 6.72031004220211,
+   "lat": 51.391532581128,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 176,
+   "lng": 6.54240843928532,
+   "lat": 51.2994458346854,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 177,
+   "lng": 13.078642146735,
+   "lat": 54.2848461827889,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 178,
+   "lng": 8.02029038221744,
+   "lat": 50.9236169231237,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 179,
+   "lng": 13.9570055873006,
+   "lat": 53.2521716356786,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 180,
+   "lng": 14.2708346906575,
+   "lat": 53.0962865828729,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 181,
+   "lng": 14.0336963902155,
+   "lat": 53.507868594058,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 182,
+   "lng": 14.4762521312891,
+   "lat": 53.1967495435604,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 183,
+   "lng": 9.90884756824768,
+   "lat": 53.4880466468098,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 184,
+   "lng": 6.61738115554636,
+   "lat": 51.4757909650564,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 185,
+   "lng": 6.65673523718494,
+   "lat": 51.3795236591475,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 186,
+   "lng": 6.71114528740106,
+   "lat": 51.5261875789907,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 187,
+   "lng": 6.68934282070814,
+   "lat": 51.5764229278963,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 188,
+   "lng": 6.72365238886558,
+   "lat": 51.3758458427716,
+   "type": "Electric grid Operation"
+ },
+ {
+   "id": 189,
+   "lng": 8.61664770595698,
+   "lat": 48.0659538545522,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 190,
+   "lng": 8.87294280093827,
+   "lat": 48.310091303568,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 191,
+   "lng": 6.71525262621456,
+   "lat": 51.5267908744287,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 192,
+   "lng": 12.185765240779,
+   "lat": 53.8108598322992,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 193,
+   "lng": 6.7225698255489,
+   "lat": 51.4797877133457,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 195,
+   "lng": 6.68310699520914,
+   "lat": 51.5756455198898,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 196,
+   "lng": 6.74541685133193,
+   "lat": 51.4986419229617,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 197,
+   "lng": 6.61427858001903,
+   "lat": 51.6186788195162,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 198,
+   "lng": 7.97065695307765,
+   "lat": 51.6768446919669,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 199,
+   "lng": 7.44506932534523,
+   "lat": 51.6185001200754,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 200,
+   "lng": 6.73212494203963,
+   "lat": 51.4594437546532,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 201,
+   "lng": 9.25103429423424,
+   "lat": 53.1144323213021,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 202,
+   "lng": 7.32089264924598,
+   "lat": 52.4714572257118,
+   "type": "Fossil Fuel Plant"
+ },
+ {
+   "id": 203,
+   "lng": 6.75917489922906,
+   "lat": 52.2488579210093,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 204,
+   "lng": 7.70635767084239,
+   "lat": 51.2785803248342,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 205,
+   "lng": 7.4503420737133,
+   "lat": 51.4136082478987,
+   "type": "Fossil Fuel Plant"
+ },
+ {
+   "id": 206,
+   "lng": 6.63448170507317,
+   "lat": 51.0359799570641,
+   "type": "Fossil Fuel Plant"
+ },
+ {
+   "id": 207,
+   "lng": 7.60711615834737,
+   "lat": 51.8986046345034,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 208,
+   "lng": 7.40354445433039,
+   "lat": 51.6444495221964,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 209,
+   "lng": 8.9396926172441,
+   "lat": 52.4030332405173,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 210,
+   "lng": 9.40952036752961,
+   "lat": 52.0343166956609,
+   "type": "Fossil Fuel Plant"
+ },
+ {
+   "id": 211,
+   "lng": 7.23579348811378,
+   "lat": 49.3693923811997,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 212,
+   "lng": 6.81368434620717,
+   "lat": 49.7248341051075,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 213,
+   "lng": 8.58869053015616,
+   "lat": 49.8155140535631,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 214,
+   "lng": 8.54716101729403,
+   "lat": 49.4405397603694,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 215,
+   "lng": 8.40828876612783,
+   "lat": 49.5286235333031,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 216,
+   "lng": 9.19078746567264,
+   "lat": 48.9144168850357,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 217,
+   "lng": 12.1320700033184,
+   "lat": 54.1424599150795,
+   "type": "Electric grid Operation"
+ },
+ {
+   "id": 218,
+   "lng": 12.2135605906601,
+   "lat": 54.1119998916809,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 219,
+   "lng": 8.57125886720865,
+   "lat": 52.1053649703152,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 220,
+   "lng": 8.6593729546501,
+   "lat": 51.9996101360209,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 221,
+   "lng": 7.31136230953603,
+   "lat": 53.1257665914164,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 222,
+   "lng": 6.94948404574031,
+   "lat": 53.1235378491255,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 223,
+   "lng": 8.27327814627525,
+   "lat": 49.0293981037883,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 224,
+   "lng": 8.35233395252327,
+   "lat": 49.4212743450173,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 225,
+   "lng": 7.72920204621049,
+   "lat": 49.4826474377754,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 226,
+   "lng": 9.79733614300556,
+   "lat": 52.0008392548375,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 227,
+   "lng": 10.0821573814608,
+   "lat": 48.2660901922742,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 228,
+   "lng": 8.62716128185002,
+   "lat": 49.5435952784092,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 229,
+   "lng": 8.50180857459037,
+   "lat": 49.4449115329164,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 230,
+   "lng": 10.3917760727113,
+   "lat": 48.51846091102,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 231,
+   "lng": 7.95807590404246,
+   "lat": 47.595477987414,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 232,
+   "lng": 10.0837513310281,
+   "lat": 48.268867503254,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 233,
+   "lng": 9.88551515679306,
+   "lat": 48.3040743800139,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 234,
+   "lng": 9.01340237137239,
+   "lat": 47.84534861265,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 235,
+   "lng": 8.25192553682682,
+   "lat": 47.6397698245713,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 236,
+   "lng": 9.19675654948238,
+   "lat": 48.9129634543149,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 238,
+   "lng": 6.6205356426611,
+   "lat": 49.7489386754597,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 239,
+   "lng": 6.70228544511704,
+   "lat": 49.8289944400988,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 240,
+   "lng": 8.53151491196588,
+   "lat": 50.0478743425063,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 241,
+   "lng": 8.47137164222049,
+   "lat": 50.0972077629353,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 242,
+   "lng": 8.06573800300669,
+   "lat": 50.4060681719154,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 243,
+   "lng": 8.53721905903123,
+   "lat": 50.078085052734,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 244,
+   "lng": 8.54248104018428,
+   "lat": 50.0959883311322,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 245,
+   "lng": 8.98953621454728,
+   "lat": 50.0602551000841,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 246,
+   "lng": 8.95870858956225,
+   "lat": 50.0826078209328,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 247,
+   "lng": 10.3633843211809,
+   "lat": 47.7383368357565,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 248,
+   "lng": 7.46150030545086,
+   "lat": 51.6146143296713,
+   "type": "Fossil Fuel Plant"
+ },
+ {
+   "id": 249,
+   "lng": 7.71823231806437,
+   "lat": 51.6743422310609,
+   "type": "Electric grid Operation"
+ },
+ {
+   "id": 250,
+   "lng": 7.71554347208106,
+   "lat": 51.6736430903867,
+   "type": "Electric grid Operation"
+ },
+ {
+   "id": 251,
+   "lng": 7.71459457000395,
+   "lat": 51.6730996766998,
+   "type": "Electric grid Operation"
+ },
+ {
+   "id": 252,
+   "lng": 7.71270099798652,
+   "lat": 51.6726636796219,
+   "type": "Electric grid Operation"
+ },
+ {
+   "id": 253,
+   "lng": 7.98122158717143,
+   "lat": 51.6735262789774,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 254,
+   "lng": 7.79256713751168,
+   "lat": 49.8105487905969,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 255,
+   "lng": 6.92013046576366,
+   "lat": 49.9705819072583,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 256,
+   "lng": 6.75552343093251,
+   "lat": 49.3648696290977,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 257,
+   "lng": 8.41467466404663,
+   "lat": 49.7091468542437,
+   "type": "Fossil Fuel Plant"
+ },
+ {
+   "id": 258,
+   "lng": 9.88280432069129,
+   "lat": 51.5155075368656,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 259,
+   "lng": 9.85139361305404,
+   "lat": 51.6491352561387,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 260,
+   "lng": 8.78579308261945,
+   "lat": 48.5837674313704,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 261,
+   "lng": 9.04543499281662,
+   "lat": 48.9029620391364,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 262,
+   "lng": 9.80131720045512,
+   "lat": 47.6525043492184,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 263,
+   "lng": 9.81091693259485,
+   "lat": 47.1426453017769,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 264,
+   "lng": 9.42551240461559,
+   "lat": 48.06435084547,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 265,
+   "lng": 8.10495964382999,
+   "lat": 52.2642614054462,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 266,
+   "lng": 12.1301906386214,
+   "lat": 47.9131654927098,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 267,
+   "lng": 6.80182365898612,
+   "lat": 51.124788107918,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 268,
+   "lng": 7.98506747780853,
+   "lat": 50.8422254631609,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 269,
+   "lng": 8.28486180869833,
+   "lat": 50.7590735041179,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 270,
+   "lng": 7.22423843379854,
+   "lat": 53.349927162548,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 271,
+   "lng": 7.20605287251855,
+   "lat": 53.3413192735744,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 272,
+   "lng": 9.31819528207498,
+   "lat": 54.7160494380133,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 273,
+   "lng": 9.27063393311954,
+   "lat": 55.0370264929238,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 274,
+   "lng": 9.43342737750221,
+   "lat": 55.0187237565518,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 275,
+   "lng": 7.43348672766729,
+   "lat": 50.4365192111658,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 276,
+   "lng": 7.59330185837014,
+   "lat": 50.3859438273488,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 277,
+   "lng": 8.12215705538293,
+   "lat": 53.5658323327544,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 278,
+   "lng": 11.5615085243446,
+   "lat": 52.1239035693175,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 279,
+   "lng": 12.8139099558581,
+   "lat": 50.8579185289825,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 280,
+   "lng": 13.3823234132251,
+   "lat": 51.3559961800368,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 281,
+   "lng": 12.0449825821974,
+   "lat": 50.7812567747087,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 282,
+   "lng": 12.518222136544,
+   "lat": 51.157072596162,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 284,
+   "lng": 8.65666357652504,
+   "lat": 50.6057345116662,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 285,
+   "lng": 8.08162672435001,
+   "lat": 52.8586374919795,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 286,
+   "lng": 9.56710206574622,
+   "lat": 51.325257359953,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 287,
+   "lng": 7.74679252616918,
+   "lat": 52.2885115307228,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 288,
+   "lng": 7.91072937298184,
+   "lat": 48.501288357463,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 289,
+   "lng": 7.72570638711988,
+   "lat": 52.2771949193371,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 290,
+   "lng": 14.2192283642215,
+   "lat": 51.1207080075153,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 291,
+   "lng": 14.5700866006585,
+   "lat": 51.4190137129385,
+   "type": "Fossil Fuel Plant"
+ },
+ {
+   "id": 292,
+   "lng": 11.6441811640088,
+   "lat": 51.9085129245988,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 293,
+   "lng": 11.4746908484648,
+   "lat": 50.6040154986165,
+   "type": "Fossil Fuel Plant"
+ },
+ {
+   "id": 294,
+   "lng": 10.9910146509867,
+   "lat": 50.5735270149254,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 295,
+   "lng": 10.5054991845412,
+   "lat": 52.3018379177997,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 296,
+   "lng": 9.11362801252575,
+   "lat": 52.5457924965917,
+   "type": "Fossil Fuel Plant"
+ },
+ {
+   "id": 297,
+   "lng": 10.369230142447,
+   "lat": 52.1670924591566,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 298,
+   "lng": 10.4195406715655,
+   "lat": 52.236960686926,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 299,
+   "lng": 10.0876468394791,
+   "lat": 52.3151305685128,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 300,
+   "lng": 8.40314145213673,
+   "lat": 52.609644032024,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 301,
+   "lng": 10.2358631776837,
+   "lat": 52.2934595593518,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 302,
+   "lng": 9.51424013881917,
+   "lat": 51.2590355982966,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 303,
+   "lng": 9.38765132401603,
+   "lat": 51.6407335383064,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 304,
+   "lng": 9.77415048127863,
+   "lat": 50.5287496740774,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 305,
+   "lng": 9.17745969579698,
+   "lat": 49.0378098900202,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 306,
+   "lng": 9.17731116526151,
+   "lat": 49.0393782085421,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 307,
+   "lng": 9.15135403252636,
+   "lat": 49.1433834351561,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 308,
+   "lng": 10.1878290378895,
+   "lat": 49.9812166954503,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 309,
+   "lng": 9.44691873439718,
+   "lat": 49.5902629413636,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 310,
+   "lng": 9.20736452076848,
+   "lat": 49.176638012732,
+   "type": "Electric grid Operation"
+ },
+ {
+   "id": 311,
+   "lng": 9.69465642193277,
+   "lat": 49.232592562812,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 312,
+   "lng": 10.1174867467825,
+   "lat": 48.8971053680956,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 314,
+   "lng": 10.8675659384379,
+   "lat": 48.5394691326321,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 315,
+   "lng": 10.8408696020982,
+   "lat": 48.2380310170111,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 316,
+   "lng": 10.9367289569552,
+   "lat": 48.401306480313,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 317,
+   "lng": 10.8739358089409,
+   "lat": 47.2444239523258,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 318,
+   "lng": 10.8637616674018,
+   "lat": 48.5468231412265,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 319,
+   "lng": 9.70421892134793,
+   "lat": 48.4649756550866,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 320,
+   "lng": 9.40058897366435,
+   "lat": 48.6669524232075,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 321,
+   "lng": 7.57243737559791,
+   "lat": 48.0188750160839,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 322,
+   "lng": 7.75186259053916,
+   "lat": 48.0964057598548,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 323,
+   "lng": 12.4772465439526,
+   "lat": 50.753120094381,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 324,
+   "lng": 14.9464971571741,
+   "lat": 51.0625863042971,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 325,
+   "lng": 15.1149656392042,
+   "lat": 51.0905747712724,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 326,
+   "lng": 13.8412681302394,
+   "lat": 50.9901759706559,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 327,
+   "lng": 13.255555029778,
+   "lat": 50.9301782754208,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 328,
+   "lng": 13.0818771402069,
+   "lat": 48.2565212678656,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 329,
+   "lng": 13.0027821493857,
+   "lat": 48.2619682848282,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 330,
+   "lng": 12.2208353829454,
+   "lat": 48.585732999856,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 331,
+   "lng": 12.7474625154349,
+   "lat": 48.1487453495297,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 332,
+   "lng": 13.1034346835086,
+   "lat": 48.6667929839894,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 333,
+   "lng": 9.19699688149761,
+   "lat": 54.8510976310855,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 334,
+   "lng": 11.1937143678616,
+   "lat": 50.162202113478,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 335,
+   "lng": 10.8360157761226,
+   "lat": 49.9280674466811,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 336,
+   "lng": 11.8107025878306,
+   "lat": 50.1837655408821,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 337,
+   "lng": 12.2968838072508,
+   "lat": 48.6069099365163,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 338,
+   "lng": 12.082254511457,
+   "lat": 49.2974477819197,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 339,
+   "lng": 8.95368125793136,
+   "lat": 49.5674432054231,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 341,
+   "lng": 12.2488239333733,
+   "lat": 51.197882455184,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 342,
+   "lng": 10.7346694131288,
+   "lat": 51.4401867876631,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 343,
+   "lng": 11.0049169401521,
+   "lat": 50.5074149865379,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 344,
+   "lng": 13.0025899280761,
+   "lat": 50.8659127554399,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 345,
+   "lng": 12.2428369607183,
+   "lat": 50.5674531847227,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 346,
+   "lng": 13.2490284051015,
+   "lat": 52.5316239158784,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 347,
+   "lng": 13.3155159230367,
+   "lat": 52.521999382843,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 348,
+   "lng": 13.3686540366335,
+   "lat": 52.5031475699387,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 349,
+   "lng": 11.7924138767477,
+   "lat": 48.8382240603814,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 350,
+   "lng": 11.3269542156337,
+   "lat": 49.3934813535393,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 351,
+   "lng": 11.5077306291349,
+   "lat": 48.7611239826781,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 352,
+   "lng": 11.8076056990284,
+   "lat": 48.4554268046327,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 353,
+   "lng": 11.5813705373931,
+   "lat": 48.7648940914575,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 354,
+   "lng": 11.6393121226285,
+   "lat": 48.1787834513521,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 355,
+   "lng": 6.17791450795649,
+   "lat": 49.9530651407752,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 356,
+   "lng": 6.21102035001899,
+   "lat": 49.958625762817,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 357,
+   "lng": 6.11451707744375,
+   "lat": 49.9053646883447,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 358,
+   "lng": 6.08346046717716,
+   "lat": 49.7764406544559,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 359,
+   "lng": 6.27694180505096,
+   "lat": 49.1977400931517,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 360,
+   "lng": 6.77320788478575,
+   "lat": 49.2910742282334,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 361,
+   "lng": 6.70365123666852,
+   "lat": 49.1385106493524,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 362,
+   "lng": 8.04936553586669,
+   "lat": 47.5508771216161,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 363,
+   "lng": 7.50006180009675,
+   "lat": 51.5351741198659,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 364,
+   "lng": 6.97593259448086,
+   "lat": 51.0376007513607,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 365,
+   "lng": 13.2428490525397,
+   "lat": 52.534954010528,
+   "type": "Electric grid Operation"
+ },
+ {
+   "id": 366,
+   "lng": 8.56218199023421,
+   "lat": 49.1329499430444,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 367,
+   "lng": 8.44131550430227,
+   "lat": 49.2514026918789,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 368,
+   "lng": 7.94281005788411,
+   "lat": 47.6530213753111,
+   "type": "Fossil Fuel Plant"
+ },
+ {
+   "id": 369,
+   "lng": 9.06879107734103,
+   "lat": 53.5666414353503,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 370,
+   "lng": 6.74137616899692,
+   "lat": 49.3574919769119,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 371,
+   "lng": 6.74970012443072,
+   "lat": 49.3651763762001,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 372,
+   "lng": 6.76601568493305,
+   "lat": 49.3600771974691,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 373,
+   "lng": 12.1504016727645,
+   "lat": 49.0127518366844,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 374,
+   "lng": 7.59135990137681,
+   "lat": 51.9284416773768,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 375,
+   "lng": 8.45163254550249,
+   "lat": 49.0073972031011,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 376,
+   "lng": 8.99620820363651,
+   "lat": 52.3795880192563,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 377,
+   "lng": 9.56282339901178,
+   "lat": 48.7014898485108,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 378,
+   "lng": 9.3709192851844,
+   "lat": 48.7191279915177,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 379,
+   "lng": 9.37760581754005,
+   "lat": 48.8126068944115,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 380,
+   "lng": 9.82158388744515,
+   "lat": 52.4248552966861,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 381,
+   "lng": 9.07622547939074,
+   "lat": 49.3633869809985,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 382,
+   "lng": 10.1603033138907,
+   "lat": 49.9891567446732,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 383,
+   "lng": 10.1964916419935,
+   "lat": 50.0279724289148,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 384,
+   "lng": 10.8431178304875,
+   "lat": 49.3786927451193,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 385,
+   "lng": 9.09051758008411,
+   "lat": 49.970041398809,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 386,
+   "lng": 8.81399422708791,
+   "lat": 51.9834366629029,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 387,
+   "lng": 8.9322184779311,
+   "lat": 52.1933124598334,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 388,
+   "lng": 8.95904416676652,
+   "lat": 52.2784949940029,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 389,
+   "lng": 9.59430167337064,
+   "lat": 49.7984427353847,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 390,
+   "lng": 10.9729039325696,
+   "lat": 49.5585074124969,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 391,
+   "lng": 8.95464418290241,
+   "lat": 50.0860157590432,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 392,
+   "lng": 7.17590444499639,
+   "lat": 51.4755782661564,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 393,
+   "lng": 10.2316415853389,
+   "lat": 48.5297622821597,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 394,
+   "lng": 10.2224358208891,
+   "lat": 48.7367219779685,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 395,
+   "lng": 9.64533508631729,
+   "lat": 47.744596124126,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 396,
+   "lng": 10.4015869070369,
+   "lat": 48.509929747715,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 397,
+   "lng": 8.80962335538861,
+   "lat": 50.2034747936076,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 398,
+   "lng": 9.72592506135105,
+   "lat": 54.2877858945732,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 399,
+   "lng": 9.09711497138979,
+   "lat": 48.8277733233867,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 400,
+   "lng": 8.62886498196432,
+   "lat": 51.9936340947976,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 401,
+   "lng": 10.0604081360095,
+   "lat": 54.3487708354365,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 402,
+   "lng": 9.44963659025525,
+   "lat": 53.9672865006218,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 403,
+   "lng": 8.25885999852837,
+   "lat": 47.634211656147,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 404,
+   "lng": 8.23211264237636,
+   "lat": 47.5560892850149,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 406,
+   "lng": 8.8615258022405,
+   "lat": 47.8064353563593,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 407,
+   "lng": 13.1456729795316,
+   "lat": 55.5016026150068,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 408,
+   "lng": 10.802357996432,
+   "lat": 53.897547454034,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 409,
+   "lng": 9.21565020993259,
+   "lat": 48.8523053561223,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 410,
+   "lng": 10.4012810931809,
+   "lat": 48.5146095739848,
+   "type": "Fossil Fuel Plant"
+ },
+ {
+   "id": 411,
+   "lng": 8.7375726951153,
+   "lat": 51.7001693121241,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 412,
+   "lng": 10.6414677999401,
+   "lat": 53.9191626781128,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 413,
+   "lng": 8.67371735734288,
+   "lat": 49.2904393997661,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 414,
+   "lng": 9.48789511822337,
+   "lat": 53.6365577774589,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 415,
+   "lng": 9.49151084954643,
+   "lat": 53.658098307544,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 416,
+   "lng": 7.47224785884145,
+   "lat": 47.6466324195086,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 417,
+   "lng": 13.4428542096901,
+   "lat": 48.4345464156274,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 418,
+   "lng": 13.7106901435785,
+   "lat": 48.5193051781923,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 419,
+   "lng": 6.02502881768955,
+   "lat": 54.3540286881643,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 420,
+   "lng": 6.02503294993986,
+   "lat": 54.3549329994864,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 421,
+   "lng": 9.09183530449903,
+   "lat": 49.2946188998807,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 422,
+   "lng": 8.66378320316657,
+   "lat": 49.3600874127032,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 423,
+   "lng": 7.95921954402561,
+   "lat": 47.5783599815231,
+   "type": "Fossil Fuel Plant"
+ },
+ {
+   "id": 424,
+   "lng": 8.34912613148193,
+   "lat": 49.0130521548118,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 425,
+   "lng": 10.4203896078253,
+   "lat": 52.1652004518716,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 426,
+   "lng": 10.3884722351089,
+   "lat": 52.1513649609601,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 427,
+   "lng": 8.30626269672421,
+   "lat": 49.0128258799272,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 429,
+   "lng": 6.21619298912827,
+   "lat": 50.9123618338628,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 430,
+   "lng": 5.91852741859707,
+   "lat": 51.148426414922,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 431,
+   "lng": 6.2140153990158,
+   "lat": 50.943899913974,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 432,
+   "lng": 10.9662584489437,
+   "lat": 47.2695305015289,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 433,
+   "lng": 11.277721100358,
+   "lat": 47.4958727068203,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 434,
+   "lng": 11.2869439219167,
+   "lat": 47.4928625176028,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 435,
+   "lng": 13.5053369296479,
+   "lat": 52.4747789067655,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 438,
+   "lng": 8.24872907301797,
+   "lat": 48.846316555802,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 439,
+   "lng": 8.24975045659741,
+   "lat": 48.8491773731136,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 440,
+   "lng": 9.45967747872262,
+   "lat": 53.8646575042439,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 441,
+   "lng": 11.4703941444441,
+   "lat": 50.9303902644171,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 442,
+   "lng": 11.4299065773025,
+   "lat": 50.9114464610955,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 443,
+   "lng": 7.25465688214231,
+   "lat": 53.0266716315927,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 444,
+   "lng": 7.25501782522347,
+   "lat": 53.0267136928067,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 445,
+   "lng": 7.37185639416872,
+   "lat": 52.1977067098446,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 446,
+   "lng": 13.3998288327093,
+   "lat": 53.7944478091186,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 447,
+   "lng": 13.3984709179978,
+   "lat": 53.7933318754816,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 448,
+   "lng": 7.42474524551043,
+   "lat": 51.4592583943398,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 449,
+   "lng": 7.12336046768833,
+   "lat": 51.4473443869048,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 450,
+   "lng": 7.41670797342798,
+   "lat": 51.4570521949625,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 451,
+   "lng": 7.41658270368128,
+   "lat": 51.4607824146291,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 452,
+   "lng": 6.53175004088497,
+   "lat": 50.3900513143006,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 453,
+   "lng": 6.53303662114797,
+   "lat": 50.3922427776709,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 454,
+   "lng": 6.60879226770999,
+   "lat": 51.0346787720857,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 455,
+   "lng": 6.80890626354321,
+   "lat": 51.2686076250227,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 456,
+   "lng": 6.72033167479422,
+   "lat": 51.3441235773954,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 457,
+   "lng": 7.13937482408986,
+   "lat": 51.5608313916517,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 458,
+   "lng": 7.41946378046051,
+   "lat": 51.4575100936229,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 459,
+   "lng": 7.19597934376965,
+   "lat": 51.4115753101187,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 460,
+   "lng": 7.17920271018964,
+   "lat": 51.4218244823956,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 461,
+   "lng": 7.3242796091518,
+   "lat": 51.6213875062827,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 462,
+   "lng": 7.34371343395865,
+   "lat": 51.6131049996992,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 463,
+   "lng": 6.52272548882226,
+   "lat": 51.3224954692993,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 464,
+   "lng": 6.96330548818137,
+   "lat": 50.8337629358461,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 465,
+   "lng": 6.92909269080674,
+   "lat": 50.8441529722133,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 466,
+   "lng": 7.09582677727405,
+   "lat": 50.8268716856964,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 467,
+   "lng": 7.09435799941442,
+   "lat": 50.8269670893312,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 468,
+   "lng": 6.57729059429417,
+   "lat": 51.5563912150336,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 469,
+   "lng": 6.65066750417381,
+   "lat": 51.5537022721424,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 470,
+   "lng": 7.82599052323945,
+   "lat": 51.7500676098869,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 471,
+   "lng": 6.9289790539233,
+   "lat": 50.8438170036629,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 472,
+   "lng": 7.99395917605221,
+   "lat": 51.8230954379067,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 473,
+   "lng": 7.83402083305878,
+   "lat": 51.7550404020937,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 474,
+   "lng": 9.14517688151449,
+   "lat": 52.8532464493029,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 475,
+   "lng": 9.13794801567189,
+   "lat": 52.8470269944345,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 476,
+   "lng": 8.31888929686007,
+   "lat": 52.0660374671048,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 477,
+   "lng": 8.33466775124759,
+   "lat": 52.0705200978987,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 478,
+   "lng": 7.98187840842773,
+   "lat": 51.6766515664854,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 479,
+   "lng": 9.92382990036197,
+   "lat": 51.8975617892672,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 480,
+   "lng": 9.8524162497002,
+   "lat": 51.8987653028483,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 481,
+   "lng": 9.41368131072443,
+   "lat": 52.0274828920508,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 482,
+   "lng": 10.3552149923206,
+   "lat": 52.1758110157759,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 483,
+   "lng": 10.7027320091441,
+   "lat": 47.8264598353378,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 484,
+   "lng": 10.7037422782749,
+   "lat": 47.826415980499,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 485,
+   "lng": 10.1949335038034,
+   "lat": 47.9709369066385,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 486,
+   "lng": 10.6412868211872,
+   "lat": 48.027451234708,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 487,
+   "lng": 10.6418026309511,
+   "lat": 48.0258492685192,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 488,
+   "lng": 8.67009930715852,
+   "lat": 49.3092022842852,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 489,
+   "lng": 9.22808876359609,
+   "lat": 51.8124534028391,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 490,
+   "lng": 9.23187011256161,
+   "lat": 51.810119094224,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 491,
+   "lng": 10.2341629653667,
+   "lat": 48.5289320988725,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 492,
+   "lng": 8.73513579910005,
+   "lat": 50.1591915696539,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 493,
+   "lng": 8.87225969129667,
+   "lat": 50.129725329782,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 494,
+   "lng": 8.74326061918,
+   "lat": 50.1623379810729,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 496,
+   "lng": 7.44948701423191,
+   "lat": 50.4025259728409,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 497,
+   "lng": 6.68146365257697,
+   "lat": 51.5776527635093,
+   "type": "Fossil Fuel Plant"
+ },
+ {
+   "id": 498,
+   "lng": 6.13982051606053,
+   "lat": 49.6685969450672,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 499,
+   "lng": 12.0074138795974,
+   "lat": 55.4515085212621,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 500,
+   "lng": 12.3374245625186,
+   "lat": 51.1969579483496,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 501,
+   "lng": 7.7525434408724,
+   "lat": 47.5391133569052,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 502,
+   "lng": 10.6642589717763,
+   "lat": 49.9799858916058,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 503,
+   "lng": 11.106734232098,
+   "lat": 49.9790817250407,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 504,
+   "lng": 8.61862776799214,
+   "lat": 50.0922498216736,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 505,
+   "lng": 7.97775309227087,
+   "lat": 47.3672238510066,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 506,
+   "lng": 8.18338852854702,
+   "lat": 47.5989602180392,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 507,
+   "lng": 8.18355961654331,
+   "lat": 47.601323769444,
+   "type": "Fossil Fuel Plant"
+ },
+ {
+   "id": 508,
+   "lng": 7.97117863459035,
+   "lat": 47.5457833450791,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 509,
+   "lng": 7.67266489314443,
+   "lat": 47.5201252480429,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 510,
+   "lng": 7.64882434914906,
+   "lat": 47.0942208251304,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 511,
+   "lng": 7.25880632792152,
+   "lat": 47.3376495939671,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 512,
+   "lng": 7.79188134171127,
+   "lat": 47.1549422792263,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 513,
+   "lng": 7.94658892662442,
+   "lat": 47.3175289476011,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 514,
+   "lng": 7.97327497114949,
+   "lat": 47.365586324211,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 515,
+   "lng": 9.04741271801621,
+   "lat": 51.1677872449186,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 516,
+   "lng": 9.05036513764223,
+   "lat": 51.1673238667951,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 517,
+   "lng": 8.65595014422814,
+   "lat": 50.6036046473842,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 518,
+   "lng": 9.25664124635274,
+   "lat": 51.0591793040546,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 519,
+   "lng": 12.789238190432,
+   "lat": 50.6270562614499,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 520,
+   "lng": 12.881244953781,
+   "lat": 50.518645665309,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 521,
+   "lng": 12.8259720721456,
+   "lat": 50.656844395994,
+   "type": "EHV lines & Tower"
+ },
+ {
+   "id": 522,
+   "lng": 14.604476638274,
+   "lat": 52.1744941686659,
+   "type": "Step Up/down SubStation"
+ },
+ {
+   "id": 523,
+   "lng": 14.5112016636857,
+   "lat": 52.1616046052254,
+   "type": "EHV lines & Tower"
+ }
+]
