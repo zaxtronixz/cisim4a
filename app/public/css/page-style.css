@@ -11,16 +11,17 @@
 }
 
 .nice-fonting3{
-	    --font-family-sans-serif: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	--font-family-sans-serif: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
+
 
 #recentProjectModal{
 	font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 0.9rem;
    }
  /***********************************fonts style ends here**************************************/
-div.modal-body .form-group{
+#recent-project-panel{
 	max-height:250px;
 	overflow-y: scroll;
 }
@@ -78,6 +79,16 @@ box-shadow: -1px 3px 4px -1px rgba(0,0,0,0.37);
 box-shadow: -1px 3px 4px -1px rgba(0,0,0,0.37);
 }
 
+#log-btn{
+	    top: 300px;
+    /*background-color: #555*/
+    background: rgba(0,  0, 234, 0.5);
+	 -webkit-box-shadow: -1px 3px 4px -1px rgba(0,0,0,0.37);
+	-moz-box-shadow: -1px 3px 4px -1px rgba(0,0,0,0.37);
+	box-shadow: -1px 3px 4px -1px rgba(0,0,0,0.37);
+}
+}
+
 
  /*font style for the top navbar*/
 #navbar-body .nav-item a{
@@ -93,7 +104,7 @@ box-shadow: -1px 3px 4px -1px rgba(0,0,0,0.37);
 
 /*set the color of the graph visualization*/
 #mynetwork{
-	background: rgba(123, 131, 145, 0.85);
+	background: rgba(255, 255, 255, 0.5);
   	border: 1px solid lightgray;
 }
 
@@ -171,7 +182,7 @@ ul.topnav li a {
     position: absolute;
     right: 100px;
     top: 55px;
-    z-index: 30;
+    z-index: 5;
     width: 160px;
     overflow:hidden;
     color: #fff;

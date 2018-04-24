@@ -9,11 +9,21 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
+  <!-- jquery ui interface -->
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
 
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
-  
-  
+  <!-- Charts visualization library -->
+<!--       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script> -->
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+
+    <script src="visualCharts.js"></script>
+
   <!-- <script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script> -->
 <!--   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script> -->
  <!-- <script src="0.4.1/scripts/vendor.js" charset="utf-8"></script> -->
@@ -24,6 +34,25 @@
 
 
 <style>
+
+ /*chart display*/
+#firstChart{
+  height: 380px;
+  overflow-y: scroll;
+  background: rgba(223, 222, 224, 0.5);
+ }
+
+#secondChart{
+  height: 380px;
+  overflow-y: scroll;
+  background: rgba(223, 222, 224, 0.5);
+  }
+/*chart background*/
+  .chartBgd{
+    height:436px !important;
+    background: rgba(223, 222, 224, 0.5);
+}
+
 
 #mynetwork{
   background: rgba(123, 131, 145, 0.85);
@@ -78,7 +107,25 @@
     top: 200px;
     background-color: #555
 }
+
+  .ui-tooltip {
+    padding: 10px 20px;
+    color: white;
+    border-radius: 20px;
+    font: bold 14px "Helvetica Neue", Sans-Serif;
+    text-transform: uppercase;
+    box-shadow: 0 0 7px black;
+  }
 </style>
+
+  <script>
+$( function() {
+    $( "#opener" ).on( "click", function() {
+      $( "#dialog" ).tooltip();
+    });
+  });
+  </script>
+
 </head>
 <body>
 
@@ -86,43 +133,68 @@
   <a href="#" id="stats-btn">Stats</a>
   <a href="#" id="graph-btn">Graph</a>
 </div>
+<div class="container">
+  <div >
+    <!-- MAIN TITLE OF THE TEST PAGE -->
+    <h2>Hoverable Sidenav Buttons</h2>
 
-<div >
-  <h2>Hoverable Sidenav Buttons</h2>
+    <hr>
 
-   
+     <!-- test elements begin from here -->
+    <h3>Tool tipping</h3>
+
+    <div id="dialog" data-toggle="tooltip" >
+     <p>This is an animated dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+    </div>
+
+    <button id="opener">First tool tip</button>
+ 
+    <br> <br>
+
+
+      <a href="#" data-toggle="tooltip" title="Some tooltip text!">Hover over me</a>
+
+      <!-- Generated markup by the plugin -->
+      <div class="tooltip bs-tooltip-top" role="tooltip">
+        <div class="arrow"></div>
+        <div class="tooltip-inner">
+          Some tooltip text!
+        </div>
+      </div>
+  </div>
 </div>
 
 <div id = "visDisplayPanel">
 
 <div class="container" >
 
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    
-    <table>
+  <!-- Stats Tab panes -->
+    <div id="stats-panel" class="tab-pane fade show"><br>
+     <a class="nav-link"> Statistics</a>
+       <table class="table table-dark">
         <tr>
-            <td>
-    <li class="nav-item">
-      <a class="nav-link" id="stats-header" data-toggle="tab" href="#stats-pane">Statistics</a>
-    </li>
-    </td><td>
-    <li class="nav-item">
-      <a class="nav-link" id="graph-header" data-toggle="tab" href="#graph-pane">Graph</a>
-    </li>
-        </td>
+        <th>Chart 1</th>
+        <th>Chart 2</th>          
         </tr>
-    </table>
-  </ul>
 
-  <!-- Tab panes -->
-  <div class="tab-content fade show">
-    <div id="stats-pane" class="tab-pane fade hide"><br>
-     <!--  <h3>Statistics</h3> -->
-      <p class="on-top">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    </div>
-    <div id="graph-pane" class="tab-pane fade show"><br>
-     <!--  <h3>Graphs</h3> -->
+      <tbody>
+     <tr >
+         <td >
+          <canvas id="secondChart" width="300" height="411"></canvas>
+          </td>
+        <td >
+           <canvas id="firstChart" width="300" height="411"></canvas>
+        </td>   
+     </tr>
+    </tbody>
+
+  </table>
+  </div>
+
+<!-- stats ends here -->
+
+    <div id="graph-panel" class="tab-pane fade show"><br>
+     <a class="nav-link">Graph</a>
        <table class="table table-dark">
  
       <tbody>
@@ -141,12 +213,6 @@
           
         </td>
       </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-
-      </tr>
-
     </tbody>
   </table>
     </div>
@@ -165,20 +231,46 @@
 
 
 <script>
+// checking tooltip functionalities
+ $( function() {
+    $( document ).tooltip({
+      position: {
+        my: "center bottom-20",
+        at: "center top",
+        show: 450,
+        hide:300,
+        using: function( position, feedback ) {
+          $( this ).css( position );
+          $( "<div>" )
+            .addClass( "arrow" )
+            .addClass( feedback.vertical )
+            .addClass( feedback.horizontal )
+            .appendTo( this );
+        }
+      }
+    });
+  } );
+
+// tooltip function ends here
+
 
 document.getElementById("graph-btn").addEventListener("click", function(){
     openResultPane("graph" ) 
 });
 
+document.getElementById("stats-btn").addEventListener("click", function(){
+    openResultPane("stats" ) 
+})
+
+
+
 function openResultPane(name) {
-    $('#'+name+"-pane").toggleClass("active")
-    $('#'+name+"-header").toggleClass("active")
-    if(document.getElementById('visDisplayPanel').style.width == "50%"){
+     if(document.getElementById('visDisplayPanel').style.width == "50%"){
         // open side nav
         document.getElementById('visDisplayPanel').style.width = "0";
         document.getElementById(name+"-btn").style.marginRight = "0";
     }else{
-        createGraph()
+        alternateContent(name)
         document.getElementById('visDisplayPanel').style.width = "50%";
         document.getElementById(name+"-btn").style.marginRight = "50%";
     }
@@ -187,14 +279,33 @@ function openResultPane(name) {
 // function to create graph visualization
 // function createGraph(){
 
-//   // ADD NODE with this
-//   // function addNode(asset){
-//   //   nodes.add({id:asset.id, lable: asset.name}),
-//   // }
+//FUNCTION:
+// Function to hide the result content
+function hideContent(name){
+  $(document).ready(function(){
+          $('#'+name+'-panel').hide();
+  }); 
+}
 
-// REMOVE NODE from list
-// function removeNode(nodeId){
-//   nodes.remove({id:nodeId})
+// FUNCTION To show result content
+function showContent(name){
+  $(document).ready(function(){
+          $('#'+name+'-panel').show();
+  }); 
+}
+
+// FUNCTION to alternate which content to hide or show
+function alternateContent(name){
+  if(name == 'stats'){
+    hideContent('graph')
+    showContent(name)
+    createStats()
+  }else if(name == 'graph'){
+    createGraph()
+    hideContent('stats')
+    showContent(name)
+  }
+}
 // }
 function createGraph(){
    
@@ -253,7 +364,8 @@ $.getJSON( "graphData.json",function (result){
         // clickToUse: false
         ////////////////////////
         edges:{
-          width:5,
+          length:50,
+          width:4,
           shadow:true
         }
     };
@@ -329,6 +441,9 @@ function edgeMaker(asset, myEdges){
          return "flame";
   }
 }
+
+
+//-----------------------------end of create graph function
 
  
   </script>

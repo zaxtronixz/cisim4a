@@ -1,6 +1,7 @@
 <div id="visualPanel" class="visual-panel-nav">
   <a href="#" id="stats-btn">Stats</a>
   <a href="#" id="graph-btn">Graph</a>
+  <a href="#" id="log-btn">Logs</a>
 </div>
 
 
@@ -19,9 +20,12 @@
           </thead>
           <tbody>
             <tr >
-              <td colspan="2" id="stats-display-panel" >
-                <canvas id="myChart"></canvas>
+              <td id="stats-display-panel" >
+                <canvas id="Chart1" height="300"></canvas>
               </td>
+              <td id="stats-display-panel" >
+                <canvas id="Chart2" height="300"></canvas>
+              </td>              
             </tr>
             <tr>
               <td>
@@ -68,6 +72,25 @@
         </table>
       </div>
       <!-- GRAPH PANEL ENDS HERE -->
+
+
+    <!-- LOG FILE BELONGS HERE -->
+
+     <div id="log-panel" class="tab-pane fade show"><br>
+            <table id="logTable" class="table table-dark">
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>Operation</th>
+              <th>Description</th>
+            </tr>
+          </thead>          
+          <tbody id="logFile">
+            
+          </tbody>
+        </table>
+      </div>
+
     </div>
   </div>
 </div>

@@ -1,70 +1,86 @@
  // Get all the assets in the Data
-  
+ // get project instance data 
 
-function createGraph(){
+var network ;
+var container = document.getElementById('mynetwork'); 
 
-// get project instance data 
-  var assets = newProject.assets
+function createGraph(a){
+	var assets = newProject.assets
 
-  if(assets.length != 0){
-    // create nodes array of assets
-    var nodesAndEdges = createNodesAndEdges(assets)
-    var myNodes = nodesAndEdges.nodes // get the all nodes
-    var myEdges = nodesAndEdges.edges // get all edges
-      // create an array with nodes
-    var nodes = new vis.DataSet(myNodes);
-
-    // create an array with edges
-    var edges = new vis.DataSet(myEdges);
-
-    var container = document.getElementById('mynetwork');
- 
-    var data = {
-        nodes: nodes,
-        edges: edges
-    };
-    var fontStyle = { size: 14,
-                    color:'red',
-                    face:'courier',
-                    strokeWidth:1,
-                    strokeColor:'#ffffff'
-                  } 
-
-    var options = {
-      nodes: {
-          shape: 'dot',
-          font: fontStyle,
-          borderWidth: 2,
-          shadow:true,
-          scaling:{
-            label: {
-              min:6,
-              max:8
-            }
-          }
-        },
-        layout: {
-        improvedLayout: false
-    },
-        autoResize: true,
-        height: '480px',
-        width: '530px',
-        // clickToUse: false
-        ////////////////////////
-        edges:{
-          width:5,
-          shadow:true
-        }
-    };
-
-    // initialize your network!
-    var network = new vis.Network(container, data, options);
-} else{
-        console.log("asset have not been created for rendering")
-  }
+	if(scenario){
+		//scanrio values then asset
+		creatingGraph(assets)
+	}else if(!network){
+			creatingGraph(assets)	
+	}
 
 }// --------------------------- create graph ends here 
 
+// graph font option
+var fontStyle = { size: 14,
+	            color:'white',
+	            face:'courier',
+	          } 
+
+// Graph Creation Option
+var options = {
+   	nodes: {
+  	  	shapeProperties: {
+	    	interpolation: false    // 'true' for intensive zooming
+	  },
+      shape: 'dot',
+      font: fontStyle,
+      borderWidth: 2
+      // shadow:true
+    },
+    physics:{
+    	barnesHut:{
+      		gravitationalConstant: -60000,
+      		springConstant:0.02
+    	},
+		  	enabled: true,
+   		 	stabilization:true
+	   // Stops node movement during display
+		},
+	 	layout: {
+        improvedLayout: false
+    },
+        // autoResize: true,
+        height: '680px',
+        width: '760px',
+        // clickToUse: false
+        ////////////////////////
+        edges:{
+          width:1
+          // shadow:true
+        }
+    };
+
+// FUNCTION TO Create new graph object
+function creatingGraph(assets){
+	 if(assets.length != 0){
+	    // create nodes array of assets
+	    var nodesAndEdges = createNodesAndEdges(assets)
+	    var myNodes = nodesAndEdges.nodes // get the all nodes
+	    var myEdges = nodesAndEdges.edges // get all edges
+	      // create an array with nodes
+	    var nodes = new vis.DataSet(myNodes);
+	    // create an array with edges
+	    var edges = new vis.DataSet(myEdges);
+	 	// create node and edge object
+	    var data = {
+	        nodes: nodes,
+	        edges: edges
+	    };
+	    // initialize your network!
+	    network = new vis.Network(container, {}, options);
+	    // add data to the graph 
+	    network.setData(data);
+
+	} else{
+	        console.log("asset have not been created for rendering")
+	  }
+}
 // FUNCTION : Nodes maker
 function createNodesAndEdges(assetsArr){
   var DIR = '/images/graph/';
@@ -76,7 +92,7 @@ function createNodesAndEdges(assetsArr){
    		if(scenario.assetAffected){ // check if scenario is created
    			// check if item is affected by scenario
    			if(checkArray(scenario.assetAffected, "id", item.id)){
-		    	color.Sel = "#b83b3f" // color red
+		    	color.Sel = "#fff" // color red
  		  	// if item was already in failed state		
 			}
 		}else if(item.workingState == "failed"){
@@ -96,6 +112,7 @@ function createNodesAndEdges(assetsArr){
           id: item.id,
           lable: item.name,
           color:color.Sel,
+          shape: 'dot',
           shape :'circularImage',
           image: DIR + switchNames(item.type)+'.png',
           title : item.type + " " + item.sector + " " + item.subSector
@@ -119,17 +136,17 @@ function edgeMaker(asset, myEdges){
     		color.Sel = "#f00"
     	}
 
-      edge = {  from: asset.id, to: item, 
+      edge = {  from: item, to: asset.id, 
                 arrows: "from", // create edge with arrow
-                label: 'dependents', // lable on the edge
-                length:300,
+                label: 'depends_on', // lable on the edge
+                length:200,
                 font: {align: 'horizontal', color: color.Sel} // label fonts properties
               },
         myEdges.push(edge) //push created edge into an array
         })
       }
   }else{
-  	console.log("no inouts for asset "+asset.name)
+  	console.log("no inputs for asset "+asset.name)
   } 
   }// -------------------- end of edgeMaker
 

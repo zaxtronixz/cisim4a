@@ -91,7 +91,7 @@ function addAssetList(selector, assetId, listType){
 			assetSelection += '</ul>' 
 			$(selector).append(assetSelection);	// attach the option list created to an element
 		}else{
-			alert('Assets are too few')
+			interact('Assets are too few', "warning")
 			return false;
 		}
 	}else{ // create scenario asset selection optionList
@@ -107,7 +107,9 @@ function addAssetList(selector, assetId, listType){
 
 
 // 7.FUNCTION: to show markers bouncing on hover
-$('#multiple-select').on('mouseenter','option',function(e) {
+function bouncingMarkers(selector){
+
+$('#'+selector).on('mouseenter','option',function(e) {
 	var markerId = $(this).attr('id');
 	mapCollector.markers.forEach(function(marker){
 	if(marker.id == markerId){
@@ -120,6 +122,9 @@ $('#multiple-select').on('mouseenter','option',function(e) {
 		}
 	})
 })
+
+}
+
 
 
 // 8. Function to create "select option" given asset List and array
@@ -165,7 +170,7 @@ function createOptionList(asset, assetList, listType){
 				return htmlElem
 			}
 		}else { // tell user to create dependency first
-			console.log("dependents must be created to add inputs")
+			interact("dependents must be created to add inputs", 'warning')
 		}
 	}
 }
@@ -210,12 +215,11 @@ $(`form#assetPanelForm`).submit(function(event){
                 	console.log("@update: This is asset object prop in newProject "+newProject.assets[index][prop] +" \n & this is the asset object property"+assetObject[prop])
                 }
             }else{
-                	console.log("@update: asset with "+assetObject.id+" is not found")
+                	interact("@update: asset with "+assetObject.id+" is not found", "warning")
                 }
 		});
 		// var asset = new CreateAssetObject(assetObject, null);
 		var asset = assetObject
-		console.log(" the upadated form data is "+ asset )
 		postForm(url, asset);
 	
 	// add data to json file
@@ -235,6 +239,7 @@ $(`#add-input-btn`).on('click', function(event){
 			contentType: 'application/json',
 			data: JSON.stringify(inputs) 
 	});
+	interact("inputs creation is successful", "progress")
 	closeNav()
 })
 
@@ -251,6 +256,7 @@ $(`#create-dependents-btn`).on('click', function(event){
 			data: JSON.stringify(dependency) 
 	});
 	// use update asset function 
+	interact("dependency creation is successful", "progress")
 	closeNav() 
 })
 
@@ -260,7 +266,6 @@ function OpenSideNavOfChoice(selector){
 	$('#getAssetPanel').hide();
 	$('#first-accordion').hide();
 	$('#control-panel').hide();
-
 	switch (selector) {
 	    case '#getAssetPanel': // open menu with get asset panel
 	        $('#getAssetPanel').show();
@@ -288,7 +293,7 @@ $('#create-scenario-btn').on('click',function(){
 	var scenario = $( "#scenario-selection :selected" ).text()
 	// create scenario object
 	var scenObject = {assetId : assetId, type: scenario}
-
+	interact("Scenario of "+scenario+" is applied to "+ " asset with id "+assetId, 'progress')
 	// create scenario to project
 	window.scenario = new CreateScenario(scenObject)
 	// post the scenario
@@ -298,6 +303,7 @@ $('#create-scenario-btn').on('click',function(){
 			data: JSON.stringify(scenObject),
 			success : scenarioCallback
 	});
+		closeNav();
 
 })
 
@@ -355,6 +361,7 @@ $('#delete-btn').on('click' , function(event){
 			  		markerRemover(assetId)
 			  	}
 			  }
+			  interact("Asset with id " + assetId+ " is deleted", "warning")
 		// send to delete asset from database
 			postForm('getasset/delete', {assetId : assetId, projectId: projectId})
 		}
@@ -365,17 +372,59 @@ $('#delete-btn').on('click' , function(event){
 });
 
 
-// Function for Project instance creation
-$('#startProj-btn').on('click' , function(event){
-	var projectName = $('#projectName').val() // get project name entered
-	
-	if(projectName != ""){ // if project name is not empty
-		newProject.name = projectName // set the project instance name
+// Function: To save new project instance
+ $('#startProj-btn').on('click', function(){
+ 		if(!newProject.saved){
+ 			// save new project name
+ 			newProject.name = $('#projectName').val()
+ 			newProject.saved = true;
+ 			// log file info
+ 			var desc = newProject.name +" Project was saved successfully"
+ 			createLogFile('Save Project',desc )	
+ 		}else{
+ 			// interact with the user
+ 			interact(newProject.name+" project cannot be saved ", "warning")
+ 			// save the following tolog files
+ 			var desc = "Duplicate project saving was not permitted"
+ 			createLogFile('Save Project',desc )
+ 		}
+
+ });
+
+// FUNCTION: To load interactive message user
+function interact(message, type){
+	var mssg = "<p>" + message + "</p>"; // create mssg body
+	$( "#animator" ).children().remove()// remove previous message
+	// check if message is warning
+	if(type == "warning"){
+		// change message background to red
+		$( "#animator" ).css("background-color", "rgba(243, 77, 81, 0.7)")
+		$( "#animator" ).append(mssg)
 	}else{
-		// project name is empty
-		console.log('Project name is not defined')
+		// change message background to blue
+		$( "#animator" ).css("background-color", "rgba(95, 186, 255, 0.7)")
+		$( "#animator" ).append(mssg)
 	}
-})	
+	
+    $( "#animator" ).show()
+  	$( "#animator" ).animate({ "top": "+=150px" }, 1300 ).delay(1700 );
+  	$( "#animator" ).animate({ "top": "-=150px" }, 1300 , function() {
+       $( "#animator" ).css("display","none")
+    });
+ }// ------------------------end of interaction function
+
+
+
+// FUNCTION: to disable save project name button
+$(document).ready(function(){
+    $('#startProj-btn').attr('disabled',true);
+    $('#projectName').keyup(function(){
+        if($(this).val().length !=0)
+            $('#startProj-btn').attr('disabled', false);            
+        else
+            $('#startProj-btn').attr('disabled',true);
+    })
+});
 
 // Function: To remove marker from the map
 function markerRemover(id){
@@ -478,3 +527,14 @@ $('#rightMenu').on("click", function(){
       })
     }
 
+// FUNCTION: TO add operation logs to table
+function createLogFile(op, desc) {
+    var table = $("#logFile"); // get table
+    var counter = $("#logFile").children().length // count number of rows
+    var tableData  = "<tr><td>" + counter+1 +"</td>";
+    	tableData  = "<td>" + op + "</td>";
+    	tableData  = "<td>" + desc + "</td>";
+    	tableData  = "</tr>"
+    	// add data to table
+    	table.append(tableData)
+}

@@ -21,9 +21,9 @@ var graphenedbURL = "bolt://hobby-kflccfbhieglgbkeildpppal.dbs.graphenedb.com:24
 var graphenedbUser = "app89692672-Tf8UcL";
 var graphenedbPass = "b.5IOnVenDmfcG.eDpXEKI1gxxRj1iV";
 
-var driver = neo4j.driver(graphenedbURL, neo4j.auth.basic(graphenedbUser, graphenedbPass));
+// var driver = neo4j.driver(graphenedbURL, neo4j.auth.basic(graphenedbUser, graphenedbPass));
 
-// var driver = neo4j.driver("bolt://localhost", neo4j.auth.basic("neo4j", "2friedXs"));
+var driver = neo4j.driver("bolt://localhost", neo4j.auth.basic("neo4j", "2friedXs"));
 
 
 //////////////////////////////////////////////////////////////////////////////////////////

@@ -144,8 +144,8 @@ this.createAsset = function(asset, mapCollector){
           }else if(asset.workingState == 'failed'){
              this.assetsWorkingState.failed.push(addMe);
   	  		}else{// alternatively if not defined it must be failed
-            asset.workingState = 'failed';
-            this.assetsWorkingState.failed.push(addMe);
+            asset.workingState = 'optimal';
+            this.assetsWorkingState.optimal.push(addMe);
           } // end of else
 
 	  	}// end of asset push asset into array
@@ -163,7 +163,7 @@ this.createScenario = function(assetId){
 this.addAssetDependents =  function(arr){
   var id = arr.assetId; // asset id
   var dependentsList = arr.dependency; // get dependency array
-  var assetList = this.assets 
+  var assetList = this.assets // list of assets from the project
   var indexVal =  returnItemIndex(assetList, id) // get index value of the asset
   console.log("we might get far")
   this.addArrayToObject(dependentsList, indexVal, 'dependents') // add dependency to object
@@ -174,15 +174,21 @@ this.addArrayToObject = function(listToAdd, index, wereToAdd){
   var assetList = this.assets // get asset project list
   if(!assetList[index][wereToAdd]){// if dependent is not defined
       assetList[index][wereToAdd] = [];// create dependent arr
-     for(i=0; i<listToAdd.length;i++){
+      if(wereToAdd=="dependents"){// if dependents is added change working state to failed
+          assetList[index]["workingState"]="failed" //for every depdendent added change the state to fail
+          this.changeState(assetList[index]) // check if state need to be changed
+        }
+       for(i=0; i<listToAdd.length;i++){
        assetList[index][wereToAdd].push(listToAdd[i]) //load assets
      }
+     this.changeState(assetList[index]) // check if state need to be changed
   }
   else if(assetList[index][wereToAdd]){ // if dependents exist
      for(i=0; i<listToAdd.length;i++){
        //check if dependent already exists
        if(!assetList[index][wereToAdd].includes(listToAdd[i])){ //check if dependents is not already in list
          assetList[index][wereToAdd].push(listToAdd[i])
+         this.changeState(assetList[index])
        }
      }
   }
@@ -207,10 +213,35 @@ this.addArrayToObject = function(listToAdd, index, wereToAdd){
           var indexVal = findIndexValue(this.assetsWorkingState.failed, "id", asset.id)
           // remove asset from failed state and push into optimal state
           this.assetsWorkingState.failed.splice(indexVal,1)
-      }else {
-          console.log(asset.dependents.length - asset.inputs.length + " Nos of input is remaining")
+
+      }else if(asset.dependents.length > asset.inputs.length){
+           // first change asset working state
+           asset.workingState = 'failed';
+            // create a new  object
+           var assX = {id: asset.id, type:asset.type }
+            // include asset in failed list
+           this.assetsWorkingState.failed.push(assX)
+           // check if asset is in optimal asset List
+           if(checkArray(this.assetsWorkingState.optimal, "id", asset.id)){
+              // get asset index value
+              var indexVal = findIndexValue(this.assetsWorkingState.optimal, "id", asset.id)
+              this.assetsWorkingState.optimal.splice(indexVal,1)// remove asset from optimal
+           }
       }
-    }else{ console.log("Create dependents and inputs first")}
+    }else{ 
+       // first change asset working state
+           asset.workingState = 'failed';
+            // create a new  object
+           var assX = {id: asset.id, type:asset.type }
+            // include asset in failed list
+           this.assetsWorkingState.failed.push(assX)
+           // check if asset is in optimal asset List
+           if(checkArray(this.assetsWorkingState.optimal, "id", asset.id)){
+              // get asset index value
+              var indexVal = findIndexValue(this.assetsWorkingState.optimal, "id", asset.id)
+              this.assetsWorkingState.optimal.splice(indexVal,1)// remove asset from optimal
+           }
+    }
   }//---------------------------------------------------------------------------
 
     // /// FUNCTION:ERROR : To add input if they match dependents 

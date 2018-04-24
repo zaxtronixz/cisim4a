@@ -52,3 +52,22 @@
 .close-selection:hover {background: #bbb;}
 
 /****************************style for the right panel****************************/
+
+/**********************pop message style is here*******************/
+ #animator{
+    position: absolute;
+    z-index:4;
+    top: -100px;
+    display:none;
+    font-family:"Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    color: white; 
+    border-radius:5px;
+    padding:7px 15px 7px 15px;
+    background-color:rgba(41,175,219,0.5);
+    -webkit-box-shadow: 6px 28px 38px -11px rgba(0,0,0,0.57);
+    -moz-box-shadow: 6px 28px 38px -11px rgba(0,0,0,0.57);
+    box-shadow: 6px 28px 38px -11px rgba(0,0,0,0.57);
+}
+
+/*pop message style ends here*/
