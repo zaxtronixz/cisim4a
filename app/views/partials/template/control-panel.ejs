@@ -50,21 +50,21 @@
 	        			<!-- Insert body for scenario in here -->
 	        			<div id="create-scenario-form" >
 		        			<div class="form-group">
-						  		<label for="scenario">Select Scenario Type:</label>
+						  		<label for="scenario">Simulation:</label>
 						  		<select name="type" class="form-control square-border" id="scenario-selection">
 						    		<option disabled selected>---</option>
-						    		<option>Fire Disaster</option>
-						     		<option>Extreme Wind</option>
-						   		</select>
+						    		<option>Scenario</option>
+						     		<option>Centrality</option>
+						     	</select>
 							</div>  
 							<div class="form-group">
-						  		<label for="scenario-selected-asset">Apply scenario to:</label>
+						  		<label for="scenario-selected-asset">Choose Asset:</label>
 						  		<select name="type" class="form-control square-border" id="select-asset-scenario">
 						    		
 						   		</select>
 							</div>  
 							<div class="form-group square-border">
-								<input name="create-scenario-btn" id = "create-scenario-btn" type="submit" value = "Create Scenario"  class="btn btn-secondary square-border">
+								<input name="create-scenario-btn" id = "create-scenario-btn" type="submit" value = "Run Simulation"  class="btn btn-secondary square-border">
 							</div>
 							<div class="form-group square-border">
 								<input name="generate-scenarioResult-btn" id = "generate-scenarioResult-btn" type="button" value = "Generate Scenario Result"  class="btn btn-info square-border">
@@ -73,5 +73,29 @@
 	        			<!-- Scenario content ends here -->
 	            	</div>
 	      		</div>
-		  	</div> 
+		  	</div>
+		  	 <!-- loading json data into the database -->
+		  	<div class="card square-border">	    		
+      			<div class="card-header panel-header-color square-border" >
+		        	<h4 class="panel-title square-border">
+	          			<a class="card-link" data-toggle="collapse" aria-expanded="false"  href="#collapse4">Load Data</a>
+	       			</h4>
+	      		</div>
+	      		<div id="collapse4" class="collapse" data-parent="#control-panel">
+	        		<div class="card-body square-border">
+	        		
+	        			<div id="load-json-data-form" >
+		        			<div class="form-group">
+						  		<label for="load-file">Type Project Name</label>
+    								<input type="text" class="form-control-file" id="load-json-data">
+							</div>  
+							<div class="form-group square-border">
+								<input name="generate-scenarioResult-btn" id = "load-json-data-btn" type="button" value = "Load data"  class="btn btn-info square-border">
+							</div>
+						</div>
+	        		
+	            	</div>
+	      		</div>
+		  	</div>
+		  	<!-- the end of it all -->
 		 </div>

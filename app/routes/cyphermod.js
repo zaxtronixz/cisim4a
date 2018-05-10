@@ -164,10 +164,48 @@ cypher.createScenario = function(scenObject, res){
     session
    .run(`MATCH (a:ASSET)<-[:DEPENDS_ON*]-(dependents)
          WHERE a.id = '${assetId}'
-         RETURN collect(distinct dependents)`)
+         RETURN collect(distinct dependents) as n`)
     .then(function(result) {
-        var assetsAffected = []
+        var assetsAffected = [];
          result.records.forEach(function(record) {
+                    console.log("this are the records in scenario"+ JSON.stringify(record))
+                    assetsAffected.push(record) // affected assets to the list
+        });
+        res.json(assetsAffected);
+        session.close();
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
+}
+
+
+// 7. CREATE GRAPH MODEL FROM JASON: 
+cypher.createJson = function(jsonObject){
+    var json = jsonObject
+    console.log("we got this for cypher" + JSON.stringify(json));
+    var session = driver.session();
+    session
+   .run(`WITH ${json} as data
+        UNWIND data.items as q
+        MERGE (n:ASSET {id:q.id}) ON CREATE
+        SET n.name = q.name,
+            n.type = q.type,
+            n.coordLat = q.coordLat,
+            n.coordLng = q.coordLng,
+            n.projectId = q.projectId,
+            n.sector = q.sector,
+            n.subSector = q.subSector
+
+            FOREACH (dep IN q.dependents | 
+                MATCH (x) WHERE x.id = dep MERGE((dep)<-[:DEPENDS_ON]-(n))
+                )
+     
+         `)
+    .then(function(result) {
+        var assetsAffected = [];
+         result.records.forEach(function(record) {
+                    console.log("this are the records in scenario"+ JSON.stringify(record))
                     assetsAffected.push(record) // affected assets to the list
         });
         res.json(assetsAffected);

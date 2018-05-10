@@ -48,16 +48,22 @@ function loadProjectJson(){
 	  		json = json.reverse() // reverse the array
 	  		mapCollector.json = json; // pass the projects
 	  		$("#recentProjectTable").children().remove()
-	  	  	
+	  	  	var k = 0; // counter
 	  	 for(i=0; i < json.length; i++){
-	  	 		var fillrow = "" // new row for each iteration
-		  	 	fillrow += `<tr class='' id='${json[i].id}' >` // attach project id
-		  	 	fillrow += "<td>" + (i+1) +" . " + json[i].name + "</td>";
-		  	 	fillrow += "<td>" + json[i].id + "</td>";
-		  	 	fillrow += "<td>" + json[i].places + "</td>";
-		  	 	fillrow += "</tr>"
-		   	 // load data to project table
-		   	 $("#recentProjectTable").append(fillrow)
+
+	  	 		if(json[i].saved){
+	  	 			k++ // increase counter
+		  	 		var fillrow = "" // new row for each iteration
+			  	 	fillrow += `<tr class='' id='${json[i].id}' >` // attach project id
+			  	 	fillrow += "<td>" + k +" . " + json[i].name + "</td>";
+			  	 	fillrow += "<td>" + json[i].id + "</td>";
+			  	 	fillrow += "<td>" + json[i].places + "</td>";
+			  	 	fillrow += "</tr>"
+
+			   	 // load data to project table
+			   	 $("#recentProjectTable").append(fillrow)
+	  	 		}
+
 		  	 }
 	    }
 	})
@@ -74,7 +80,7 @@ $(document).on('click', '#recentProjectTable tr', function () {
 $('#recentProject-btn').on('click', function(){
 	// Get the recent project selected 
 	var id = $('.active').attr('id') // get id of project selected
-	var projectList = mapCollector.json // get list of projects loaded
+	var projectList = mapCollector.json // get list of projects loaded from json file
 	var proIndex  = returnItemIndex(projectList, id) // get index of the project
 	var project = projectList[proIndex] // get the exact project
 	// call the load recent project function
@@ -82,5 +88,47 @@ $('#recentProject-btn').on('click', function(){
 	mapCollector.loadRecentProject(project)	// load the project into google maps
 })
 
+// FUNCTION to load json file from api 
+function loadJsonToCypher(projectName){
+	// fetch json data from api
+	$.ajax({
+	  url: "/api",
+	  //force to handle it as text
+	  method: 'get',
+	  dataType: "application/json",
+	  success: function(data) {
 
+	  	var json  = data // get data as objects
+	   	// for each project in the list
+	  	 for(i=0; i < json.length; i++){
+
+	  	 		if(json[i].name == projectName){
+	  	 			var proObject = json[i];
+	  	 			// the pass it to a function makeCypher
+	  	 			makeCypher(proObject)
+	  	 		}else{
+	  	 			console.log("project with name "+projectName+" doesn't exist")
+	  	 		}
+	  	 	}
+	  	 }
+	  })//--------------- end of ajax post
+}
     
+// FUNCTION: To post an object for cypher creation
+function makeCypher(object){
+	var url = '/getasset/makeCypher'; // et url
+	var object = JSON.stringify(object); // stringify object
+	$.post('/getasset/makeCypher', object , broadCaster);
+	// $.ajax({type: 'POST',
+	// 		url: url,
+	// 		contentType: 'application/json',
+	// 		data: object,
+	// 		success: broadCaster 
+	// }
+}
+
+// FUNCTION: to recieve result of the created in cypher from json file
+function broadCaster(result){
+	// for now i do nothing
+	alert("#$! we succeeded !!")
+}

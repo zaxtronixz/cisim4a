@@ -25,8 +25,8 @@ function CreateScenario(scenarioData){
   this.impactNode = scenarioData.assetId
   this.totalAssets = newProject.assetTotal;
   // get assets working state from the project
-  this.previousOptimalAssets = newProject.assetsWorkingState.optimal
-  this.previousFailedAssets  = newProject.assetsWorkingState.failed
+  this.previousOptimalAssets = Array.from(newProject.assetsWorkingState.optimal)
+  this.previousFailedAssets  = Array.from(newProject.assetsWorkingState.failed)
   // get affect asset list from scenario result
   this.currentOptimalAssets = '';
   this.currentFailedAssets ='';
@@ -36,35 +36,42 @@ function CreateScenario(scenarioData){
   this.degreeOfImpact =  function(){
     var degreeOfImpact = 0; // set degree of impact to zero
     if(this.assetAffected && this.totalAssets){ // if affected is true
-      degreeOfImpact  = ((this.assetAffected / this.totalAssets) * 100)
+      degreeOfImpact  = ((this.assetAffected.length / this.totalAssets.length) * 100)
     } 
     return degreeOfImpact; // return the degree of impact
   };
 
-// set the vaues for current workingstates
-  this.currentWorkingState =  function(scenarioData){
+//set the vaues for current workingstates
+  this.currentWorkingState =  function(scenarioData, assetList){
     // get the assets affected
     var xAssets = scenarioData
-    console.log("this is scenario data "+JSON.stringify(scenarioData))
-    this.assetAffected = [];
-    var optis = this.previousOptimalAssets // get optimal assets
-    // create current failed assets from previously failed assets
-    this.currentFailedAssets =  this.previousFailedAssets 
-    this.currentOptimalAssets = this.previousOptimalAssets // an  array to add current optimal assets
 
+    this.assetAffected = []; // empty array collect assets affected
+
+    // var optis = this.previousOptimalAssets // get optimal assets
+    console.log("List of asset affected by scenario "+ JSON.stringify(xAssets))
+    // create current assets from previously  assets
+    this.currentFailedAssets =  Array.from(this.previousFailedAssets) 
+    this.currentOptimalAssets = Array.from(this.previousOptimalAssets) // an  array to add current optimal assets
+ 
     // if the affected assets were in optimal state add to failed & affected
-    for(i=0;i<xAssets.length;i++){
-      if(checkArray(optis, "id", xAssets[i].id)){
-          // an object with property id and type to add to array   
-          var addX = {id: xAssets[i].id, type: xAssets[i].type }
+   for(var i=0; i< xAssets.length; i++){
+
+        var returnState = getWorkingState(assetList, xAssets[i].id)
+
+        if( returnState == 'optimal'){
+           // create an object extracted from the list
+          var addX = {id: xAssets[i]['id'], name: xAssets[i]['name'], type: xAssets[i]['type'] }
           this.assetAffected.push(addX)// put them in assets affected
-          this.currentFailedAssets.push(addX) // add them current failed assets
-          var indexVal = findIndexValue(this.currentOptimalAssets, 'id', xAssets[i].id)
+          this.currentFailedAssets.push(xAssets[i]) // add them current failed assets
+          var indexVal = findIndexValue(this.currentOptimalAssets, 'id', xAssets[i]['id'])
           this.currentOptimalAssets.splice(indexVal,1)
+        }else{
+          console.log("No asset was affected ")
         }
      }
   
-}// ------------------------end of currentWorkingState
+  }// ------------------------end of currentWorkingState
 
 }//----------------------------- end of create scenario object
 
@@ -75,7 +82,7 @@ function MapProjectInstance(mapCollector) {
   this.id = (Date.now().toString(36) + Math.random().toString(36).substr(5, 9)).toLowerCase();
   // if a name is not set for the project improvise
   
-  this.name =  ''; //name is not given
+  this.name =  mapCollector.name || ''; //name is not given
   this.places = mapCollector.places || "";
   this.location = mapCollector.location || ""; // assign latLong values to object
   this.saved = "" // if name is not entered project is not saved
@@ -108,7 +115,7 @@ function MapProjectInstance(mapCollector) {
 // set name and set the saved instance of the project
 this.setName = function(name){
   if (!this.name) {
-    this.name =  mapCollector.name || 'not_defined_'+ this.id
+    this.name =  name || 'not_defined_'+ this.id
   }else{
     this.name = name // save name of the project
     this.save  = true; // set the saved project instance
@@ -116,7 +123,7 @@ this.setName = function(name){
 
 }
 // call the set name function
-this.setName(null)
+this.setName(mapCollector.name)
 // create asset from scratch
 this.createAsset = function(asset, mapCollector){
     var asset  = new CreateAssetObject(asset, mapCollector)
@@ -138,15 +145,15 @@ this.createAsset = function(asset, mapCollector){
           // increment asset total
   	  		this.assetTotal += 1;
           // if asset working is already optimal
-  		  	if(asset.workingState == 'optimal'){
-             this.assetsWorkingState.optimal.push(addMe);
-          // if already in failed state
-          }else if(asset.workingState == 'failed'){
-             this.assetsWorkingState.failed.push(addMe);
-  	  		}else{// alternatively if not defined it must be failed
+  		  	// if(asset.workingState == 'optimal'){
+       //       this.assetsWorkingState.optimal.push(addMe);
+       //    // if already in failed state
+       //    }else if(asset.workingState == 'failed'){
+       //       this.assetsWorkingState.failed.push(addMe);
+  	  		// }else{// alternatively if not defined it must be failed
             asset.workingState = 'optimal';
             this.assetsWorkingState.optimal.push(addMe);
-          } // end of else
+          // } // end of else
 
 	  	}// end of asset push asset into array
 
@@ -172,28 +179,23 @@ this.addAssetDependents =  function(arr){
 
 this.addArrayToObject = function(listToAdd, index, wereToAdd){
   var assetList = this.assets // get asset project list
-  if(!assetList[index][wereToAdd]){// if dependent is not defined
-      assetList[index][wereToAdd] = [];// create dependent arr
-      if(wereToAdd=="dependents"){// if dependents is added change working state to failed
-          assetList[index]["workingState"]="failed" //for every depdendent added change the state to fail
-          this.changeState(assetList[index]) // check if state need to be changed
-        }
-       for(i=0; i<listToAdd.length;i++){
-       assetList[index][wereToAdd].push(listToAdd[i]) //load assets
-     }
-     this.changeState(assetList[index]) // check if state need to be changed
-  }
-  else if(assetList[index][wereToAdd]){ // if dependents exist
+  if(!assetList[index][wereToAdd]){// if dependent/input is not defined
+      assetList[index][wereToAdd] = [];// define dependent/input list
+      dependencyChangeOfState(assetList[index], wereToAdd) // change state to failed if dependency is added
+      assetList[index][wereToAdd]= listToAdd //load assets
+      this.changeState(assetList[index]) // check if state need to be changed
+
+  } else if(assetList[index][wereToAdd]){ // if dependents/input exist
      for(i=0; i<listToAdd.length;i++){
        //check if dependent already exists
-       if(!assetList[index][wereToAdd].includes(listToAdd[i])){ //check if dependents is not already in list
+       if(!assetList[index][wereToAdd].includes(listToAdd[i])){ //check if item is already in list
          assetList[index][wereToAdd].push(listToAdd[i])
-         this.changeState(assetList[index])
        }
-     }
+     }// change asset state
+    this.changeState(assetList[index])
   }
   else{
-      console.log("Nothing new to add as dependents")
+      interact(assetList[index].name + ' Assets working state is '+ assetList[index].workingState, "progress")
   }   
   // } // end of each function
 } //---------------------------------- end of add dependents function
@@ -251,7 +253,7 @@ this.addArrayToObject = function(listToAdd, index, wereToAdd){
       var assetList = this.assets 
       var indexVal =  returnItemIndex(assetList, id) // get index value of the asset
       this.addArrayToObject(inputList, indexVal, 'inputs') // add inputs to object
-      this.changeState(assetList[indexVal]) //change asset states
+      // this.changeState(assetList[indexVal]) //change asset states
   };//-----------------------------------------------------------------------------
 
 

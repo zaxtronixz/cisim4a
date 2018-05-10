@@ -4,7 +4,7 @@
 var network ;
 var container = document.getElementById('mynetwork'); 
 
-function createGraph(a){
+function createGraph(){
 	var assets = newProject.assets
 
 	if(scenario){
@@ -30,7 +30,7 @@ var options = {
 	  },
       shape: 'dot',
       font: fontStyle,
-      borderWidth: 2
+      borderWidth: 5
       // shadow:true
     },
     physics:{
@@ -92,30 +92,27 @@ function createNodesAndEdges(assetsArr){
    		if(scenario.assetAffected){ // check if scenario is created
    			// check if item is affected by scenario
    			if(checkArray(scenario.assetAffected, "id", item.id)){
-		    	color.Sel = "#fff" // color red
- 		  	// if item was already in failed state		
+		    	color.Sel = "#cc0000" // color red
+ 		  	// if scenario impact node	
+			}else if(scenario.impactNode == item.id){
+				color.Sel = "#330000" // color red
 			}
 		}else if(item.workingState == "failed"){
-		   			color.Sel = "#b83b3f" // color red
-		// item was the impact node
-		}else if(item.id == scenario.impactNode){
-   					color.Sel = "#b70006" // color red
+		   			color.Sel = "#ff3333" // color red
 		// item working state is optimal
-   		}else if(item.workingState == "optimal"){
-		    		color.Sel = "#00f"
-		}else{
-		    		color.Sel = "#f00"
+   		}else{
+		    		color.Sel = "#3366ff"
 	    }
 
         nodeObj = {} // create node object
         nodeObj  = { // assign assets values to node
-          id: item.id,
-          lable: item.name,
+          id: item['id'],
+          lable: item['name'],
           color:color.Sel,
           shape: 'dot',
           shape :'circularImage',
           image: DIR + switchNames(item.type)+'.png',
-          title : item.type + " " + item.sector + " " + item.subSector
+          title : item.name + " : " + item.type + " " + item.sector
        }
         edgeMaker(item, myEdges) //create edges for each asset
         myNodes.push(nodeObj) // push node into array
@@ -127,19 +124,34 @@ function createNodesAndEdges(assetsArr){
 function edgeMaker(asset, myEdges){
   var edge = {};
   if(asset.inputs){
-  if(asset['inputs'].length != 0){
-    asset['inputs'].forEach(function(item){
-    	var color = {};
-    	if(item.workingState == "optimal"){
-    		color.Sel = "#00f"
-    	}else{
-    		color.Sel = "#f00"
-    	}
+  	if(asset['inputs'].length != 0){
+    	asset['inputs'].forEach(function(item){
+    		var color = {};
+		   		if(scenario.assetAffected){ // check if scenario is created
+		   			// check if item is affected by scenario
+		   			if(checkArray(scenario.assetAffected, "id", item.id)){
+				    	color.Sel = "#cc0000" // color red
+		 		  	// if scenario impact node	
+					}else if(scenario.impactNode == item.id){
+						color.Sel = "#330000" // color red
+					}else if(item.workingState == "failed"){
+				   			color.Sel = "#ff3333" // color red
+					// item working state is optimal
+			   		}else{
+					    		color.Sel = "#3366ff"
+				    }
+				}else if(item.workingState == "failed"){
+				   			color.Sel = "#ff3333" // color red
+				// item working state is optimal
+		   		}else{
+				    		color.Sel = "#3366ff"
+			    }
 
       edge = {  from: item, to: asset.id, 
                 arrows: "from", // create edge with arrow
                 label: 'depends_on', // lable on the edge
-                length:200,
+                length:50,
+                width:3,
                 font: {align: 'horizontal', color: color.Sel} // label fonts properties
               },
         myEdges.push(edge) //push created edge into an array

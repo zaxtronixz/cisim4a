@@ -143,14 +143,17 @@ ul.topnav li a {
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	border: 1px solid #ccc;
 	overflow:auto;
-	height: 250px;
+	height: 190px;
+}
+ /*hide overflow in the side nav*/
+ #mySidenav div.hide-overFlow{
+    overflow-y: scroll;
+    height: 350px;
 }
 
-#mySidenav div.card-body{
-	overflow-y: scroll;
+.select-option-lable{
+	margin: 4px 0 5px 0;
 }
-
-
 /*hover colour to highlight select option*/
 .selection-list-item{
   margin: 2px 0 2px 0;

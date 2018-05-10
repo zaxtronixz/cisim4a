@@ -14,12 +14,10 @@ function closeNav(){
 };//-----------------------------------------------------------------
 
 // 3.FUNCTION:To set project  name  to given
-$('#startProj-btn').on('click', function(){
-	if($('#projectName').val()){
-		var projectName = $('#projectName').val()
-		document.getElementById('project-title').innerHTML = "<h5>Project: "+projectName+"<h5>"
-	}
-})//----------------------------------------------------------------------
+function changeTitle(title){
+	document.getElementById('project-title').innerHTML = "<h5>Project: "+title+"<h5>"
+
+}//----------------------------------------------------------------------
 
 // 3.FUNCTION: To open asset creation panel by clicking on Marker
 function openCreateAssetPanel(){
@@ -70,6 +68,12 @@ function findIndexValue(arr, prop, test){
 	return found;
 }
 
+// FUNCTION: To change assetstate if dependency increases
+function dependencyChangeOfState(asset, listType){
+	if(listType == 'dependents'){
+		asset.workingState = 'failed'
+	}
+}
 
 // 5.Function: To load asset list to 'selected input option'
 function addAssetList(selector, assetId, listType){
@@ -132,7 +136,20 @@ function createOptionList(asset, assetList, listType){
 	var htmlElem = ''; // declare where to store assets	
  
 	if(listType == "dependents"){ // CREATE DEPENDENCY OPTIONS
-		if(asset.dependents){// if dependents already exists
+		htmlElem =  createDependentsOption(htmlElem, assetList, asset)
+		return htmlElem;
+
+	}else if (listType == "inputs") {// CREATE INPUT OPTIONS
+		htmlElem = createInputOption(htmlElem, assetList, asset)
+		return htmlElem
+
+	}
+}
+
+
+// FUNCTION: To create dependents optionsList
+function createDependentsOption(htmlElem, assetList, asset){
+	if(asset.dependents){// if dependents already exists
 			assetList.forEach(function(item){ // Loop through assetList
 			if(!asset.dependents.includes(item.id)){ // check if item is not in dependents
 				var newElement = '';
@@ -147,33 +164,36 @@ function createOptionList(asset, assetList, listType){
 			})
 			return htmlElem;
 		}	
-	}else if (listType == "inputs") {// CREATE INPUT OPTIONS
-		if(asset.dependents){// if dependents already exists
-			if(asset.inputs){// if inputs is defined
-				assetList.forEach(function(item){ //for each item from List
-					var newElement = ''; // where store assets
-					if((!asset.inputs.includes(item.id))&& (asset.dependents.includes(item.id))){ // if item is not already in input
-						htmlElem += createNewAssetOption(newElement, item) // add to the html element
-					}
-				})
-				// return html list created
-				return htmlElem 
-			}else{ // input is not defined
-				var newElement = ''; // where to store assets
-				asset.inputs = []// define asset input property
-				assetList.forEach(function(item){ //for each item from List
-					if(asset.dependents.includes(item.id)){
-						htmlElem += createNewAssetOption(newElement, item) // add to the html element
-					}
-				})
-				// return html list created
-				return htmlElem
+}
+
+
+// FUNCTION: To create input option
+function createInputOption(htmlElem, assetList, asset){
+	if(asset.dependents && asset.inputs){// if dependents already exists
+		assetList.forEach(function(item){ //for each item from List
+			var newElement = ''; // where store assets
+			if((!asset.inputs.includes(item.id))&& (asset.dependents.includes(item.id))){ // if item is not already in input
+				htmlElem += createNewAssetOption(newElement, item) // add to the html element
 			}
-		}else { // tell user to create dependency first
-			interact("dependents must be created to add inputs", 'warning')
-		}
+		})
+		// return html list created
+		return htmlElem 
+	}else if(asset.dependents){ // input is not defined
+		var newElement = ''; // where to store assets
+		asset.inputs = []// define asset input property
+		assetList.forEach(function(item){ //for each item from List
+			if(asset.dependents.includes(item.id)){
+					htmlElem += createNewAssetOption(newElement, item) // add to the html element
+			}
+		})
+		// return html list created
+		return htmlElem
+	}else { // tell user to create dependency first
+			interact("dependents must be created, before inputs", 'warning')
 	}
 }
+
+
 // FUNCTION TO only add new assets to Option_List
 function createNewAssetOption(htmlElem, item){
 	htmlElem += `<li class='selection-list-item' id= ${item.id}>`
@@ -183,14 +203,7 @@ function createNewAssetOption(htmlElem, item){
 	return htmlElem;
 }
 
-// 6.FUNCTION: To Load assets to Scenario creation
-function loadScenarioAsset(selector){
-	// load assets into selection
-	newProject.assets.forEach(function(item){
 
-	})
-
-}
 
 
 // 7.FUNCTION: To post new form values 'update asset'
@@ -212,13 +225,14 @@ $(`form#assetPanelForm`).submit(function(event){
 				// update asset in newProject instance
 				for (var prop in assetObject){
                 	newProject.assets[index][prop] = assetObject[prop]
-                	console.log("@update: This is asset object prop in newProject "+newProject.assets[index][prop] +" \n & this is the asset object property"+assetObject[prop])
+                	interact("Update" , " : " +newProject.assets[index][prop] +" this is the asset object property "+assetObject[prop])
                 }
             }else{
                 	interact("@update: asset with "+assetObject.id+" is not found", "warning")
                 }
 		});
 		// var asset = new CreateAssetObject(assetObject, null);
+		interact("Update ","asset "+ asset.name)
 		var asset = assetObject
 		postForm(url, asset);
 	
@@ -249,6 +263,8 @@ $(`#create-dependents-btn`).on('click', function(event){
 	// get dependency values from List
 	var dependency = createMultiSelectArray('multiple-select', 'selected-list')
 	newProject.addAssetDependents(dependency)// add dependents to asset
+	// checking dependencies
+	console.log(JSON.stringify(dependency))
 	// convert object to text before submitting
 	$.ajax({type: 'POST',
 			url: url,
@@ -296,6 +312,8 @@ $('#create-scenario-btn').on('click',function(){
 	interact("Scenario of "+scenario+" is applied to "+ " asset with id "+assetId, 'progress')
 	// create scenario to project
 	window.scenario = new CreateScenario(scenObject)
+
+
 	// post the scenario
 		$.ajax({type: 'POST',
 			url: url,
@@ -312,17 +330,29 @@ $('#create-scenario-btn').on('click',function(){
 function scenarioCallback(assetsAffected){
 	var r = assetsAffected;
 	var affected = []
-		for (i=0;i<r[0]._fields[0].length;i++){
-			affected.push(r[0]._fields[0][i].properties)
-		}
-	window.scenario.currentWorkingState(affected); // create current working state data
+	var assetList = newProject.assets
+	// create an array of affected assets
+	r[0]._fields[0].forEach(function(item){
+		var asset = item.properties;
+		affected.push(asset)
+	})
+	window.scenario.currentWorkingState(affected, assetList); // create current working state data
 
 }
 
 
-// 8.Function: To post dependency variable to app
+// 8.Function: To return asset working state in a projec
+function getWorkingState(assetList, assetId){
+	var workingstate = null;
+	assetList.forEach(function(item){ // loop through the list
+		if(item.id == assetId){ // find the asset
+			workingstate = item.workingState; // set working state value
+		}
+	});
+		return workingstate // return working state value
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// DEPENDENCY DATA
+
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -343,42 +373,41 @@ function createMultiSelectArray(optionSel, selector){
 
 
 // Function: to delete asset from edit form
-$('#delete-btn').on('click' , function(event){
-	 if ($(this).is(':checked')) {
+$('#delete-asset-btn').on('click' , function(event){
 
-		var assetName = $('#assetPanelForm :input[name]').val() // 
-		var assetDeleted  = confirm("Click OK to delete asset: " + assetName + " from this Project");
-		// confirmation window action to proceed and delete asset
-		if(assetDeleted == true){
-			var assetId = $('#update-assetId').val()
-			var projectId = window.newProject.id
-
-			for(i=0; i< newProject.assets.length;i++){
-			  	if (newProject.assets[i].id == assetId){
-			  		newProject.assets.splice(i,1) 
-			  		newProject.assetTotal -= 1;
-			  		// Delete marker from map
-			  		markerRemover(assetId)
-			  	}
-			  }
-			  interact("Asset with id " + assetId+ " is deleted", "warning")
-		// send to delete asset from database
-			postForm('getasset/delete', {assetId : assetId, projectId: projectId})
-		}
-	}else{
-		return false;
-	}
-	$(this).prop('checked', false); 
+	var assetId = $('#update-assetId').val() // get asset id from form
+	var projectId = window.newProject.id // get project id from projectInstance
+	//get the asset from the project instance
+	for(i=0; i< newProject.assets.length;i++){
+	  	if (newProject.assets[i].id == assetId){
+	  		newProject.assets.splice(i,1) // remove the asset
+	  		newProject.assetTotal -= 1;
+	  		// Delete marker from map
+	  		markerRemover(assetId)
+	  	}
+	  }
+	interact("Asset with id " + assetId+ " is deleted", "warning")
+	// send to delete asset from database
+	postForm('getasset/delete', {assetId : assetId, projectId: projectId})
 });
 
 
 // Function: To save new project instance
  $('#startProj-btn').on('click', function(){
+
+
  		if(!newProject.saved){
  			// save new project name
  			newProject.name = $('#projectName').val()
  			newProject.saved = true;
- 			// log file info
+ 			$("#stats-project-title").append(newProject.name)
+ 			changeTitle(newProject.name) // assign new title to the project
+ 			// post the new project name
+ 			postForm('getasset/ProjectUpdate', {
+ 				projectName: newProject.name,
+ 				projectId: newProject.id
+ 			}) //
+
  			var desc = newProject.name +" Project was saved successfully"
  			createLogFile('Save Project',desc )	
  		}else{
@@ -405,7 +434,6 @@ function interact(message, type){
 		$( "#animator" ).css("background-color", "rgba(95, 186, 255, 0.7)")
 		$( "#animator" ).append(mssg)
 	}
-	
     $( "#animator" ).show()
   	$( "#animator" ).animate({ "top": "+=150px" }, 1300 ).delay(1700 );
   	$( "#animator" ).animate({ "top": "-=150px" }, 1300 , function() {
@@ -527,14 +555,32 @@ $('#rightMenu').on("click", function(){
       })
     }
 
-// FUNCTION: TO add operation logs to table
+// FUNCTION: To add processes to log table
 function createLogFile(op, desc) {
-    var table = $("#logFile"); // get table
-    var counter = $("#logFile").children().length // count number of rows
-    var tableData  = "<tr><td>" + counter+1 +"</td>";
-    	tableData  = "<td>" + op + "</td>";
-    	tableData  = "<td>" + desc + "</td>";
-    	tableData  = "</tr>"
-    	// add data to table
-    	table.append(tableData)
+	var table = document.getElementById("logFile");
+    var row = table.insertRow();
+    var cell1 = row.insertCell(0);
+	var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var counter
+    if($("tbody#logFile").children().length==0){
+    	counter = 1
+    }else{
+    	counter = $("tbody#logFile").children().length;
+    }
+    cell1.innerHTML = counter;
+    cell2.innerHTML = op;
+	cell3.innerHTML = desc;
 }
+
+
+// FUNCTION : to load a selected project for cypher  creation
+$('#load-json-data-btn').on("click", function(){
+	// get the jason from input field
+	var json = $('#load-json-data').val()
+	// call ajax Function to get its data
+	loadJsonToCypher(json)
+
+
+})
+

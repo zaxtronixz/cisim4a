@@ -7,9 +7,9 @@ $(`form#createAsset-form`).submit(function(event){
 		var url = form.attr('action');
 
 		// get the selected asset name from form
-		this.x = document.getElementById("type").selectedIndex; //x
-	    this.y = document.getElementById("type").options; //y
-	    var assetSelected = this.y[this.x].text; // text of selected index
+		// this.x = document.getElementById("type").selectedIndex; //x
+	 //    this.y = document.getElementById("type").options; //y
+	 //    var assetSelected = this.y[this.x].text; // text of selected index
 
 		// converts form data to object;
 		var assObj = formDataToObject(`createAsset-form`)
@@ -17,7 +17,7 @@ $(`form#createAsset-form`).submit(function(event){
 		var asset = assetMaker(assObj, mapCollector, setCoord)
 		//pass the asset id for marker creation
 		mapCollector.markerId = asset.id
-		mapCollector.createMarker(assetSelected)// create a marker for this asset
+		mapCollector.createMarker(asset)// create a marker for this asset
 	 	// post asset data to form url
 	 	postForm(url, asset);
 	 	closeNav()
@@ -55,3 +55,15 @@ function formDataToObject(formId){
 function postForm(url, object){
 	$.post(url, object)
 }
+function ajaxPost(url, object){
+		$.ajax({
+		  url: url ,
+		  method: 'post',
+		  // dataType: "json",
+		  data: JSON.stringify(object),
+		  success: function(data) {
+		  	console.log("the result of your post is"+ data)
+		  }
+		})
+}
+

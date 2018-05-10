@@ -71,3 +71,16 @@
 }
 
 /*pop message style ends here*/
+
+/*style for statistic table colour coding*/
+/* Create two equal columns that floats next to each other */
+.column {
+    font-size:10px;
+    color:#fff;
+    float:left;
+    display:block;
+    width:95px;
+    text-align:center;
+    padding:1px;
+    /* Should be removed. Only for demonstration */
+}

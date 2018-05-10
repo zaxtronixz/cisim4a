@@ -11,8 +11,18 @@
       		<div id="collapseOne" class="collapse" data-parent="#second-accordion">
         		<div class="card-body">
 
-				 	<table id="panel-table" class="table">			
-
+				 	<table id="panel-table" class="table">	
+				 	<tr>
+				 		<td>
+						<div class="form-group square-border">
+						<input name="delete-asset" id = "delete-asset-btn" type="submit" value = "Delete asset"  class="btn btn-danger square-border" >
+						</div>
+				 		</td>
+				 		<td>
+				 			
+				 		</td>
+				 	</tr>		
+		
 					</table>	
 
 			  		<form id="assetPanelForm" action="/getasset/update" method="post">
@@ -61,12 +71,16 @@
         		<a class="collapsed card-link" data-toggle="collapse"  href="#collapseTwo"> Add dependencies:</a>
       		</div>
       		<div id="collapseTwo" data-parent="#second-accordion" class="collapse">
-        		<div class="card-body">
+        		<div class="card-body hide-overFlow">
         			<div id="create-dependents-form">
 		        
 				  			<label for="sel1">Select Dependencies:</label>
 				  			<div id="multiple-select"></div>
-		
+						<div class='select-option-lable'>
+						
+								<span>Selected Dependencies</span>
+							
+						</div>
 						<ul id="selected-list">	</ul>
 						<div class="form-group square-border">
 							<input name="create-dependents-btn" id = "create-dependents-btn" type="submit" value = "Create dependents"  class="btn btn-secondary square-border">
@@ -87,6 +101,9 @@
 			 				<label for="input-multiple-select">Select inputs:</label>
 			  				<div id="input-multiple-select">
 			 				</div>
+						</div>
+						<div class='select-option-lable'>
+							<span>Selected Inputs</span>
 						</div>
 						<ul id="input-selected-list">	</ul>
 						<div class="form-group square-border">

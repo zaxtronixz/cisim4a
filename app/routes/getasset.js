@@ -45,6 +45,15 @@ router.post('/getasset/update', function (req, res, next){
 
 
 //////////////////////////////////////////////////////////////////////////////
+// Update project details
+/////////////////////////////////////////////////////////////////////////////
+router.post('/getasset/ProjectUpdate', function (req, res, next){
+    var project = req.body;
+     // send the assetID and the response paramter as argument to cypher
+   jsonWriter.updateProject(project);
+ });
+
+//////////////////////////////////////////////////////////////////////////////
 // delete asset completely
 /////////////////////////////////////////////////////////////////////////////
 router.post('/getasset/delete', function (req, res, next){
@@ -109,5 +118,17 @@ router.post('/getasset/createScenario', function (req, res, next){
     cypher.createScenario(request, res);
 });
 
+
+
+//////////////////////////////////////////////////////////////////////////////
+// Create graph from json project file
+/////////////////////////////////////////////////////////////////////////////
+router.post('/getasset/makeCypher', function (req, res, next){
+    var request = req.body;
+    // console.log("We are about to update this assetId "+ request)
+
+    // create scenario objects
+    cypher.createJson(request, res);
+});
 
 module.exports = router;

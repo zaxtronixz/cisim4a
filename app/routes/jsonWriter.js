@@ -61,6 +61,34 @@ jsonWriter.updateAsset = function(asset){
   		})
 }
 
+// 4. UPDATE: json project object
+jsonWriter.updateProject = function(data){
+			var projectId = data.projectId;
+			var projectName = data.projectName;
+
+			console.log("we got to the id "+ projectId)
+	    for(i=0; i< jsonFile.projects.length; i++){
+	    	// match projectId with json file project
+	    	if(jsonFile.projects[i].id == projectId){
+	     	 		// assign new porject value
+	     	 		
+	       	 		jsonFile.projects[i].name = projectName;
+	       	 		jsonFile.projects[i].saved = true;
+	       	 		console.log("the new project looks like this "+ JSON.stringify(jsonFile.projects[i]))
+	                //return jsonFile; // return json file
+	             }else if(jsonFile.projects[i].saved != true){ //not a saved project
+	             	if(jsonFile.projects[i].id != projectId){ // not selectd to be saved
+	             		jsonFile.projects.splice(i,1) // remove from the file
+	             	}
+
+	             }  
+	        }
+		fs.writeFileSync( 'app/data/data.json', JSON.stringify(jsonFile), 'utf8', function (err) {
+  			console.error(err)
+  		})
+}
+
+
 // 4. DELETE: asset details from json files s
 jsonWriter.deleteAsset = function(assetId, projectId){
 		console.log("@jsonWriter:deleteAsset - this is pId: " + projectId +" & aId:"+ assetId)
@@ -133,7 +161,7 @@ jsonWriter.addInputs = function(receivedObject){
   		changeWorkingState(asset) // check wworking state
   	}
   	// jsonFile = addProjectBack(project)
-		    console.log("this is jsonFile after unshift at jsonWriter "+ JSON.stringify(project))
+		    // console.log("this is jsonFile after unshift at jsonWriter "+ JSON.stringify(project))
 		    fs.writeFileSync( 'app/data/data.json', JSON.stringify(jsonFile), 'utf8', function (err) {
   				console.error(err)
   			})
@@ -141,8 +169,8 @@ jsonWriter.addInputs = function(receivedObject){
 
 // 6. ADD SCENARIO: to Project instance
 jsonWriter.createScenario = function(assetId, scenario){
-			jsonFile.projects.push(newProject)    
-		    console.log("this is jsonFile after unshift at jsonWriter "+ JSON.stringify(jsonFile))
+			//jsonFile.projects.push(newProject)    
+		    // console.log("this is jsonFile after unshift at jsonWriter "+ JSON.stringify(jsonFile))
 		    fs.writeFileSync( 'app/data/data.json', JSON.stringify(jsonFile), 'utf8', function (err) {
   				console.error(err)
   			})
@@ -156,6 +184,10 @@ jsonWriter.createVisualResult = function(mapInstance){
   				console.error(err)
   			})
 }
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // FUNCTION : To return project given project Id
 function getProjectGivenId(projectId){
@@ -176,6 +208,9 @@ function getAssetFromProject(project, assetId){
     	}
     }
 }
+
+
+
 
 function changeWorkingState(asset){
 	if(asset.dependents.length == asset.inputs.length){

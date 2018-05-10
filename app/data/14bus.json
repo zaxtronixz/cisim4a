@@ -1,0 +1,264 @@
+[
+    {
+        "id": "jgoh7cqt6jx91q1",
+        "name": "opp",
+        "places": "Midwest",
+        "location": {
+            "lat": 43.41136040000001,
+            "lng": -106.28002420000001
+        },
+        "saved": true,
+        "assets": [
+            {
+                "id": "JGOH7UY19TT8Y",
+                "name": "Bus01",
+                "type": "Fossil Fuel Plant",
+                "sector": "Energy",
+                "coordLat": "43.145612860876376",
+                "coordLng": "-105.79342144473657",
+                "subSector": "Electricity",
+                "workingState": "optimal",
+                "projectId": "jgoh7cqt6jx91q1"
+            },
+            {
+                "id": "JGOH88TMQDKE4",
+                "name": "Bus02",
+                "type": "Fossil Fuel Plant",
+                "sector": "Energy",
+                "coordLat": "43.14360887208103",
+                "coordLng": "-106.51439922793969",
+                "subSector": "Electricity",
+                "workingState": "optimal",
+                "projectId": "jgoh7cqt6jx91q1",
+                "dependents": [
+                    "JGOH7UY19TT8Y"
+                ],
+                "inputs": [
+                    "JGOH7UY19TT8Y"
+                ]
+            },
+            {
+                "id": "JGOH8L48VU0MW",
+                "name": "Bus03",
+                "type": "Fossil Fuel Plant",
+                "sector": "Energy",
+                "coordLat": "43.15162443310058",
+                "coordLng": "-107.03487652286157",
+                "subSector": "Electricity",
+                "workingState": "optimal",
+                "projectId": "jgoh7cqt6jx91q1",
+                "dependents": [
+                    "JGOH88TMQDKE4",
+                    "JGOHEGM5S7O0U"
+                ],
+                "inputs": [
+                    "JGOH88TMQDKE4",
+                    "JGOHEGM5S7O0U"
+                ]
+            },
+            {
+                "id": "JGOHB90EMLI1M",
+                "name": "Bus08",
+                "type": "Fossil Fuel Plant",
+                "sector": "Energy",
+                "coordLat": "43.46042093329143",
+                "coordLng": "-107.34661358340844",
+                "subSector": "Electricity",
+                "workingState": "optimal",
+                "projectId": "jgoh7cqt6jx91q1"
+            },
+            {
+                "id": "JGOHBR0BK13VN",
+                "name": "Bus06",
+                "type": "Fossil Fuel Plant",
+                "sector": "Energy",
+                "coordLat": "43.44147871233833",
+                "coordLng": "-105.51189678653344",
+                "subSector": "Electricity",
+                "workingState": "optimal",
+                "projectId": "jgoh7cqt6jx91q1",
+                "dependents": [
+                    "JGOHEPWQPWDQ2"
+                ],
+                "inputs": [
+                    "JGOHEPWQPWDQ2"
+                ]
+            },
+            {
+                "id": "JGOHCZ8147T6Z",
+                "name": "Bus11",
+                "type": "EHV lines & Tower",
+                "sector": "Energy",
+                "coordLat": "43.83207559136308",
+                "coordLng": "-105.52150982364282",
+                "subSector": "Electricity",
+                "workingState": "optimal",
+                "projectId": "jgoh7cqt6jx91q1",
+                "dependents": [
+                    "JGOHBR0BK13VN"
+                ],
+                "inputs": [
+                    "JGOHBR0BK13VN"
+                ]
+            },
+            {
+                "id": "JGOHEGM5S7O0U",
+                "name": "Bus04",
+                "type": "Step Up/down SubStation",
+                "sector": "Energy",
+                "coordLat": "43.406569617944925",
+                "coordLng": "-106.73824566348657",
+                "subSector": "Electricity",
+                "workingState": "optimal",
+                "projectId": "jgoh7cqt6jx91q1",
+                "dependents": [
+                    "JGOH88TMQDKE4",
+                    "JGOHEPWQPWDQ2"
+                ],
+                "inputs": [
+                    "JGOH88TMQDKE4",
+                    "JGOHEPWQPWDQ2"
+                ]
+            },
+            {
+                "id": "JGOHEPWQPWDQ2",
+                "name": "Bus05",
+                "type": "Step Up/down SubStation",
+                "sector": "Energy",
+                "coordLat": "43.409562614809126",
+                "coordLng": "-106.11751812442407",
+                "subSector": "Electricity",
+                "workingState": "optimal",
+                "projectId": "jgoh7cqt6jx91q1",
+                "dependents": [
+                    "JGOH7UY19TT8Y",
+                    "JGOH88TMQDKE4"
+                ],
+                "inputs": [
+                    "JGOH7UY19TT8Y",
+                    "JGOH88TMQDKE4"
+                ]
+            },
+            {
+                "id": "JGOHFATQ8MWRB",
+                "name": "Bus07",
+                "type": "Step Up/down SubStation",
+                "sector": "Energy",
+                "coordLat": "43.48334305256048",
+                "coordLng": "-107.05959576114282",
+                "subSector": "Electricity",
+                "workingState": "optimal",
+                "projectId": "jgoh7cqt6jx91q1",
+                "dependents": [
+                    "JGOHB90EMLI1M",
+                    "JGOHEGM5S7O0U"
+                ],
+                "inputs": [
+                    "JGOHB90EMLI1M",
+                    "JGOHEGM5S7O0U"
+                ]
+            },
+            {
+                "id": "JGOK3N2PW8ZBA",
+                "name": "Bus12",
+                "type": "EHV lines & Tower",
+                "sector": "Energy",
+                "coordLat": "43.51621612482274",
+                "coordLng": "-105.06695049747094",
+                "subSector": "Electricity",
+                "workingState": "optimal",
+                "projectId": "jgoh7cqt6jx91q1",
+                "dependents": [
+                    "JGOHBR0BK13VN"
+                ],
+                "inputs": [
+                    "JGOHBR0BK13VN"
+                ]
+            },
+            {
+                "id": "JGOO0RIVB2RNA",
+                "name": "Bus09",
+                "type": "Step Up/down SubStation",
+                "sector": "Energy",
+                "coordLat": "43.73593415429624",
+                "coordLng": "-106.68808049675437",
+                "subSector": "Electricity",
+                "workingState": "optimal",
+                "projectId": "jgoh7cqt6jx91q1",
+                "dependents": [
+                    "JGOHEGM5S7O0U",
+                    "JGOHFATQ8MWRB"
+                ],
+                "inputs": [
+                    "JGOHEGM5S7O0U",
+                    "JGOHFATQ8MWRB"
+                ]
+            },
+            {
+                "id": "JGOOAGBCVFG0V",
+                "name": "Bus13",
+                "type": "Step Up/down SubStation",
+                "sector": "Energy",
+                "coordLat": "43.714100696465785",
+                "coordLng": "-105.24795604091497",
+                "subSector": "Electricity",
+                "workingState": "optimal",
+                "projectId": "jgoh7cqt6jx91q1",
+                "dependents": [
+                    "JGOK3N2PW8ZBA",
+                    "JGOHBR0BK13VN"
+                ],
+                "inputs": [
+                    "JGOK3N2PW8ZBA",
+                    "JGOHBR0BK13VN"
+                ]
+            },
+            {
+                "id": "JGPFVM9Q7XVLN",
+                "name": "Bus14",
+                "type": "Distr. underground lines",
+                "sector": "Energy",
+                "coordLat": "43.707842793128016",
+                "coordLng": "-105.96398951926847",
+                "subSector": "Electricity",
+                "workingState": "optimal",
+                "projectId": "jgoh7cqt6jx91q1",
+                "dependents": [
+                    "JGOO0RIVB2RNA",
+                    "JGOOAGBCVFG0V"
+                ],
+                "inputs": [
+                    "JGOO0RIVB2RNA",
+                    "JGOOAGBCVFG0V"
+                ]
+            },
+            {
+                "id": "JGPFW69L19BES",
+                "name": "Bus10",
+                "type": "Distr. underground lines",
+                "sector": "Energy",
+                "coordLat": "43.933754292120994",
+                "coordLng": "-106.15625026145597",
+                "subSector": "Electricity",
+                "workingState": "optimal",
+                "projectId": "jgoh7cqt6jx91q1",
+                "dependents": [
+                    "JGOHCZ8147T6Z",
+                    "JGOO0RIVB2RNA"
+                ],
+                "inputs": [
+                    "JGOHCZ8147T6Z",
+                    "JGOO0RIVB2RNA"
+                ]
+            }
+        ],
+        "markers": [],
+        "assetsWorkingState": {
+            "optimal": [],
+            "failed": []
+        },
+        "assetTotal": 14,
+        "scenario": {},
+        "resultVisualization": {}
+    }
+]

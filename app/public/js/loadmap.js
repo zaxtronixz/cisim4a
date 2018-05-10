@@ -46,10 +46,12 @@
           			// bring previous project detail here
            			mapCollector.places = recentProject.places
           			mapCollector.location = recentProject.location
+          			mapCollector.name = recentProject.name
 
           			//var pos = longitude and latitude
           			var pos = recentProject.location
-
+          			// load recent project's name
+          			changeTitle(recentProject.name)				
           			map = createNewMap(pos)// create map with location
           			// create a new project instance on client
           			google.maps.event.addListener(map, 'click', clickEventer);
@@ -66,19 +68,20 @@
 							// assign each asset.coordinates  to mapcollector coord
 	          				mapCollector.coordinates = {lat: asset.coordLat, lng: asset.coordLng}
 	          				
-	          				var assetSelected = asset.type// asset.type as asset assetSelected
-	          				
+      		
+
 	          				mapCollector.markerId = asset.id//assign asset id to map collector
 	          				console.log("this is " + asset.name+ " workingState " +asset.workingState)
           					newProject.addAsset(asset)// add assets to the project instance
-	          				
+	          				// get asset details for this marker
+	          				var markerTitle = showMarkerDetail(asset); 
 	          				// create marker create objects
 	          				var marker = new google.maps.Marker({
 				         		position: mapCollector.coordinates,
 				         		map: map,
 				         		animation: google.maps.Animation.DROP,
-				         		title: assetSelected,
-				         		icon:customMarker(assetSelected)
+				         		title: markerTitle,
+				         		icon:customMarker(asset.type)
 				         	});
 	          				marker.id = mapCollector.markerId
     						mapCollector.markers.push(marker)
@@ -142,17 +145,19 @@
 
 }// ------------------------------end of initiate map function
 				// create marker function
-	mapCollector.createMarker = function(assetSelected){
+	mapCollector.createMarker = function(asset){
 		if(!this.infowindow){
 			this.infowindow.close();
 			closeNav();
 		}
+		var markerTitle = showMarkerDetail(asset);// marker details for an asset
+
 		var marker = new google.maps.Marker({
          		position: mapCollector.coordinates,
          		map: map,
          		animation: google.maps.Animation.DROP,
-         		title: assetSelected,
-         		icon:customMarker(assetSelected)
+         		title: markerTitle,
+         		icon:customMarker(asset.type)
          	});
 		 /////////////////////////////////////////////////////////////////////
 		// open menu when marker is clicked
@@ -169,20 +174,62 @@
 	}//-------------------------------------end of CreateMarker
 
 	// Create infowindow on the clicked spot on map
-	function clickEventer(event){
-	   	mapCollector.coordinates = {
-			lat: event.latLng.lat(),
-			lng: event.latLng.lng()
+function clickEventer(event){
+		// get the coordinate of the clicked postion
+	  	var coord = getCoordinate(event); 
+	  	if(checkInfoWindow()){ // check if infowindow was opened
+	  		mapCollector.infowindow.close() //close opened window
+	  		createNewInfoWindow(coord, contentString) //create new one
+	  		mapCollector.infowindow.open(map); // open the newly created
+	  	}else{
+	  		createNewInfoWindow(coord, contentString) // create new one
+	  		mapCollector.infowindow.open(map); // open it
 	  	}
-		// information window is displayed at click position
-		mapCollector.infowindow = new google.maps.InfoWindow({
-		   	content: contentString,
-		   	position:mapCollector.coordinates
-		});
-	  	mapCollector.infowindow.open(map);
+	  	
     };//------------------------------------end of clickEventer
 
- 
+ // Function to check is infowindow was already opened
+ function checkInfoWindow(){
+	if(mapCollector.infowindow){
+  		return true;
+  	}else{
+  		return false;
+  	}
+ }
+// FUNCTION: To show marker details on hover
+function showMarkerDetail(asset){
+	var markerTitle = asset.name + " : " + asset.type;
+		markerTitle += "\n" + "latitude: "+ asset.coordLat 
+		markerTitle += "\n" + "longitude: "+ asset.coordLng 
+	return markerTitle;
+}
+ // FUNCTION To create new infowindow on map
+ function createNewInfoWindow(coord, content){
+ // information window is displayed at click position
+	mapCollector.infowindow = new google.maps.InfoWindow({
+	   	content: content,
+	   	position: coord
+	});
+ }
+
+// FUNCTION: To get the coordinate of a clicked postion
+function getCoordinate(event){
+	mapCollector.coordinates = {
+		lat: event.latLng.lat(),
+		lng: event.latLng.lng()
+	 }	
+	 return mapCollector.coordinates;
+}
+
+// FUNCTION: show asset selected by user
+function showMarkerSelected(id){
+	// find the marker from google map objectlist
+	// get the marker details
+	// create infoWindow with de
+}
+
+
+// FUNCTION: To create a new project instance
   	function createMapProjectInstance(mapCollector){
     	var newProject = new MapProjectInstance(mapCollector)
     	// post new project data to api
