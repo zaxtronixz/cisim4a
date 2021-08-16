@@ -1,6 +1,12 @@
 ////////////////////////////////////////////////////////////////////////////////////
 // Importing various modules
 /////////////////////////////////////////////////////////////////////////////////////
+// neo4j Aura setup
+//  url = neo4j+s://9b27468b.databases.neo4j.io:7687
+// username = 
+// password = SddPt_YmLUrPbPPEwcLEla9tpviU2c6JXWXAqUarw8M
+
+
 var express = require('express');
 var neo4j = require('neo4j-driver').v1; 
 var cypher = express.Router();
@@ -23,7 +29,8 @@ var graphenedbPass = "b.5IOnVenDmfcG.eDpXEKI1gxxRj1iV";
 
 // var driver = neo4j.driver(graphenedbURL, neo4j.auth.basic(graphenedbUser, graphenedbPass));
 
-var driver = neo4j.driver("bolt://localhost", neo4j.auth.basic("neo4j", "2friedXs"));
+var driver = neo4j.driver("bolt://localhost:7687", neo4j.auth.basic("neo4j", "123456"));
+// var driver = neo4j.driver("bolt://9b27468b.databases.neo4j.io:7687", neo4j.auth.basic("neo4j", "SddPt_YmLUrPbPPEwcLEla9tpviU2c6JXWXAqUarw8M"));
 
 
 //////////////////////////////////////////////////////////////////////////////////////////

@@ -4,14 +4,14 @@ var bodyParser = require('body-parser');
 var app = express();
 var dataFile = require('./data/data.json');
 var cors = require('cors')
-var neo4j = require('neo4j-driver').v1;
+var neo4j = require('neo4j-driver').v1
 
 
 // configuring our application 
 app.set('port', process.env.PORT || 3050 );
 app.set('view engine', 'ejs');
-app.set('views', 'app/views');
-app.set('appData', dataFile)
+app.set('views',__dirname +'/views');
+app.set('appData', dataFile)	
 
 // configuring body-parser
 app.use(bodyParser.json());
