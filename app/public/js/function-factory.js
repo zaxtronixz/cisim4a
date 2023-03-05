@@ -309,9 +309,12 @@ $('#create-scenario-btn').on('click',function(){
 	var scenario = $( "#scenario-selection :selected" ).text()
 	// create scenario object
 	var scenObject = {assetId : assetId, type: scenario}
-	interact("Scenario of "+scenario+" is applied to "+ " asset with id "+assetId, 'progress')
+	interact("Simulation of "+scenario+" is applied to "+ " asset with id "+assetId, 'progress')
 	// create scenario to project
 	window.scenario = new CreateScenario(scenObject)
+
+	// create log of the scenario
+	createLogFile("Simulation of "+scenario+" is applied to "+ " asset with id "+assetId, 'progress')
 
 
 	// post the scenario
@@ -336,6 +339,7 @@ function scenarioCallback(assetsAffected){
 		var asset = item.properties;
 		affected.push(asset)
 	})
+	createLogFile("Failed asset","The assets that failed are: "+JSON.stringify(affected))
 	window.scenario.currentWorkingState(affected, assetList); // create current working state data
 
 }
@@ -368,7 +372,10 @@ function createMultiSelectArray(optionSel, selector){
 		var dependent = ($(arr[i]).attr('id')) //get id of all selected assets
 		dependencies.push(dependent) // dependent id to array
 	}
+	// create log of dependencies
+	createLogFile(" Dependencies where added to asset with id "+ assetId, " The dependencies are "+dependencies.toString())
 	return {assetId:assetId ,projectId: projectId, dependency: dependencies } // assetid and dependencies
+
 }
 
 
@@ -389,6 +396,9 @@ $('#delete-asset-btn').on('click' , function(event){
 	interact("Asset with id " + assetId+ " is deleted", "warning")
 	// send to delete asset from database
 	postForm('getasset/delete', {assetId : assetId, projectId: projectId})
+
+	// log activity to log file
+	createLogFile("asset Deletion", "asset with id: "+assetId+" was removed")
 });
 
 
@@ -438,6 +448,8 @@ function interact(message, type){
   	$( "#animator" ).animate({ "top": "+=150px" }, 1300 ).delay(1700 );
   	$( "#animator" ).animate({ "top": "-=150px" }, 1300 , function() {
        $( "#animator" ).css("display","none")
+
+       createLogFile(type, message);
     });
  }// ------------------------end of interaction function
 
@@ -514,6 +526,8 @@ function displayProjectStat(){
 	$('#asset-total-column').html(total);
 	$('#asset-optimal-column').html(optimal);
 	$('#asset-failed-column').html(failed);
+
+
 }
 
 // FUNCTION: To get Markers latLong given index 
@@ -562,15 +576,20 @@ function createLogFile(op, desc) {
     var cell1 = row.insertCell(0);
 	var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
     var counter
     if($("tbody#logFile").children().length==0){
     	counter = 1
     }else{
     	counter = $("tbody#logFile").children().length;
     }
-    cell1.innerHTML = counter;
-    cell2.innerHTML = op;
-	cell3.innerHTML = desc;
+
+	var today = new Date();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    cell1.innerHTML = time
+    cell2.innerHTML = counter;
+    cell3.innerHTML = op;
+	cell4.innerHTML = desc;
 }
 
 

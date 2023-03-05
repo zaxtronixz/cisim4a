@@ -18,6 +18,10 @@ $(`form#createAsset-form`).submit(function(event){
 		//pass the asset id for marker creation
 		mapCollector.markerId = asset.id
 		mapCollector.createMarker(asset)// create a marker for this asset
+
+		// Log the asset creation details
+		createLogFile("Asset creation", "An asset "+asset.name + " with Id: "+asset.id+" is created at : "+JSON.stringify(mapCollector.coordinates)+ " coordinates" )
+
 	 	// post asset data to form url
 	 	postForm(url, asset);
 	 	closeNav()

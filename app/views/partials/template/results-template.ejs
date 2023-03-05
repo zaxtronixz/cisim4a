@@ -91,6 +91,7 @@
             <tr>
             <td colspan="2">
             <div class="row">
+              <div class="column" > Keys </div>
               <div class="column" style="background-color:#330000;">
 
                 <p>Impact Node</p>
@@ -106,6 +107,25 @@
               <div class="column" style="background-color:#3366ff;">
                <p>Optimal state</p>
               </div>
+            </div>
+            <div class="row" >
+              <div class="column" > Values </div>
+              <div class="column" style="background-color:#330000;">
+
+                <p id="impact_value" ></p>
+              </div>
+              <div class="column" style="background-color:#990000;">
+
+                <p id="affected_value"></p>
+              </div>
+              <div class="column" style="background-color:#ff3333;">
+
+                <p id="failed_value"></p>
+              </div>
+              <div class="column" style="background-color:#3366ff;">
+               <p id="optimal_value"></p>
+              </div>
+              
             </div>
 
 
@@ -124,6 +144,7 @@
             <table id="logTable" class="table table-dark">
           <thead>
             <tr>
+              <th>time</th>
               <th>id</th>
               <th>Operation</th>
               <th>Description</th>

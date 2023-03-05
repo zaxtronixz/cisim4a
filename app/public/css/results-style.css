@@ -15,3 +15,8 @@
  .lighten-up{
  	background: rgba(0, 0, 0, 0.4);
  }
+
+ #logTable td{
+    font-size: 12px;
+    font-style: normal;
+ } 

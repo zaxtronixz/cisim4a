@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var dataFile = require('./data/data.json');
 var cors = require('cors')
-var neo4j = require('neo4j-driver').v1
+var neo4j = require('neo4j-driver')
 
 
 // configuring our application 

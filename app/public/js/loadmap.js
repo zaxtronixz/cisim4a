@@ -73,6 +73,8 @@
 	          				mapCollector.markerId = asset.id//assign asset id to map collector
 	          				console.log("this is " + asset.name+ " workingState " +asset.workingState)
           					newProject.addAsset(asset)// add assets to the project instance
+	          				
+	          				
 	          				// get asset details for this marker
 	          				var markerTitle = showMarkerDetail(asset); 
 	          				// create marker create objects
